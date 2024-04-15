@@ -1,0 +1,309 @@
+#ifdef SBN_USE_WINDOWS
+
+/**
+ * Copyright L. Spiro 2022
+ *
+ * Written by: Shawn (L. Spiro) Wilcoxen
+ *
+ * Description: Macros useful for making consistent layouts.
+ */
+
+#pragma once
+
+#define MW_MENU_TXT( ENC_STR, ENC_LEN )	reinterpret_cast<LPCWSTR>(ENC_STR), ENC_LEN
+
+#ifndef SBN_MAIN_WINDOW_W
+#define SBN_MAIN_WINDOW_W				(256 * 1)
+#endif	// SBN_MAIN_WINDOW_W
+
+#ifndef SBN_MAIN_WINDOW_H
+#define SBN_MAIN_WINDOW_H				(240 * 1)
+#endif	// SBN_MAIN_WINDOW_H
+
+#ifndef SBN_LOCK_LEFT
+#define SBN_LOCK_LEFT					"??::SL+(??::P::L-??::P::SL)", 0
+#endif	// SBN_LOCK_LEFT
+
+#ifndef SBN_LOCK_RIGHT
+#define SBN_LOCK_RIGHT					"??::SR+(??::P::R-??::P::SR)", 0
+#endif	// SBN_LOCK_RIGHT
+
+#ifndef SBN_LOCK_TOP
+#define SBN_LOCK_TOP					"??::ST+(??::P::T-??::P::ST)", 0
+#endif	// SBN_LOCK_TOP
+
+#ifndef SBN_LOCK_BOTTOM
+#define SBN_LOCK_BOTTOM					"??::SB+(??::P::B-??::P::SB)", 0
+#endif	// SBN_LOCK_BOTTOM
+
+#ifndef SBN_LOCK_CENTER_H
+#define SBN_LOCK_CENTER_H				"??::P::CL+(??::P::CW>>1)", 0
+#endif	// SBN_LOCK_CENTER_H
+
+#ifndef SBN_FIXED_WIDTH
+#define SBN_FIXED_WIDTH					"??::W", 0
+#endif	// SBN_FIXED_WIDTH
+
+#ifndef SBN_FIXED_HEIGHT
+#define SBN_FIXED_HEIGHT				"??::H", 0
+#endif	// SBN_FIXED_WIDTH
+
+#ifndef SBN_PARENT_CLEFT
+#define SBN_PARENT_CLEFT				"??::P::CL", 0
+#endif	// SBN_PARENT_CLEFT
+
+#ifndef SBN_PARENT_CRIGHT
+#define SBN_PARENT_CRIGHT				"??::P::CR", 0
+#endif	// SBN_PARENT_CRIGHT
+
+#ifndef SBN_PARENT_CTOP
+#define SBN_PARENT_CTOP					"??::P::CT", 0
+#endif	// SBN_PARENT_CTOP
+
+#ifndef SBN_PARENT_CBOTTOM
+#define SBN_PARENT_CBOTTOM				"??::P::CB", 0
+#endif	// SBN_PARENT_CBOTTOM
+
+#ifndef SBN_PARENT_CWIDTH
+#define SBN_PARENT_CWIDTH				"??::P::CW", 0
+#endif	// SBN_PARENT_CWIDTH
+
+#ifndef SBN_PARENT_CHEIGHT
+#define SBN_PARENT_CHEIGHT				"??::P::CH", 0
+#endif	// SBN_PARENT_CHEIGHT
+
+#ifndef SBN_PARENT_VCLEFT
+#define SBN_PARENT_VCLEFT				"??::P::VCL", 0
+#endif	// SBN_PARENT_VCLEFT
+
+#ifndef SBN_PARENT_VCRIGHT
+#define SBN_PARENT_VCRIGHT				"??::P::VCR", 0
+#endif	// SBN_PARENT_VCRIGHT
+
+#ifndef SBN_PARENT_VCTOP
+#define SBN_PARENT_VCTOP				"??::P::VCT", 0
+#endif	// SBN_PARENT_VCTOP
+
+#ifndef SBN_PARENT_VCBOTTOM
+#define SBN_PARENT_VCBOTTOM				"??::P::VCB", 0
+#endif	// SBN_PARENT_VCBOTTOM
+
+#ifndef SBN_PARENT_VCWIDTH
+#define SBN_PARENT_VCWIDTH				"??::P::VCW", 0
+#endif	// SBN_PARENT_VCWIDTH
+
+#ifndef SBN_PARENT_VCHEIGHT
+#define SBN_PARENT_VCHEIGHT				"??::P::VCH", 0
+#endif	// SBN_PARENT_VCHEIGHT
+
+#ifndef SBN_TOP_VCOFFSET
+#define SBN_TOP_VCOFFSET				"??::P::VCT+??::SCT", 0
+#endif	// SBN_TOP_VCOFFSET
+
+#ifndef SBN_CHECKSTYLE
+#define SBN_CHECKSTYLE					WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | BS_AUTOCHECKBOX
+#endif	// SBN_CHECKSTYLE
+
+#ifndef SBN_RADIOSTYLE
+#define SBN_RADIOSTYLE					WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | BS_AUTORADIOBUTTON
+#endif	// SBN_RADIOSTYLE
+
+#ifndef SBN_STATICSTYLE
+#define SBN_STATICSTYLE					WS_CHILDWINDOW | WS_VISIBLE | SS_LEFT
+#endif	// SBN_STATICSTYLE
+
+#ifndef SBN_BUTTONSTYLE
+#define SBN_BUTTONSTYLE					WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | BS_PUSHBUTTON | BS_TEXT
+#endif	// SBN_BUTTONSTYLE
+
+#ifndef SBN_DEFBUTTONSTYLE
+#define SBN_DEFBUTTONSTYLE				WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | BS_DEFPUSHBUTTON | BS_TEXT
+#endif	// SBN_DEFBUTTONSTYLE
+
+#ifndef SBN_GROUPSTYLE
+#define SBN_GROUPSTYLE					WS_CHILDWINDOW | WS_VISIBLE | BS_GROUPBOX
+#endif	// SBN_GROUPSTYLE
+
+#ifndef SBN_EDITSTYLE
+#define SBN_EDITSTYLE					WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | ES_LEFT | ES_AUTOHSCROLL
+#endif	// SBN_EDITSTYLE
+
+#ifndef SBN_COMBOSTYLE
+#define SBN_COMBOSTYLE					WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | CBS_DROPDOWN | CBS_HASSTRINGS | CBS_AUTOHSCROLL
+#endif	// SBN_COMBOSTYLE
+
+#ifndef SBN_COMBOSTYLE_LIST
+#define SBN_COMBOSTYLE_LIST				WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | CBS_DROPDOWNLIST | CBS_HASSTRINGS/* | CBS_AUTOHSCROLL*/ | WS_VSCROLL
+#endif	// SBN_COMBOSTYLE_LIST
+
+#ifndef SBN_TOOLTIP_STYLE
+#define SBN_TOOLTIP_STYLE				WS_POPUP | TTS_NOPREFIX | TTS_BALLOON | TTS_ALWAYSTIP
+#endif	// SBN_TOOLTIP_STYLE
+
+#ifndef SBN_UPDOWN_STYLE
+#define SBN_UPDOWN_STYLE				WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | UDS_ARROWKEYS | UDS_AUTOBUDDY
+#endif	// SBN_UPDOWN_STYLE
+
+#ifndef SBN_TRACKBAR_STYLE
+#define SBN_TRACKBAR_STYLE				WS_CHILDWINDOW | WS_VISIBLE | WS_TABSTOP | TBS_AUTOTICKS | TBS_TOOLTIPS | TBS_BOTH
+#endif	// SBN_UPDOWN_STYLE
+
+#ifndef SBN_COMBOSTYLEEX_LIST
+#define SBN_COMBOSTYLEEX_LIST			0//WS_EX_NOPARENTNOTIFY
+#endif	// SBN_COMBOSTYLEEX_LIST
+
+#ifndef SBN_DEF_STATIC_HEIGHT
+#define SBN_DEF_STATIC_HEIGHT			8	// Dialog units.
+#endif	// SBN_DEF_STATIC_HEIGHT
+
+#ifndef SBN_DEF_STATIC_HEIGHT_PXL
+#define SBN_DEF_STATIC_HEIGHT_PXL		15	// Pixels
+#endif	// SBN_DEF_STATIC_HEIGHT_PXL
+
+#ifndef SBN_DEF_CHECK_HEIGHT
+#define SBN_DEF_CHECK_HEIGHT			9	// Dialog units.
+#endif	// SBN_DEF_CHECK_HEIGHT
+
+#ifndef SBN_DEF_CHECK_HEIGHT_PXL
+#define SBN_DEF_CHECK_HEIGHT_PXL		17	// Pixels.
+#endif	// SBN_DEF_CHECK_HEIGHT_PXL
+
+#ifndef SBN_DEF_RADIO_HEIGHT
+#define SBN_DEF_RADIO_HEIGHT			9	// Dialog units.
+#endif	// SBN_DEF_RADIO_HEIGHT
+
+#ifndef SBN_DEF_RADIO_HEIGHT_PXL
+#define SBN_DEF_RADIO_HEIGHT_PXL		17	// Pixels.
+#endif	// SBN_DEF_RADIO_HEIGHT_PXL
+
+#ifndef SBN_DEF_EDIT_HEIGHT
+#define SBN_DEF_EDIT_HEIGHT				12	// Dialog units.
+#endif	// SBN_DEF_EDIT_HEIGHT
+
+#ifndef SBN_DEF_EDIT_HEIGHT_PXL
+#define SBN_DEF_EDIT_HEIGHT_PXL			23	// Pixels.
+#endif	// SBN_DEF_EDIT_HEIGHT_PXL
+
+#ifndef SBN_DEF_COMBO_HEIGHT
+#define SBN_DEF_COMBO_HEIGHT			12	// Dialog units.
+#endif	// SBN_DEF_COMBO_HEIGHT
+
+#ifndef SBN_DEF_COMBO_HEIGHT_PXL
+#define SBN_DEF_COMBO_HEIGHT_PXL		23	// Pixels.
+#endif	// SBN_DEF_COMBO_HEIGHT_PXL
+
+#ifndef SBN_DEF_BUTTON_HEIGHT
+#define SBN_DEF_BUTTON_HEIGHT			12	// Dialog units.
+#endif	// SBN_DEF_BUTTON_HEIGHT
+
+#ifndef SBN_DEF_BUTTON_HEIGHT_PXL
+#define SBN_DEF_BUTTON_HEIGHT_PXL		23	// Pixels.
+#endif	// SBN_DEF_BUTTON_HEIGHT_PXL
+
+#ifndef SBN_DEF_BUTTON_WIDTH
+#define SBN_DEF_BUTTON_WIDTH			43	// Dialog units.
+#endif	// SBN_DEF_BUTTON_WIDTH
+
+#ifndef SBN_DEF_BUTTON_WIDTH_PXL
+#define SBN_DEF_BUTTON_WIDTH_PXL		75	// Pixels.
+#endif	// SBN_DEF_BUTTON_WIDTH_PXL
+
+#ifndef SBN_DEF_PROGRESS_BAR_WIDTH
+#define SBN_DEF_PROGRESS_BAR_WIDTH		103 // Pixels
+#endif	// SBN_DEF_PROGRESS_BAR_WIDTH
+
+#ifndef SBN_DEF_PROGRESS_BAR_WIDTH_PXL
+#define SBN_DEF_PROGRESS_BAR_WIDTH_PXL	180 // Pixels
+#endif	// SBN_DEF_PROGRESS_BAR_WIDTH_PXL
+
+#ifndef SBN_DEF_PROGRESS_BAR_HEIGHT
+#define SBN_DEF_PROGRESS_BAR_HEIGHT		12 // Pixels
+#endif	// SBN_DEF_PROGRESS_BAR_HEIGHT
+
+#ifndef SBN_DEF_PROGRESS_BAR_HEIGHT_PXL
+#define SBN_DEF_PROGRESS_BAR_HEIGHT_PXL	23 // Pixels
+#endif	// SBN_DEF_PROGRESS_BAR_HEIGHT_PXL
+
+
+
+#ifndef SBN_DEF_TRACKBAR_HEIGHT
+#define SBN_DEF_TRACKBAR_HEIGHT			24	// Dialog units.
+#endif	// SBN_DEF_TRACKBAR_HEIGHT
+
+#ifndef SBN_DEF_TRACKBAR_HEIGHT_PXL
+#define SBN_DEF_TRACKBAR_HEIGHT_PXL		45	// Pixels.
+#endif	// SBN_DEF_TRACKBAR_HEIGHT_PXL
+
+#ifndef SBN_DEF_TRACKBAR_WIDTH
+#define SBN_DEF_TRACKBAR_WIDTH			60	// Dialog units.
+#endif	// SBN_DEF_TRACKBAR_WIDTH
+
+#ifndef SBN_DEF_TRACKBAR_WIDTH_PXL
+#define SBN_DEF_TRACKBAR_WIDTH_PXL		104	// Pixels.
+#endif	// SBN_DEF_TRACKBAR_WIDTH_PXL
+
+
+#ifndef SBN_GROUP_LEFT
+#define SBN_GROUP_LEFT					5	// Dialog units.
+#endif	// SBN_GROUP_LEFT
+
+#ifndef SBN_GROUP_LEFT_PXL
+#define SBN_GROUP_LEFT_PXL				9	// Pixels.
+#endif	// SBN_GROUP_LEFT_PXL
+
+#ifndef SBN_GROUP_RIGHT
+#define SBN_GROUP_RIGHT					SBN_GROUP_LEFT		// Dialog units.
+#endif	// SBN_GROUP_RIGHT
+
+#ifndef SBN_GROUP_RIGHT_PXL
+#define SBN_GROUP_RIGHT_PXL				SBN_GROUP_LEFT_PXL	// Pixels.
+#endif	// SBN_GROUP_RIGHT_PXL
+
+#ifndef SBN_GROUP_TOP
+#define SBN_GROUP_TOP					9	// Dialog units.
+#endif	// SBN_GROUP_TOP
+
+#ifndef SBN_GROUP_TOP_PXL
+#define SBN_GROUP_TOP_PXL				17	// Pixels.
+#endif	// SBN_GROUP_TOP_PXL
+
+#ifndef SBN_GROUP_BOTTOM
+#define SBN_GROUP_BOTTOM				4	// Dialog units.
+#endif	// SBN_GROUP_BOTTOM
+
+#ifndef SBN_GROUP_BOTTOM_PXL
+#define SBN_GROUP_BOTTOM_PXL			9	// Pixels.
+#endif	// SBN_GROUP_BOTTOM_PXL
+
+#ifndef SBN_LEFT_JUST
+#define SBN_LEFT_JUST					2	// Dialog units.
+#endif	// SBN_LEFT_JUST
+
+#ifndef SBN_TOP_JUST
+#define SBN_TOP_JUST					2	// Dialog units.
+#endif	// SBN_TOP_JUST
+
+#ifndef SBN_CHECK_JUST
+#define SBN_CHECK_JUST					1	// Dialog units.
+#endif	// SBN_CHECK_JUST
+
+#ifndef SBN_LABEL_JUST
+#define SBN_LABEL_JUST					2	// Dialog units.
+#endif	// SBN_CHECK_JUST
+
+#ifndef SBN_EVEN_DIVIDE
+#define SBN_EVEN_DIVIDE( FULLW, OFFSET, TOTALDIVS, DIV )															\
+										(((FULLW) * (DIV)) / (TOTALDIVS) + (OFFSET))
+#endif	// SBN_EVEN_DIVIDE
+
+#ifndef SBN_EVEN_DIVIDE_EX
+#define SBN_EVEN_DIVIDE_EX( FULLW, OFFSET, TOTALDIVS, DIV, SPACING )												\
+										((((FULLW) + (SPACING)) * (DIV)) / (TOTALDIVS) + (OFFSET))
+#endif	// SBN_EVEN_DIVIDE_EX
+
+#ifndef SBN_EVEN_DIVIDE_WIDTH_EX
+#define SBN_EVEN_DIVIDE_WIDTH_EX( FULLW, OFFSET, TOTALDIVS, DIV, SPACING )											\
+										SBN_EVEN_DIVIDE_EX( FULLW, OFFSET, TOTALDIVS, (DIV) + 1, SPACING ) - SBN_EVEN_DIVIDE_EX( FULLW, OFFSET, TOTALDIVS, DIV, SPACING ) - (SPACING)
+#endif	// SBN_EVEN_DIVIDE_WIDTH_EX
+
+#endif	// #ifdef SBN_USE_WINDOWS

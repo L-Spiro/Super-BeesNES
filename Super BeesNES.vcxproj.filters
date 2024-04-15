@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\OS">
+      <UniqueIdentifier>{f74e56b5-351f-408c-9085-673d43046ace}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OS">
+      <UniqueIdentifier>{fe8f54bb-e384-4481-905f-e1221ad73f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Crc">
+      <UniqueIdentifier>{80786d44-8ebe-456d-822f-498d1798c0ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Crc">
+      <UniqueIdentifier>{b6b9bd9b-da56-49f3-8405-3f0fe79bbcf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\File">
+      <UniqueIdentifier>{831ff53b-f820-45dc-82e2-6daf1cd358a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\File">
+      <UniqueIdentifier>{2410d3f6-660e-4ed4-9e93-3147efa35967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Time">
+      <UniqueIdentifier>{2fa35457-bff2-4dfe-a0a5-af4a65b5e3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Time">
+      <UniqueIdentifier>{a2fc1466-37cc-499c-875b-08492499fbc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{34f9c698-ea2a-4f86-8fe3-908d1b910dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{d832cb1c-f509-4ae8-abf7-8bbb2494640a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows">
+      <UniqueIdentifier>{2537458e-53a8-4f58-a38d-f14b2f81dfe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows">
+      <UniqueIdentifier>{b45b2715-1ac7-469b-abec-9f1d75727d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\DirectInput8">
+      <UniqueIdentifier>{c0047c98-66e2-43f5-9a74-630ba5789569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\DirectInput8">
+      <UniqueIdentifier>{ab92bd2c-4f18-4cc2-a963-b2c63090edab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\Input">
+      <UniqueIdentifier>{6d796b1e-50b8-4c0f-8106-2d329c55c84d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\Input">
+      <UniqueIdentifier>{a44f26fe-807e-4ed5-a58a-fa50c72ef3d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\Layout">
+      <UniqueIdentifier>{f431e7e0-db5d-4105-b562-e9d4c81f6334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\Layout">
+      <UniqueIdentifier>{d17a665e-0218-4a10-be76-d70726b034a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\MainWindow">
+      <UniqueIdentifier>{c4322e5f-2f24-434e-8674-67195d10fb4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\MainWindow">
+      <UniqueIdentifier>{187982cf-3ed9-4114-8018-493433c173fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\SelectRom">
+      <UniqueIdentifier>{a346f073-2c9b-4862-9d82-3af41426c3aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\SelectRom">
+      <UniqueIdentifier>{9e74ecf3-cce2-4cec-b417-80eb6bf67c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\Templates">
+      <UniqueIdentifier>{85dfdc0c-0fa3-4de0-9f09-c316ef43243c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\Templates">
+      <UniqueIdentifier>{c5991493-ef18-4b69-9a18-5fb4bf3b01ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Windows\WinUtilities">
+      <UniqueIdentifier>{1f192df2-9a84-4684-ac21-2fb9aac10ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Windows\WinUtilities">
+      <UniqueIdentifier>{4b4112b2-b8dd-43d5-8479-5611a334969b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MiniZ">
+      <UniqueIdentifier>{726ab3c5-053b-4a19-af95-b73d21de5339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MiniZ">
+      <UniqueIdentifier>{5ed257c8-53a8-4375-abe0-c21ae6f22b93}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\OS\SBNFeatureSet.h">
+      <Filter>Header Files\OS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\OS\SBNOs.h">
+      <Filter>Header Files\OS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\OS\SBNWindows.h">
+      <Filter>Header Files\OS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\SBNSuperBeesNES.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Crc\SBNCrc.h">
+      <Filter>Header Files\Crc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\File\SBNFileBase.h">
+      <Filter>Header Files\File</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\File\SBNFileMap.h">
+      <Filter>Header Files\File</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\File\SBNStdFile.h">
+      <Filter>Header Files\File</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\File\SBNZipFile.h">
+      <Filter>Header Files\File</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Time\SBNClock.h">
+      <Filter>Header Files\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\SBNDelayedValue.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\SBNPerformance.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\SBNStream.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utilities\SBNUtilities.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\DirectInput8\SBNDirectInput8.h">
+      <Filter>Header Files\Windows\DirectInput8</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\DirectInput8\SBNDirectInput8Device.h">
+      <Filter>Header Files\Windows\DirectInput8</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNControllerConfigurePage.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNControllerSetupWindow.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNControllerSetupWindowLayout.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNInputConfigurePage.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNInputPage.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNInputWindow.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNInputWindowLayout.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNStdControllerPage.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Input\SBNStdControllerPageLayout.h">
+      <Filter>Header Files\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Layout\SBNLayoutManager.h">
+      <Filter>Header Files\Windows\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Layout\SBNLayoutMacros.h">
+      <Filter>Header Files\Windows\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\MainWindow\SBNMainWindow.h">
+      <Filter>Header Files\Windows\MainWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\MainWindow\SBNMainWindowLayout.h">
+      <Filter>Header Files\Windows\MainWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\SelectRom\SBNSelectRomDialog.h">
+      <Filter>Header Files\Windows\SelectRom</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\SelectRom\SBNSelectRomDialogLayout.h">
+      <Filter>Header Files\Windows\SelectRom</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Templates\SBNTemplatePage.h">
+      <Filter>Header Files\Windows\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\Templates\SBNTemplatePageLayout.h">
+      <Filter>Header Files\Windows\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Windows\WinUtilities\SBNWinUtilities.h">
+      <Filter>Header Files\Windows\WinUtilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\MiniZ\miniz.h">
+      <Filter>Header Files\MiniZ</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\OS\SBNFeatureSet.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\SBNSuperBeesNES.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Crc\SBNCrc.cpp">
+      <Filter>Source Files\Crc</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\File\SBNFileBase.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\File\SBNFileMap.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\File\SBNStdFile.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\File\SBNZipFile.cpp">
+      <Filter>Source Files\File</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Time\SBNClock.cpp">
+      <Filter>Source Files\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utilities\SBNUtilities.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\DirectInput8\SBNDirectInput8Device.cpp">
+      <Filter>Source Files\Windows\DirectInput8</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\DirectInput8\SBNDirectInput8.cpp">
+      <Filter>Source Files\Windows\DirectInput8</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\Layout\SBNLayoutManager.cpp">
+      <Filter>Source Files\Windows\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\MainWindow\SBNMainWindowLayout.cpp">
+      <Filter>Source Files\Windows\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\MainWindow\SBNMainWindow.cpp">
+      <Filter>Source Files\Windows\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\SelectRom\SBNSelectRomDialogLayout.cpp">
+      <Filter>Source Files\Windows\SelectRom</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\SelectRom\SBNSelectRomDialog.cpp">
+      <Filter>Source Files\Windows\SelectRom</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\Templates\SBNTemplatePageLayout.cpp">
+      <Filter>Source Files\Windows\Templates</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\Templates\SBNTemplatePage.cpp">
+      <Filter>Source Files\Windows\Templates</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Windows\WinUtilities\SBNWinUtilities.cpp">
+      <Filter>Source Files\Windows\WinUtilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\MiniZ\miniz.c">
+      <Filter>Source Files\MiniZ</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Super BeesNES.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Super BeesNES.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Src\OS\SBNSinCos.asm">
+      <Filter>Source Files\OS</Filter>
+    </None>
+  </ItemGroup>
+</Project>
