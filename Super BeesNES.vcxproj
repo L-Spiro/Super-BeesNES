@@ -172,7 +172,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NON_CONFORMING_SWPRINTFS;SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\Libraries\ExpressionEvaluator\Src;.\Libraries\LSWindows\Src;.\Libraries\LSon\Src;</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
@@ -210,7 +210,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NON_CONFORMING_SWPRINTFS;SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\Libraries\ExpressionEvaluator\Src;.\Libraries\LSWindows\Src;.\Libraries\LSon\Src;</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
@@ -264,7 +264,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NON_CONFORMING_SWPRINTFS;SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\Libraries\ExpressionEvaluator\Src;.\Libraries\LSWindows\Src;.\Libraries\LSon\Src;</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
@@ -302,7 +302,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_NON_CONFORMING_SWPRINTFS;SBN_CPU_VERIFY;__AVX512BW__=1;__AVX512F__=1;__AVX2__=1;__AVX__=1;__SSE4_1__=1;_HAS_STD_BYTE=0;_CRT_SECURE_NO_WARNINGS;SBN_EN_US;SBN_USE_WINDOWS2;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\Libraries\ExpressionEvaluator\Src;.\Libraries\LSWindows\Src;.\Libraries\LSon\Src;</AdditionalIncludeDirectories>
       <FloatingPointModel>Fast</FloatingPointModel>
@@ -337,6 +337,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Bus\SBNBusA.h" />
+    <ClInclude Include="Src\Bus\SBNBusPage.h" />
+    <ClInclude Include="Src\Bus\SBNBusPageBase.h" />
+    <ClInclude Include="Src\Bus\SBNBusPageFuncRef.h" />
+    <ClInclude Include="Src\Bus\SBNBusPageReadOnlyFuncRef.h" />
+    <ClInclude Include="Src\Bus\SBNBusPageRef.h" />
     <ClInclude Include="Src\Crc\SBNCrc.h" />
     <ClInclude Include="Src\File\SBNFileBase.h" />
     <ClInclude Include="Src\File\SBNFileMap.h" />

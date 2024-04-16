@@ -67,10 +67,11 @@ int WINAPI wWinMain( _In_ HINSTANCE _hInstance, _In_opt_ HINSTANCE /*_hPrevInsta
 }
 #endif	// #ifdef SBN_USE_WINDOWS
 #else	// #if !defined( SBN_CPU_VERIFY )
+#include "Bus/SBNBusA.h"
 #include "LSONJson.h"
 int WINAPI wWinMain( _In_ HINSTANCE /*_hInstance*/, _In_opt_ HINSTANCE /*_hPrevInstance*/, _In_ LPWSTR /*_lpCmdLine*/, _In_ int /*_nCmdShow*/ ) {
-	std::unique_ptr<sbn::CCpuBus> pbBus = std::make_unique<sbn::CCpuBus>();
-	pbBus->ApplyMap();
+	std::unique_ptr<sbn::CBusA> pbBus = std::make_unique<sbn::CBusA>();
+	pbBus->ApplyBasicMap();
 	std::unique_ptr<sbn::CCpu6502> pcCpu = std::make_unique<sbn::CCpu6502>( pbBus.get() );
 
 	std::wstring wsBuffer;
@@ -80,36 +81,39 @@ int WINAPI wWinMain( _In_ HINSTANCE /*_hInstance*/, _In_opt_ HINSTANCE /*_hPrevI
 	PWSTR pwsEnd = std::wcsrchr( wsBuffer.data(), L'\\' ) + 1;
 	std::wstring wsRoot = wsBuffer.substr( 0, pwsEnd - wsBuffer.data() );
 	{
+		static wchar_t wChars[2] = { L'e', L'n' };
 		for ( uint32_t I = 0x00; I < 256; ++I ) {
 			std::wstring wsFile;
 			lson::CJson jSon;
 			std::vector<uint8_t> vBytes;
 			sbn::CStdFile sfFile;
 			wchar_t wcFile[64];
-			std::swprintf( wcFile, L"..\\..\\Research\\nes6502\\v1\\%.2X.json", I );
-			if ( sfFile.Open( reinterpret_cast<const char16_t *>((wsRoot + wcFile).c_str()) ) ) {
-				//sbn::CStdFile::LoadToMemory( L"J:\\My Projects\\L. Spiro NES\\Research\\nes6502\\v1\\02.json", vBytes );
-				sfFile.LoadToMemory( vBytes );
-				vBytes.push_back( 0 );
+			for ( size_t N = 0; N < SBN_ELEMENTS( wChars ); ++N ) {
+				std::swprintf( wcFile, L"..\\..\\Research\\65816\\v1\\%.2X.%c.json", I, wChars[N] );
+				if ( sfFile.Open( reinterpret_cast<const char16_t *>((wsRoot + wcFile).c_str()) ) ) {
+					//sbn::CStdFile::LoadToMemory( L"J:\\My Projects\\L. Spiro NES\\Research\\nes6502\\v1\\02.json", vBytes );
+					sfFile.LoadToMemory( vBytes );
+					vBytes.push_back( 0 );
 
-				if ( !jSon.SetJson( reinterpret_cast<const char *>(vBytes.data()) ) ) {
-					::OutputDebugStringA( "JSON FAIL\r\n" );
-				}
-				else {
-					pcCpu->ResetToKnown();
-					pbBus->ApplyMap();
-
-					const lson::CJsonContainer::LSON_JSON_VALUE & jvRoot = jSon.GetContainer()->GetValue( jSon.GetContainer()->GetRoot() );
-					for ( size_t J = 0; J < jvRoot.vArray.size(); ++J ) {
-						const lson::CJsonContainer::LSON_JSON_VALUE & jvThis = jSon.GetContainer()->GetValue( jvRoot.vArray[J] );
-						if ( !pcCpu->RunJsonTest( jSon, jvThis ) ) {
-							volatile int hkhj = 0;
-						}
+					if ( !jSon.SetJson( reinterpret_cast<const char *>(vBytes.data()) ) ) {
+						::OutputDebugStringA( "JSON FAIL\r\n" );
 					}
+					else {
+						pcCpu->ResetToKnown();
+						pbBus->ApplyBasicMap();
 
-					::OutputDebugStringA( "JSON NOT FAIL\r\n" );
-					::OutputDebugStringW( wcFile );
-					::OutputDebugStringA( "\r\n" );
+						const lson::CJsonContainer::LSON_JSON_VALUE & jvRoot = jSon.GetContainer()->GetValue( jSon.GetContainer()->GetRoot() );
+						for ( size_t J = 0; J < jvRoot.vArray.size(); ++J ) {
+							const lson::CJsonContainer::LSON_JSON_VALUE & jvThis = jSon.GetContainer()->GetValue( jvRoot.vArray[J] );
+							if ( !pcCpu->RunJsonTest( jSon, jvThis ) ) {
+								volatile int hkhj = 0;
+							}
+						}
+
+						::OutputDebugStringA( "JSON NOT FAIL\r\n" );
+						::OutputDebugStringW( wcFile );
+						::OutputDebugStringA( "\r\n" );
+					}
 				}
 			}
 		}

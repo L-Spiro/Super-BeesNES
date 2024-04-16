@@ -97,6 +97,18 @@
     <Filter Include="Source Files\MiniZ">
       <UniqueIdentifier>{5ed257c8-53a8-4375-abe0-c21ae6f22b93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Bus">
+      <UniqueIdentifier>{c975f0e4-d8c9-48e2-8ab1-4c6125938d3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bus">
+      <UniqueIdentifier>{dc3302b9-c372-4af1-9518-a9ce33b89f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cpu">
+      <UniqueIdentifier>{65af039b-16d9-4849-a285-8ea86a55fa97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cpu">
+      <UniqueIdentifier>{370508f8-d39f-48ad-9152-557a986939e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\OS\SBNFeatureSet.h">
@@ -206,6 +218,24 @@
     </ClInclude>
     <ClInclude Include="Src\MiniZ\miniz.h">
       <Filter>Header Files\MiniZ</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Bus\SBNBusPage.h">
+      <Filter>Header Files\Bus</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Bus\SBNBusPageBase.h">
+      <Filter>Header Files\Bus</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Bus\SBNBusPageRef.h">
+      <Filter>Header Files\Bus</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Bus\SBNBusPageFuncRef.h">
+      <Filter>Header Files\Bus</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Bus\SBNBusA.h">
+      <Filter>Header Files\Bus</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Bus\SBNBusPageReadOnlyFuncRef.h">
+      <Filter>Header Files\Bus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

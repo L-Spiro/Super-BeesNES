@@ -4,7 +4,7 @@
 #pragma comment( lib, "shlwapi.lib" )
 #else
 /**
- * Copyright L. Spiro 2022
+ * Copyright L. Spiro 2024
  *
  * Written by: Shawn (L. Spiro) Wilcoxen
  *
