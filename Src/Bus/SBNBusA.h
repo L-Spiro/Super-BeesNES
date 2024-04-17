@@ -28,6 +28,7 @@ namespace sbn {
 	 */
 	class CBusA {
 	public :
+		// == Various constructors.
 		CBusA() {
 		}
 		~CBusA() {

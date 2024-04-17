@@ -250,12 +250,12 @@ namespace sbn {
 		/** The debug read functions. */
 		std::vector<Parent::PfDebugReadFunc>m_vDebugReadFuncs;
 		/** Safe access to the debug read functions. */
-		Parent::PfReadFunc *				m_prfDebugReadFuncs;
+		Parent::PfDebugReadFunc *			m_prfDebugReadFuncs;
 		/** The debug write functions. */
 		std::vector<Parent::PfDebugWriteFunc>
 											m_vDebugWriteFuncs;
 		/** Safe access to the debug write functions. */
-		Parent::PfWriteFunc *				m_pwfDebugWriteFuncs;
+		Parent::PfDebugWriteFunc *			m_pwfDebugWriteFuncs;
 
 		/** The reader void *. */
 		std::vector<void *>					m_vReaderPtr;

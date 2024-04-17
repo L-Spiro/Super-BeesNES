@@ -68,11 +68,12 @@ int WINAPI wWinMain( _In_ HINSTANCE _hInstance, _In_opt_ HINSTANCE /*_hPrevInsta
 #endif	// #ifdef SBN_USE_WINDOWS
 #else	// #if !defined( SBN_CPU_VERIFY )
 #include "Bus/SBNBusA.h"
+#include "Cpu/SBNCpu65816.h"
 #include "LSONJson.h"
 int WINAPI wWinMain( _In_ HINSTANCE /*_hInstance*/, _In_opt_ HINSTANCE /*_hPrevInstance*/, _In_ LPWSTR /*_lpCmdLine*/, _In_ int /*_nCmdShow*/ ) {
 	std::unique_ptr<sbn::CBusA> pbBus = std::make_unique<sbn::CBusA>();
 	pbBus->ApplyBasicMap();
-	std::unique_ptr<sbn::CCpu6502> pcCpu = std::make_unique<sbn::CCpu6502>( pbBus.get() );
+	std::unique_ptr<sbn::CCpu65816> pcCpu = std::make_unique<sbn::CCpu65816>( (*pbBus.get()) );
 
 	std::wstring wsBuffer;
 	const DWORD dwSize = 0xFFFF;

@@ -343,6 +343,7 @@
     <ClInclude Include="Src\Bus\SBNBusPageFuncRef.h" />
     <ClInclude Include="Src\Bus\SBNBusPageReadOnlyFuncRef.h" />
     <ClInclude Include="Src\Bus\SBNBusPageRef.h" />
+    <ClInclude Include="Src\Cpu\SBNCpu65816.h" />
     <ClInclude Include="Src\Crc\SBNCrc.h" />
     <ClInclude Include="Src\File\SBNFileBase.h" />
     <ClInclude Include="Src\File\SBNFileMap.h" />
@@ -381,6 +382,7 @@
     <ClInclude Include="Src\Windows\WinUtilities\SBNWinUtilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Cpu\SBNCpu65816.cpp" />
     <ClCompile Include="Src\Crc\SBNCrc.cpp" />
     <ClCompile Include="Src\File\SBNFileBase.cpp" />
     <ClCompile Include="Src\File\SBNFileMap.cpp" />

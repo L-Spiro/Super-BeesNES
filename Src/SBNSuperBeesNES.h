@@ -115,4 +115,45 @@ namespace sbn {
 		 */
 	};
 
+	
+	// == Functions.
+	/**
+	 * Sets a bit in a flag to 1 or 0.
+	 *
+	 * \param _uBit Bit mask.
+	 * \param _ui8Val The value to modify in-place.
+	 * \param _bOn If true, the bit is set, otherwise it is unset.
+	 */
+	template <unsigned _uBit>
+	inline uint8_t							SetBit( uint8_t &_ui8Val, const bool _bOn ) {
+		if ( _bOn ) { _ui8Val |= _uBit; }
+		else { _ui8Val &= ~_uBit; }
+		return _ui8Val;
+	}
+
+	/**
+	 * Sets a bit in a flag to 1 or 0.
+	 *
+	 * \param _uBit Bit mask.
+	 * \param _bVal The bit value to write (0 or 1).
+	 * \param _ui8Val The value to modify in-place.
+	 */
+	template <unsigned _uBit, bool _bVal>
+	inline uint8_t							SetBit( uint8_t &_ui8Val ) {
+		if constexpr ( _bVal != 0 ) { _ui8Val |= _uBit; }
+		else { _ui8Val &= ~_uBit; }
+		return _ui8Val;
+	}
+
+	/**
+	 * Checks for a bit being set.
+	 *
+	 * \param _ui8Val The value to check.
+	 * \param _ui8Bit The bit to check.
+	 * \return Returns true if the bit is set, otherwise false.
+	 */
+	inline bool								CheckBit( const uint8_t _ui8Val, const uint8_t _ui8Bit ) {
+		return (_ui8Val & _ui8Bit) ? true : false;
+	}
+
 }	// namespace sbn

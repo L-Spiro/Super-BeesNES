@@ -237,6 +237,9 @@
     <ClInclude Include="Src\Bus\SBNBusPageReadOnlyFuncRef.h">
       <Filter>Header Files\Bus</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Cpu\SBNCpu65816.h">
+      <Filter>Header Files\Cpu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\OS\SBNFeatureSet.cpp">
@@ -298,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="Src\MiniZ\miniz.c">
       <Filter>Source Files\MiniZ</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Cpu\SBNCpu65816.cpp">
+      <Filter>Source Files\Cpu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
