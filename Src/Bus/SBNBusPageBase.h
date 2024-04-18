@@ -82,7 +82,6 @@ namespace sbn {
 		 */
 		virtual bool						SetWriteFunc( uint16_t _ui16Address, PfWriteFunc _pfWriteFunc, void * _pvParm0, uint16_t _ui16Parm1, PfDebugWriteFunc _pfDebugWriteFunc ) { return false; }
 
-
 		/**
 		 * Performs a read of a given address.
 		 *
@@ -120,6 +119,40 @@ namespace sbn {
 		 * \param _ui8Mask The open-bus mask.
 		 */
 		virtual void						Write( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t _ui8Val, uint8_t &_ui8Mask ) {}
+
+		/**
+		 * Performs a debug read of a given address.
+		 *
+		 * \param _ui16Addr The address to read.
+		 * \param _ui8Ret Holds the return value.
+		 */
+		virtual void						DebugRead( uint16_t _ui16Addr, uint8_t &_ui8Ret ) {}
+
+		/**
+		 * Performs a debug write of a given address.
+		 *
+		 * \param _ui16Addr The address to write.
+		 * \param _ui8Val The value to write.
+		 */
+		virtual void						DebugWrite( uint16_t _ui16Addr, uint8_t _ui8Val ) {}
+
+		/**
+		 * Performs a debug read of a given address.
+		 *
+		 * \param _ui16Addr The address to read.
+		 * \param _pvData The data from which to read.
+		 * \param _ui8Ret Holds the return value.
+		 */
+		virtual void						DebugRead( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t &_ui8Ret ) {}
+
+		/**
+		 * Performs a debug write of a given address.
+		 *
+		 * \param _ui16Addr The address to write.
+		 * \param _pvData The data from which to write.
+		 * \param _ui8Val The value to write.
+		 */
+		virtual void						DebugWrite( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t _ui8Val ) {}
 
 		/**
 		 * A standard read function.

@@ -240,6 +240,9 @@
     <ClInclude Include="Src\Cpu\SBNCpu65816.h">
       <Filter>Header Files\Cpu</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Cpu\SBNCpuBase.h">
+      <Filter>Header Files\Cpu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\OS\SBNFeatureSet.cpp">
@@ -322,6 +325,9 @@
   <ItemGroup>
     <None Include="Src\OS\SBNSinCos.asm">
       <Filter>Source Files\OS</Filter>
+    </None>
+    <None Include="Src\Cpu\SBNCycleFuncs.inl">
+      <Filter>Header Files\Cpu</Filter>
     </None>
   </ItemGroup>
 </Project>

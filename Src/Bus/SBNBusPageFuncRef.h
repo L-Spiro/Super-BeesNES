@@ -89,6 +89,48 @@ namespace sbn {
 			m_pbpbTarget->Write( _ui16Addr, _pvData, _ui8Val, _ui8Mask );
 		}
 
+		/**
+		 * Performs a debug read of a given address.
+		 *
+		 * \param _ui16Addr The address to read.
+		 * \param _ui8Ret Holds the return value.
+		 */
+		virtual void						DebugRead( uint16_t _ui16Addr, uint8_t &_ui8Ret ) {
+			m_pbpbTarget->DebugRead( _ui16Addr, m_ui8Memory, _ui8Ret );
+		}
+
+		/**
+		 * Performs a debug write of a given address.
+		 *
+		 * \param _ui16Addr The address to write.
+		 * \param _ui8Val The value to write.
+		 */
+		virtual void						DebugWrite( uint16_t _ui16Addr, uint8_t _ui8Val ) {
+			m_pbpbTarget->DebugWrite( _ui16Addr, m_ui8Memory, _ui8Val );
+		}
+
+		/**
+		 * Performs a debug read of a given address.
+		 *
+		 * \param _ui16Addr The address to read.
+		 * \param _pvData The data from which to read.
+		 * \param _ui8Ret Holds the return value.
+		 */
+		virtual void						DebugRead( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t &_ui8Ret ) {
+			m_pbpbTarget->DebugRead( _ui16Addr, _pvData, _ui8Ret );
+		}
+
+		/**
+		 * Performs a debug write of a given address.
+		 *
+		 * \param _ui16Addr The address to write.
+		 * \param _pvData The data from which to write.
+		 * \param _ui8Val The value to write.
+		 */
+		virtual void						DebugWrite( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t _ui8Val ) {
+			m_pbpbTarget->DebugWrite( _ui16Addr, _pvData, _ui8Val );
+		}
+
 	protected :
 		// == Members.
 		/** The page we reference. */

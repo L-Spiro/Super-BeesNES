@@ -69,11 +69,14 @@ namespace sbn {
 		 * \return Returns the value read.
 		 **/
 		inline uint8_t								Read( uint16_t _ui16Address, uint8_t _ui8Bank, uint8_t &_ui8Speed ) {
+			uint16_t ui16SpdAddr = (_ui16Address >> 8) | (uint16_t( _ui8Bank ) << 8);
+			uint8_t * ui8Spd = m_ui8Speeds + (ui16SpdAddr >> 1);
+			SBN_PREFETCH_LINE( ui8Spd );
 			uint8_t ui8Mask = 0xFF;
 			uint8_t ui8Ret = m_ui8LastRead;
 			m_pbpbPages[_ui8Bank]->Read( _ui16Address, ui8Ret, ui8Mask );
 			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (ui8Ret & ui8Mask);
-
+			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
 #ifdef SBN_CPU_VERIFY
 			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = ui8Ret, .bRead = true } );
 #endif	// #ifdef SBN_CPU_VERIFY
@@ -88,10 +91,56 @@ namespace sbn {
 		 * \param _ui8Speed Returns the master-clock divisor for the given address.
 		 **/
 		inline void									Write( uint16_t _ui16Address, uint8_t _ui8Bank, uint8_t _ui8Val, uint8_t &_ui8Speed ) {
+			uint16_t ui16SpdAddr = (_ui16Address >> 8) | (uint16_t( _ui8Bank ) << 8);
+			uint8_t * ui8Spd = m_ui8Speeds + (ui16SpdAddr >> 1);
+			SBN_PREFETCH_LINE( ui8Spd );
 			uint8_t ui8Mask = 0xFF;
 			m_pbpbPages[_ui8Bank]->Write( _ui16Address, _ui8Val, ui8Mask );
 			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (_ui8Val & ui8Mask);
+			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
+#ifdef SBN_CPU_VERIFY
+			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = _ui8Val, .bRead = false } );
+#endif	// #ifdef SBN_CPU_VERIFY
+		}
 
+		/**
+		 * Performs a read from bank 0.
+		 * 
+		 * \param _ui16Address The address to read.
+		 * \param _ui8Bank The bank from which to read the given address.
+		 * \param _ui8Speed Returns the master-clock divisor for the given address.
+		 * \return Returns the value read.
+		 **/
+		inline uint8_t								ReadBank0( uint16_t _ui16Address, uint8_t &_ui8Speed ) {
+			uint16_t ui16SpdAddr = (_ui16Address >> 8);
+			uint8_t * ui8Spd = m_ui8Speeds + (ui16SpdAddr >> 1);
+			SBN_PREFETCH_LINE( ui8Spd );
+			uint8_t ui8Mask = 0xFF;
+			uint8_t ui8Ret = m_ui8LastRead;
+			m_pbpbPages[0]->Read( _ui16Address, ui8Ret, ui8Mask );
+			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (ui8Ret & ui8Mask);
+			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
+#ifdef SBN_CPU_VERIFY
+			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = ui8Ret, .bRead = true } );
+#endif	// #ifdef SBN_CPU_VERIFY
+			return ui8Ret;
+		}
+
+		/**
+		 * Performs a write to bank 0.
+		 * 
+		 * \param _ui16Address The address to write.
+		 * \param _ui8Bank The bank to which to write to the given address.
+		 * \param _ui8Speed Returns the master-clock divisor for the given address.
+		 **/
+		inline void									WriteBank0( uint16_t _ui16Address, uint8_t _ui8Val, uint8_t &_ui8Speed ) {
+			uint16_t ui16SpdAddr = (_ui16Address >> 8);
+			uint8_t * ui8Spd = m_ui8Speeds + (ui16SpdAddr >> 1);
+			SBN_PREFETCH_LINE( ui8Spd );
+			uint8_t ui8Mask = 0xFF;
+			m_pbpbPages[0]->Write( _ui16Address, _ui8Val, ui8Mask );
+			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (_ui8Val & ui8Mask);
+			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
 #ifdef SBN_CPU_VERIFY
 			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = _ui8Val, .bRead = false } );
 #endif	// #ifdef SBN_CPU_VERIFY
@@ -124,6 +173,7 @@ namespace sbn {
 				}
 			}
 			catch ( ... ) { return false; }
+			return true;
 		}
 
 #ifdef SBN_CPU_VERIFY
@@ -139,11 +189,12 @@ namespace sbn {
 		 *
 		 * \return Returns a constant reference to the read/write log.
 		 */
-		const std::vector<LSN_READ_WRITE_LOG> &		ReadWriteLog() const { return m_vReadWriteLog; }
+		 std::vector<LSN_READ_WRITE_LOG> &			ReadWriteLog() { return m_vReadWriteLog; }
 #endif	// #ifdef SBN_CPU_VERIFY
 
 	protected :
 		// == Members.
+		uint8_t										m_ui8Speeds[0x8000];			/**< The speed table. */
 		std::unique_ptr<CBusPageBase>				m_pbpbPages[256];				/**< The pages. */
 		uint8_t										m_ui8LastRead = 0;				/**< The open-bus value. */
 

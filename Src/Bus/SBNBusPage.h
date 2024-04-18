@@ -235,6 +235,52 @@ namespace sbn {
 			m_pwfWriteFuncs[aaThis.pfWriter]( m_pvvWriterPtr[aaThis.pvWriterParm0], aaThis.ui16WriterParm1, _pvData, _ui8Val, _ui8Mask );
 		}
 
+		/**
+		 * Performs a debug read of a given address.
+		 *
+		 * \param _ui16Addr The address to read.
+		 * \param _ui8Ret Holds the return value.
+		 */
+		virtual void						DebugRead( uint16_t _ui16Addr, uint8_t &_ui8Ret ) {
+			const Parent::SBN_ADDR_ACCESSOR & aaThis = m_aaAddresses[_ui16Addr];
+			m_prfDebugReadFuncs[aaThis.pfReader]( m_pvvReaderPtr[aaThis.pvReaderParm0], aaThis.ui16ReaderParm1, m_ui8Memory, _ui8Ret );
+		}
+
+		/**
+		 * Performs a debug write of a given address.
+		 *
+		 * \param _ui16Addr The address to write.
+		 * \param _ui8Val The value to write.
+		 */
+		virtual void						DebugWrite( uint16_t _ui16Addr, uint8_t _ui8Val ) {
+			const Parent::SBN_ADDR_ACCESSOR & aaThis = m_aaAddresses[_ui16Addr];
+			m_pwfDebugWriteFuncs[aaThis.pfWriter]( m_pvvWriterPtr[aaThis.pvWriterParm0], aaThis.ui16WriterParm1, m_ui8Memory, _ui8Val );
+		}
+
+		/**
+		 * Performs a debug read of a given address.
+		 *
+		 * \param _ui16Addr The address to read.
+		 * \param _pvData The data from which to read.
+		 * \param _ui8Ret Holds the return value.
+		 */
+		virtual void						DebugRead( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t &_ui8Ret ) {
+			const Parent::SBN_ADDR_ACCESSOR & aaThis = m_aaAddresses[_ui16Addr];
+			m_prfDebugReadFuncs[aaThis.pfReader]( m_pvvReaderPtr[aaThis.pvReaderParm0], aaThis.ui16ReaderParm1, _pvData, _ui8Ret );
+		}
+
+		/**
+		 * Performs a debug write of a given address.
+		 *
+		 * \param _ui16Addr The address to write.
+		 * \param _pvData The data from which to write.
+		 * \param _ui8Val The value to write.
+		 */
+		virtual void						DebugWrite( uint16_t _ui16Addr, uint8_t * _pvData, uint8_t _ui8Val ) {
+			const Parent::SBN_ADDR_ACCESSOR & aaThis = m_aaAddresses[_ui16Addr];
+			m_pwfDebugWriteFuncs[aaThis.pfWriter]( m_pvvWriterPtr[aaThis.pvWriterParm0], aaThis.ui16WriterParm1, _pvData, _ui8Val );
+		}
+
 
 	protected :
 		// == Members.
