@@ -26,9 +26,13 @@
 
 #define SBN_NEXT_FUNCTION_BY( AMT )										m_ui8FuncIndex += AMT
 #define SBN_NEXT_FUNCTION												SBN_NEXT_FUNCTION_BY( 1 )
+#define SBN_FINISH_INST( CHECK_INTERRUPTS )								/*if constexpr ( CHECK_INTERRUPTS ) { LSN_CHECK_INTERRUPTS; }*/ m_pfTickFunc = m_pfTickFuncCopy = &CCpu65816::Tick_NextInstructionStd
 
-#define SBN_PUSH( VAL, SPEED )											SBN_INSTR_START_PHI2_WRITE0_BUSA( uint8_t( m_rRegs.ui16S-- ), (VAL), SPEED )
-#define SBN_POP( RESULT, SPEED )										SBN_INSTR_START_PHI2_READ0_BUSA( uint8_t( m_rRegs.ui16S + 1 ), RESULT, SPEED ); ++m_rRegs.ui16S
+#define SBN_PUSH( VAL, SPEED )											SBN_INSTR_START_PHI2_WRITE0_BUSA( m_bEmulationMode ? (0x100 | m_rRegs.ui8S[0]) : m_rRegs.ui16S, (VAL), (SPEED) ); m_ui16SModify = -1
+#define SBN_POP( RESULT, SPEED )										SBN_INSTR_START_PHI2_READ0_BUSA( m_bEmulationMode ? (0x100 | uint8_t( m_rRegs.ui8S[0] + 1 )) : (m_rRegs.ui16S + 1), (RESULT), (SPEED) ); m_ui16SModify = 1
+
+#define SBN_UPDATE_PC													if ( m_bAllowWritingToPc ) { m_rRegs.ui16Pc += m_ui16PcModify; } m_ui16PcModify = 0
+#define SBN_UPDATE_S													m_rRegs.ui16S += m_ui16SModify; m_ui16SModify = 0
 
 namespace sbn {
 
@@ -48,14 +52,14 @@ namespace sbn {
 
 		// == Enumeration.
 		/** Status flags. */
-		constexpr uint8_t									C() { return (1 << 0); }														/**< Carry         (0=No Carry, 1=Carry). */
-		constexpr uint8_t									Z() { return (1 << 1); }														/**< Zero          (0=Nonzero, 1=Zero). */
-		constexpr uint8_t									I() { return (1 << 2); }														/**< IRQ Disable   (0=IRQ Enable, 1=IRQ Disable). */
-		constexpr uint8_t									D() { return (1 << 3); }														/**< Decimal Mode  (0=Normal, 1=BCD Mode for ADC/SBC opcodes). */
-		constexpr uint8_t									X() { return (1 << 4); }														/**< Break Flag    (0=IRQ/NMI, 1=BRK/PHP opcode)  (0=16bit, 1=8bit). */
-		constexpr uint8_t									M() { return (1 << 5); }														/**< Unused        (Always 1)                     (0=16bit, 1=8bit). */
-		constexpr uint8_t									V() { return (1 << 6); }														/**< Overflow      (0=No Overflow, 1=Overflow). */
-		constexpr uint8_t									N() { return (1 << 7); }														/**< Negative/Sign (0=Positive, 1=Negative). */
+		static constexpr uint8_t							C() { return (1 << 0); }														/**< Carry         (0=No Carry, 1=Carry). */
+		static constexpr uint8_t							Z() { return (1 << 1); }														/**< Zero          (0=Nonzero, 1=Zero). */
+		static constexpr uint8_t							I() { return (1 << 2); }														/**< IRQ Disable   (0=IRQ Enable, 1=IRQ Disable). */
+		static constexpr uint8_t							D() { return (1 << 3); }														/**< Decimal Mode  (0=Normal, 1=BCD Mode for ADC/SBC opcodes). */
+		static constexpr uint8_t							X() { return (1 << 4); }														/**< Break Flag    (0=IRQ/NMI, 1=BRK/PHP opcode)  (0=16bit, 1=8bit). */
+		static constexpr uint8_t							M() { return (1 << 5); }														/**< Unused        (Always 1)                     (0=16bit, 1=8bit). */
+		static constexpr uint8_t							V() { return (1 << 6); }														/**< Overflow      (0=No Overflow, 1=Overflow). */
+		static constexpr uint8_t							N() { return (1 << 7); }														/**< Negative/Sign (0=Positive, 1=Negative). */
 
 		/** Special addresses. */
 		enum SBN_VECTORS : uint16_t {
@@ -145,6 +149,7 @@ namespace sbn {
 		 * Resets the bus to a known state.
 		 */
 		void												ResetToKnown() {
+			ResetAnalog();
 			std::memset( &m_rRegs, 0, sizeof( m_rRegs ) );
 			uint8_t ui8Speed;
 			m_rRegs.ui16Pc = m_bBusA.Read( 0xFFFC, 0x00, ui8Speed ) | (m_bBusA.Read( 0xFFFD, 0x00, ui8Speed ) << 8);
@@ -160,6 +165,9 @@ namespace sbn {
 		void												ResetAnalog() {
 			m_pfTickFunc = m_pfTickFuncCopy = &CCpu65816::Tick_NextInstructionStd;
 			m_bBoundaryCrossed = false;
+			m_ui16PcModify = 0;
+			m_ui16SModify = 0;
+			m_bAllowWritingToPc = true;
 		}
 
 #ifdef SBN_CPU_VERIFY
@@ -180,20 +188,27 @@ namespace sbn {
 		SBN_REGISTERS										m_rRegs;																			/**< Registers. */
 		CBusA &												m_bBusA;																			/**< Bus A. */
 
-		SBN_VECTORS											m_BrkVector = SBN_V_BRK;															/**< The vector to use inside BRK and whether to push B with status. */
+		SBN_VECTORS											m_vBrkVector = SBN_V_BRK;															/**< The vector to use inside BRK and whether to push B with status. */
 		union {
 			uint8_t											m_ui8Operand[2];																	/**< The operand. */
 			uint16_t										m_ui16Operand;																		/**< The operand. */
 		};
-		uint16_t											m_ui16Address = 0x0000;																/**< An address loaded into memory before transfer to a register such as PC. */
+		union {
+			uint8_t											m_ui8Address[2];																	/**< An address loaded into memory before transfer to a register such as PC. */
+			uint16_t										m_ui16Address;																		/**< An address loaded into memory before transfer to a register such as PC. */
+		};
 		uint16_t											m_ui16OpCode = 0;																	/**< The current opcode. */
-		uint8_t												m_ui8FuncIndex = 0;																	/**< THe function index. */
+		uint16_t											m_ui16PcModify = 0;																	/**< The amount by which to modify PC during the next Phi1. */
+		uint16_t											m_ui16SModify = 0;																	/**< The amount by which to modify S during the next Phi1. */
+		uint8_t												m_ui8FuncIndex = 0;																	/**< The function index. */
+		
 		bool												m_bIsReadCycle = true;																/**< Is the current cycle a read? */
 		bool												m_bBoundaryCrossed = false;															/**< Did we cross a page boundary? */
 		bool												m_bPushB = false;																	/**< Push the B flag with the status byte? */
+		bool												m_bAllowWritingToPc = true;															/**< Allow writing to PC? */
 		
 		bool												m_bEmulationMode = true;															/**< Emulation Mode flag. */
-		static SBN_INSTR									m_iInstructionSet[256+2];															/**< The instruction set. */
+		static SBN_INSTR									m_iInstructionSet[256];																/**< The instruction set. */
 
 
 #ifdef SBN_CPU_VERIFY
@@ -225,12 +240,6 @@ namespace sbn {
 
 
 		// == Functions.
-		/** Fetches the next opcode and begins the next instruction. */
-		inline void											Tick_NextInstructionStd();
-
-		/** Performs a cycle inside an instruction. */
-		inline void											Tick_InstructionCycleStd();
-
 		/**
 		 * Given a JSON object and the value for the test to run, this loads the test and fills a SBN_CPU_VERIFY structure.
 		 *
@@ -253,13 +262,36 @@ namespace sbn {
 #endif	// #ifdef SBN_CPU_VERIFY
 
 
+		// == Functions.
+		/** Fetches the next opcode and begins the next instruction. */
+		inline void											Tick_NextInstructionStd();
+
+		/** Performs a cycle inside an instruction. */
+		inline void											Tick_InstructionCycleStd();
+
 
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		// CYCLES
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-		/**
-		 * Fetches the next opcode and increments the program counter.
-		 */
+		/** Copies the vector address into PC. */
+		inline void											Brk();
+
+		/** Copies the vector address into PC. */
+		inline void											Brk_Phi2();
+
+		/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+		inline void											CopyVectorPcl();
+
+		/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+		inline void											CopyVectorPcl_Phi2();
+
+		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+		inline void											CopyVectorPch();
+
+		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+		inline void											CopyVectorPch_Phi2();
+
+		/** Fetches the next opcode and increments the program counter. */
 		inline void											FetchOpcodeAndIncPc();
 
 		/** Fetches the next opcode and increments the program counter. */
@@ -310,16 +342,84 @@ namespace sbn {
 
 	/** Performs a cycle inside an instruction. */
 	inline void CCpu65816::Tick_InstructionCycleStd() {
+		(this->*m_iInstructionSet[m_ui16OpCode].pfHandler[m_bEmulationMode][m_ui8FuncIndex])();
 	}
 
-	/**
-	 * Fetches the next opcode and increments the program counter.
-	 */
+	/** Copies the vector address into PC. */
+	inline void CCpu65816::Brk() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_bAllowWritingToPc = true;
+		m_rRegs.ui16Pc = m_ui16Address;
+		m_rRegs.ui8Pb = 0;
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Copies the vector address into PC. */
+	inline void CCpu65816::Brk_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui16Operand, ui8Speed );
+
+		SBN_FINISH_INST( true );
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+	inline void CCpu65816::CopyVectorPcl() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_UPDATE_S;
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+	inline void CCpu65816::CopyVectorPcl_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_vBrkVector, m_ui8Address[0], ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+	inline void CCpu65816::CopyVectorPch() {
+		SBN_INSTR_START_PHI1( true );
+
+		SetBit<I(), true>( m_rRegs.ui8Status );
+		SetBit<D(), false>( m_rRegs.ui8Status );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+	inline void CCpu65816::CopyVectorPch_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_vBrkVector + 1, m_ui8Address[1], ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches the next opcode and increments the program counter. */
 	inline void CCpu65816::FetchOpcodeAndIncPc() {
 		SBN_INSTR_START_PHI1( true );
 		m_ui16OpCode = m_ui16Operand;
-		//SBN_INSTR_READ_DISCARD_PHI1( m_rRegs.ui16Pc, FetchOpcodeAndIncPc_PHI2 );
-		++m_rRegs.ui16Pc;
+		
+		SBN_UPDATE_PC;
+
+		SBN_NEXT_FUNCTION;
+
 		BeginInst();
 		SBN_INSTR_END_PHI1;
 	}
@@ -327,9 +427,12 @@ namespace sbn {
 	/** Fetches the next opcode and increments the program counter. */
 	inline void CCpu65816::FetchOpcodeAndIncPc_Phi2() {
 		uint8_t ui8Speed;
-		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui16Operand, ui8Speed );
+		uint8_t ui8Op;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, ui8Op, ui8Speed );
+		m_ui16Operand = ui8Op;
+		m_ui16PcModify = 1;
 		
-		SBN_NEXT_FUNCTION
+		SBN_NEXT_FUNCTION;
 
 		SBN_INSTR_END_PHI2;
 	}
@@ -337,6 +440,8 @@ namespace sbn {
 	/** Pushes PB. */
 	inline void CCpu65816::PushPb() {
 		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
 
 		SBN_NEXT_FUNCTION;
 
@@ -348,7 +453,7 @@ namespace sbn {
 		uint8_t ui8Speed;
 		SBN_PUSH( m_rRegs.ui8Pb, ui8Speed );
 
-		SBN_NEXT_FUNCTION
+		SBN_NEXT_FUNCTION;
 
 		SBN_INSTR_END_PHI2;
 	}
@@ -356,6 +461,9 @@ namespace sbn {
 	/** Pushes PCH. */
 	inline void CCpu65816::PushPch() {
 		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
+		SBN_UPDATE_S;
 
 		SBN_NEXT_FUNCTION;
 
@@ -367,7 +475,7 @@ namespace sbn {
 		uint8_t ui8Speed;
 		SBN_PUSH( m_rRegs.ui8Pc[1], ui8Speed );
 
-		SBN_NEXT_FUNCTION
+		SBN_NEXT_FUNCTION;
 
 		SBN_INSTR_END_PHI2;
 	}
@@ -375,6 +483,8 @@ namespace sbn {
 	/** Pushes PCL. */
 	inline void CCpu65816::PushPcl() {
 		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_S;
 
 		SBN_NEXT_FUNCTION;
 
@@ -386,7 +496,7 @@ namespace sbn {
 		uint8_t ui8Speed;
 		SBN_PUSH( m_rRegs.ui8Pc[0], ui8Speed );
 
-		SBN_NEXT_FUNCTION
+		SBN_NEXT_FUNCTION;
 
 		SBN_INSTR_END_PHI2;
 	}
@@ -395,14 +505,16 @@ namespace sbn {
 	inline void CCpu65816::PushStatus() {
 		SBN_INSTR_START_PHI1( false );
 
+		SBN_UPDATE_S;
+
 		// Select vector to use.
 		if ( m_bEmulationMode ) {
-			m_BrkVector = SBN_V_IRQ_BRK_E;
+			m_vBrkVector = SBN_V_IRQ_BRK_E;
 			m_bPushB = true;
 		}
 		else {
-			m_BrkVector = SBN_V_BRK;
-			m_bPushB = true;
+			m_vBrkVector = SBN_V_BRK;
+			m_bPushB = false;
 		}
 
 		SBN_NEXT_FUNCTION;
@@ -420,7 +532,7 @@ namespace sbn {
 			SBN_PUSH( m_rRegs.ui8Status, ui8Speed );
 		}
 
-		SBN_NEXT_FUNCTION
+		SBN_NEXT_FUNCTION;
 
 		SBN_INSTR_END_PHI2;
 	}
@@ -435,6 +547,9 @@ namespace sbn {
 		m_ui8FuncIndex = 0;
 		m_pfTickFunc = m_pfTickFuncCopy = &CCpu65816::Tick_InstructionCycleStd;
 		m_bBoundaryCrossed = false;
+		if ( m_bEmulationMode ) {
+			m_rRegs.ui8S[1] = 1;
+		}
 	}
 
 }	// namespace sbn

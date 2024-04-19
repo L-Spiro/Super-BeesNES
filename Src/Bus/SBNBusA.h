@@ -78,7 +78,7 @@ namespace sbn {
 			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (ui8Ret & ui8Mask);
 			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
 #ifdef SBN_CPU_VERIFY
-			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = ui8Ret, .bRead = true } );
+			m_vReadWriteLog.push_back( { .ui32Address = _ui16Address | (uint32_t( _ui8Bank ) << 16), .ui8Value = ui8Ret, .bRead = true } );
 #endif	// #ifdef SBN_CPU_VERIFY
 			return ui8Ret;
 		}
@@ -99,7 +99,7 @@ namespace sbn {
 			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (_ui8Val & ui8Mask);
 			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
 #ifdef SBN_CPU_VERIFY
-			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = _ui8Val, .bRead = false } );
+			m_vReadWriteLog.push_back( { .ui32Address = _ui16Address | (uint32_t( _ui8Bank ) << 16), .ui8Value = _ui8Val, .bRead = false } );
 #endif	// #ifdef SBN_CPU_VERIFY
 		}
 
@@ -121,7 +121,7 @@ namespace sbn {
 			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (ui8Ret & ui8Mask);
 			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
 #ifdef SBN_CPU_VERIFY
-			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = ui8Ret, .bRead = true } );
+			m_vReadWriteLog.push_back( { .ui32Address = _ui16Address, .ui8Value = ui8Ret, .bRead = true } );
 #endif	// #ifdef SBN_CPU_VERIFY
 			return ui8Ret;
 		}
@@ -142,7 +142,7 @@ namespace sbn {
 			m_ui8LastRead = (m_ui8LastRead & ~ui8Mask) | (_ui8Val & ui8Mask);
 			_ui8Speed = ((*ui8Spd) >> ((ui16SpdAddr & 1) << 2)) & 0b1111;
 #ifdef SBN_CPU_VERIFY
-			m_vReadWriteLog.push_back( { .ui16Address = _ui16Address, .ui8Value = _ui8Val, .bRead = false } );
+			m_vReadWriteLog.push_back( { .ui32Address = _ui16Address, .ui8Value = _ui8Val, .bRead = false } );
 #endif	// #ifdef SBN_CPU_VERIFY
 		}
 
@@ -169,7 +169,7 @@ namespace sbn {
 					if ( m_pbpbPages[I].get() ) {
 						m_pbpbPages[I].reset();
 					}
-					m_pbpbPages[I] = std::make_unique<sbn::CBusPageReadOnlyFuncRef>( m_pbpbPages[0].get() );
+					m_pbpbPages[I] = std::make_unique<sbn::CBusPageFuncRef>( m_pbpbPages[0].get() );
 				}
 			}
 			catch ( ... ) { return false; }
@@ -179,7 +179,7 @@ namespace sbn {
 #ifdef SBN_CPU_VERIFY
 		// == Types.
 		struct LSN_READ_WRITE_LOG {
-			uint16_t								ui16Address;
+			uint32_t								ui32Address;
 			uint8_t									ui8Value;
 			bool									bRead;
 		};
