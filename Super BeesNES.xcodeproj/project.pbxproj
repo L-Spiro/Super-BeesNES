@@ -1,0 +1,1406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		121D7E1F2BD2903D003F4B33 /* ExpressionEvaluator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7DE92BD28EA4003F4B33 /* ExpressionEvaluator.framework */; };
+		121D7E202BD29040003F4B33 /* LSApple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7E0B2BD28EFC003F4B33 /* LSApple.framework */; };
+		121D7E212BD29042003F4B33 /* LSon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7E112BD28F09003F4B33 /* LSon.framework */; };
+		121D7E282BD29052003F4B33 /* ExpressionEvaluator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7DE92BD28EA4003F4B33 /* ExpressionEvaluator.framework */; };
+		121D7E292BD29055003F4B33 /* LSApple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7E0B2BD28EFC003F4B33 /* LSApple.framework */; };
+		121D7E2A2BD29058003F4B33 /* LSon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7E112BD28F09003F4B33 /* LSon.framework */; };
+		121D7E312BD29066003F4B33 /* ExpressionEvaluator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7DE92BD28EA4003F4B33 /* ExpressionEvaluator.framework */; };
+		121D7E322BD2906B003F4B33 /* LSApple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7E0B2BD28EFC003F4B33 /* LSApple.framework */; };
+		121D7E332BD2906D003F4B33 /* LSon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 121D7E112BD28F09003F4B33 /* LSon.framework */; };
+		121D7E942BD290AB003F4B33 /* SBNDirectInput8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E342BD290AA003F4B33 /* SBNDirectInput8.cpp */; };
+		121D7E952BD290AB003F4B33 /* SBNDirectInput8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E342BD290AA003F4B33 /* SBNDirectInput8.cpp */; };
+		121D7E962BD290AB003F4B33 /* SBNDirectInput8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E342BD290AA003F4B33 /* SBNDirectInput8.cpp */; };
+		121D7E972BD290AB003F4B33 /* SBNDirectInput8Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E362BD290AA003F4B33 /* SBNDirectInput8Device.cpp */; };
+		121D7E982BD290AB003F4B33 /* SBNDirectInput8Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E362BD290AA003F4B33 /* SBNDirectInput8Device.cpp */; };
+		121D7E992BD290AB003F4B33 /* SBNDirectInput8Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E362BD290AA003F4B33 /* SBNDirectInput8Device.cpp */; };
+		121D7E9A2BD290AB003F4B33 /* SBNControllerConfigurePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E392BD290AA003F4B33 /* SBNControllerConfigurePage.cpp */; };
+		121D7E9B2BD290AB003F4B33 /* SBNControllerConfigurePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E392BD290AA003F4B33 /* SBNControllerConfigurePage.cpp */; };
+		121D7E9C2BD290AB003F4B33 /* SBNControllerConfigurePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E392BD290AA003F4B33 /* SBNControllerConfigurePage.cpp */; };
+		121D7E9D2BD290AB003F4B33 /* SBNControllerSetupWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3B2BD290AA003F4B33 /* SBNControllerSetupWindow.cpp */; };
+		121D7E9E2BD290AB003F4B33 /* SBNControllerSetupWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3B2BD290AA003F4B33 /* SBNControllerSetupWindow.cpp */; };
+		121D7E9F2BD290AB003F4B33 /* SBNControllerSetupWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3B2BD290AA003F4B33 /* SBNControllerSetupWindow.cpp */; };
+		121D7EA02BD290AB003F4B33 /* SBNControllerSetupWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3D2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.cpp */; };
+		121D7EA12BD290AB003F4B33 /* SBNControllerSetupWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3D2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.cpp */; };
+		121D7EA22BD290AB003F4B33 /* SBNControllerSetupWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3D2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.cpp */; };
+		121D7EA32BD290AB003F4B33 /* SBNInputConfigurePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3F2BD290AA003F4B33 /* SBNInputConfigurePage.cpp */; };
+		121D7EA42BD290AB003F4B33 /* SBNInputConfigurePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3F2BD290AA003F4B33 /* SBNInputConfigurePage.cpp */; };
+		121D7EA52BD290AB003F4B33 /* SBNInputConfigurePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E3F2BD290AA003F4B33 /* SBNInputConfigurePage.cpp */; };
+		121D7EA62BD290AB003F4B33 /* SBNInputPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E412BD290AA003F4B33 /* SBNInputPage.cpp */; };
+		121D7EA72BD290AB003F4B33 /* SBNInputPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E412BD290AA003F4B33 /* SBNInputPage.cpp */; };
+		121D7EA82BD290AB003F4B33 /* SBNInputPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E412BD290AA003F4B33 /* SBNInputPage.cpp */; };
+		121D7EA92BD290AB003F4B33 /* SBNInputWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E432BD290AA003F4B33 /* SBNInputWindow.cpp */; };
+		121D7EAA2BD290AB003F4B33 /* SBNInputWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E432BD290AA003F4B33 /* SBNInputWindow.cpp */; };
+		121D7EAB2BD290AB003F4B33 /* SBNInputWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E432BD290AA003F4B33 /* SBNInputWindow.cpp */; };
+		121D7EAC2BD290AB003F4B33 /* SBNInputWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E452BD290AA003F4B33 /* SBNInputWindowLayout.cpp */; };
+		121D7EAD2BD290AB003F4B33 /* SBNInputWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E452BD290AA003F4B33 /* SBNInputWindowLayout.cpp */; };
+		121D7EAE2BD290AB003F4B33 /* SBNInputWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E452BD290AA003F4B33 /* SBNInputWindowLayout.cpp */; };
+		121D7EAF2BD290AB003F4B33 /* SBNStdControllerPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E472BD290AA003F4B33 /* SBNStdControllerPage.cpp */; };
+		121D7EB02BD290AB003F4B33 /* SBNStdControllerPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E472BD290AA003F4B33 /* SBNStdControllerPage.cpp */; };
+		121D7EB12BD290AB003F4B33 /* SBNStdControllerPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E472BD290AA003F4B33 /* SBNStdControllerPage.cpp */; };
+		121D7EB22BD290AB003F4B33 /* SBNStdControllerPageLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E492BD290AA003F4B33 /* SBNStdControllerPageLayout.cpp */; };
+		121D7EB32BD290AB003F4B33 /* SBNStdControllerPageLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E492BD290AA003F4B33 /* SBNStdControllerPageLayout.cpp */; };
+		121D7EB42BD290AB003F4B33 /* SBNStdControllerPageLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E492BD290AA003F4B33 /* SBNStdControllerPageLayout.cpp */; };
+		121D7EB52BD290AB003F4B33 /* SBNLayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E4D2BD290AA003F4B33 /* SBNLayoutManager.cpp */; };
+		121D7EB62BD290AB003F4B33 /* SBNLayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E4D2BD290AA003F4B33 /* SBNLayoutManager.cpp */; };
+		121D7EB72BD290AB003F4B33 /* SBNLayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E4D2BD290AA003F4B33 /* SBNLayoutManager.cpp */; };
+		121D7EB82BD290AB003F4B33 /* SBNMainWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E502BD290AA003F4B33 /* SBNMainWindow.cpp */; };
+		121D7EB92BD290AB003F4B33 /* SBNMainWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E502BD290AA003F4B33 /* SBNMainWindow.cpp */; };
+		121D7EBA2BD290AB003F4B33 /* SBNMainWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E502BD290AA003F4B33 /* SBNMainWindow.cpp */; };
+		121D7EBB2BD290AB003F4B33 /* SBNMainWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E522BD290AA003F4B33 /* SBNMainWindowLayout.cpp */; };
+		121D7EBC2BD290AB003F4B33 /* SBNMainWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E522BD290AA003F4B33 /* SBNMainWindowLayout.cpp */; };
+		121D7EBD2BD290AB003F4B33 /* SBNMainWindowLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E522BD290AA003F4B33 /* SBNMainWindowLayout.cpp */; };
+		121D7EBE2BD290AB003F4B33 /* SBNSelectRomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E552BD290AA003F4B33 /* SBNSelectRomDialog.cpp */; };
+		121D7EBF2BD290AB003F4B33 /* SBNSelectRomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E552BD290AA003F4B33 /* SBNSelectRomDialog.cpp */; };
+		121D7EC02BD290AB003F4B33 /* SBNSelectRomDialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E552BD290AA003F4B33 /* SBNSelectRomDialog.cpp */; };
+		121D7EC12BD290AB003F4B33 /* SBNSelectRomDialogLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E572BD290AA003F4B33 /* SBNSelectRomDialogLayout.cpp */; };
+		121D7EC22BD290AB003F4B33 /* SBNSelectRomDialogLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E572BD290AA003F4B33 /* SBNSelectRomDialogLayout.cpp */; };
+		121D7EC32BD290AB003F4B33 /* SBNSelectRomDialogLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E572BD290AA003F4B33 /* SBNSelectRomDialogLayout.cpp */; };
+		121D7EC42BD290AB003F4B33 /* SBNTemplatePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5A2BD290AA003F4B33 /* SBNTemplatePage.cpp */; };
+		121D7EC52BD290AB003F4B33 /* SBNTemplatePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5A2BD290AA003F4B33 /* SBNTemplatePage.cpp */; };
+		121D7EC62BD290AB003F4B33 /* SBNTemplatePage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5A2BD290AA003F4B33 /* SBNTemplatePage.cpp */; };
+		121D7EC72BD290AB003F4B33 /* SBNTemplatePageLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5C2BD290AA003F4B33 /* SBNTemplatePageLayout.cpp */; };
+		121D7EC82BD290AB003F4B33 /* SBNTemplatePageLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5C2BD290AA003F4B33 /* SBNTemplatePageLayout.cpp */; };
+		121D7EC92BD290AB003F4B33 /* SBNTemplatePageLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5C2BD290AA003F4B33 /* SBNTemplatePageLayout.cpp */; };
+		121D7ECA2BD290AB003F4B33 /* SBNWinUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5F2BD290AA003F4B33 /* SBNWinUtilities.cpp */; };
+		121D7ECB2BD290AB003F4B33 /* SBNWinUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5F2BD290AA003F4B33 /* SBNWinUtilities.cpp */; };
+		121D7ECC2BD290AB003F4B33 /* SBNWinUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E5F2BD290AA003F4B33 /* SBNWinUtilities.cpp */; };
+		121D7ECD2BD290AB003F4B33 /* SBNUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E672BD290AA003F4B33 /* SBNUtilities.cpp */; };
+		121D7ECE2BD290AB003F4B33 /* SBNUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E672BD290AA003F4B33 /* SBNUtilities.cpp */; };
+		121D7ECF2BD290AB003F4B33 /* SBNUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E672BD290AA003F4B33 /* SBNUtilities.cpp */; };
+		121D7ED02BD290AB003F4B33 /* SBNFileBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6A2BD290AA003F4B33 /* SBNFileBase.cpp */; };
+		121D7ED12BD290AB003F4B33 /* SBNFileBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6A2BD290AA003F4B33 /* SBNFileBase.cpp */; };
+		121D7ED22BD290AB003F4B33 /* SBNFileBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6A2BD290AA003F4B33 /* SBNFileBase.cpp */; };
+		121D7ED32BD290AB003F4B33 /* SBNFileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6C2BD290AA003F4B33 /* SBNFileMap.cpp */; };
+		121D7ED42BD290AB003F4B33 /* SBNFileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6C2BD290AA003F4B33 /* SBNFileMap.cpp */; };
+		121D7ED52BD290AB003F4B33 /* SBNFileMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6C2BD290AA003F4B33 /* SBNFileMap.cpp */; };
+		121D7ED62BD290AB003F4B33 /* SBNStdFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6E2BD290AA003F4B33 /* SBNStdFile.cpp */; };
+		121D7ED72BD290AB003F4B33 /* SBNStdFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6E2BD290AA003F4B33 /* SBNStdFile.cpp */; };
+		121D7ED82BD290AB003F4B33 /* SBNStdFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E6E2BD290AA003F4B33 /* SBNStdFile.cpp */; };
+		121D7ED92BD290AB003F4B33 /* SBNZipFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E702BD290AA003F4B33 /* SBNZipFile.cpp */; };
+		121D7EDA2BD290AB003F4B33 /* SBNZipFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E702BD290AA003F4B33 /* SBNZipFile.cpp */; };
+		121D7EDB2BD290AB003F4B33 /* SBNZipFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E702BD290AA003F4B33 /* SBNZipFile.cpp */; };
+		121D7EE22BD290AB003F4B33 /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E7C2BD290AB003F4B33 /* miniz.c */; };
+		121D7EE32BD290AB003F4B33 /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E7C2BD290AB003F4B33 /* miniz.c */; };
+		121D7EE42BD290AB003F4B33 /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E7C2BD290AB003F4B33 /* miniz.c */; };
+		121D7EE82BD290AB003F4B33 /* SBNCrc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E802BD290AB003F4B33 /* SBNCrc.cpp */; };
+		121D7EE92BD290AB003F4B33 /* SBNCrc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E802BD290AB003F4B33 /* SBNCrc.cpp */; };
+		121D7EEA2BD290AB003F4B33 /* SBNCrc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E802BD290AB003F4B33 /* SBNCrc.cpp */; };
+		121D7EEB2BD290AB003F4B33 /* SBNCpu65816.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E832BD290AB003F4B33 /* SBNCpu65816.cpp */; };
+		121D7EEC2BD290AB003F4B33 /* SBNCpu65816.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E832BD290AB003F4B33 /* SBNCpu65816.cpp */; };
+		121D7EED2BD290AB003F4B33 /* SBNCpu65816.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E832BD290AB003F4B33 /* SBNCpu65816.cpp */; };
+		121D7EEE2BD290AB003F4B33 /* SBNCycleFuncs.inl in Resources */ = {isa = PBXBuildFile; fileRef = 121D7E862BD290AB003F4B33 /* SBNCycleFuncs.inl */; };
+		121D7EEF2BD290AB003F4B33 /* SBNCycleFuncs.inl in Resources */ = {isa = PBXBuildFile; fileRef = 121D7E862BD290AB003F4B33 /* SBNCycleFuncs.inl */; };
+		121D7EF02BD290AB003F4B33 /* SBNCycleFuncs.inl in Resources */ = {isa = PBXBuildFile; fileRef = 121D7E862BD290AB003F4B33 /* SBNCycleFuncs.inl */; };
+		121D7EF12BD290AB003F4B33 /* SBNSuperBeesNES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E892BD290AB003F4B33 /* SBNSuperBeesNES.cpp */; };
+		121D7EF22BD290AB003F4B33 /* SBNSuperBeesNES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E892BD290AB003F4B33 /* SBNSuperBeesNES.cpp */; };
+		121D7EF32BD290AB003F4B33 /* SBNSuperBeesNES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E892BD290AB003F4B33 /* SBNSuperBeesNES.cpp */; };
+		121D7EF42BD290AB003F4B33 /* SBNClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E8A2BD290AB003F4B33 /* SBNClock.cpp */; };
+		121D7EF52BD290AB003F4B33 /* SBNClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E8A2BD290AB003F4B33 /* SBNClock.cpp */; };
+		121D7EF62BD290AB003F4B33 /* SBNClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 121D7E8A2BD290AB003F4B33 /* SBNClock.cpp */; };
+		121D7EFE2BD293D5003F4B33 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 121D7EFD2BD293D5003F4B33 /* AppDelegate.mm */; };
+		121D7EFF2BD293D5003F4B33 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 121D7EFD2BD293D5003F4B33 /* AppDelegate.mm */; };
+		121D7F002BD293D5003F4B33 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 121D7EFD2BD293D5003F4B33 /* AppDelegate.mm */; };
+		12E85B8C2BD28E1C002B5DEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B8B2BD28E1C002B5DEE /* AppDelegate.m */; };
+		12E85B8F2BD28E1C002B5DEE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B8E2BD28E1C002B5DEE /* GameViewController.m */; };
+		12E85B922BD28E1C002B5DEE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 12E85B912BD28E1C002B5DEE /* Base */; };
+		12E85B952BD28E1C002B5DEE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 12E85B942BD28E1C002B5DEE /* Base */; };
+		12E85B972BD28E1C002B5DEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B962BD28E1C002B5DEE /* main.m */; };
+		12E85BA02BD28E1C002B5DEE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B9F2BD28E1C002B5DEE /* AppDelegate.m */; };
+		12E85BA32BD28E1C002B5DEE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85BA22BD28E1C002B5DEE /* GameViewController.m */; };
+		12E85BA62BD28E1C002B5DEE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 12E85BA52BD28E1C002B5DEE /* Base */; };
+		12E85BA92BD28E1C002B5DEE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 12E85BA82BD28E1C002B5DEE /* Base */; };
+		12E85BAB2BD28E1C002B5DEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85BAA2BD28E1C002B5DEE /* main.m */; };
+		12E85BB72BD28E1C002B5DEE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85BB62BD28E1C002B5DEE /* GameViewController.m */; };
+		12E85BBA2BD28E1C002B5DEE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 12E85BB92BD28E1C002B5DEE /* Base */; };
+		12E85BBC2BD28E1C002B5DEE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85BBB2BD28E1C002B5DEE /* main.m */; };
+		12E85BBE2BD28E1C002B5DEE /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B7F2BD28E1A002B5DEE /* Renderer.m */; };
+		12E85BBF2BD28E1C002B5DEE /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B7F2BD28E1A002B5DEE /* Renderer.m */; };
+		12E85BC02BD28E1C002B5DEE /* Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B7F2BD28E1A002B5DEE /* Renderer.m */; };
+		12E85BC12BD28E1C002B5DEE /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B812BD28E1A002B5DEE /* Shaders.metal */; };
+		12E85BC22BD28E1C002B5DEE /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B812BD28E1A002B5DEE /* Shaders.metal */; };
+		12E85BC32BD28E1C002B5DEE /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 12E85B812BD28E1A002B5DEE /* Shaders.metal */; };
+		12E85BC42BD28E1C002B5DEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12E85B822BD28E1C002B5DEE /* Assets.xcassets */; };
+		12E85BC52BD28E1C002B5DEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12E85B822BD28E1C002B5DEE /* Assets.xcassets */; };
+		12E85BC62BD28E1C002B5DEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12E85B822BD28E1C002B5DEE /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		121D7DE82BD28EA4003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1257502C2BB8F3F000A4A610;
+			remoteInfo = ExpressionEvaluator;
+		};
+		121D7E0A2BD28EFC003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 125750DF2BC27E5100A4A610;
+			remoteInfo = LSApple;
+		};
+		121D7E102BD28F09003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 125751BE2BC4263100A4A610;
+			remoteInfo = LSon;
+		};
+		121D7E182BD2902C003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1257502B2BB8F3F000A4A610;
+			remoteInfo = ExpressionEvaluator;
+		};
+		121D7E1A2BD2902F003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 125750DE2BC27E5100A4A610;
+			remoteInfo = LSApple;
+		};
+		121D7E1C2BD29032003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 125751BD2BC4263100A4A610;
+			remoteInfo = LSon;
+		};
+		121D7E222BD29049003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1257502B2BB8F3F000A4A610;
+			remoteInfo = ExpressionEvaluator;
+		};
+		121D7E242BD2904C003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 125750DE2BC27E5100A4A610;
+			remoteInfo = LSApple;
+		};
+		121D7E262BD2904F003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 125751BD2BC4263100A4A610;
+			remoteInfo = LSon;
+		};
+		121D7E2B2BD2905C003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1257502B2BB8F3F000A4A610;
+			remoteInfo = ExpressionEvaluator;
+		};
+		121D7E2D2BD2905F003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 125750DE2BC27E5100A4A610;
+			remoteInfo = LSApple;
+		};
+		121D7E2F2BD29062003F4B33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 125751BD2BC4263100A4A610;
+			remoteInfo = LSon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ExpressionEvaluator.xcodeproj; path = Libraries/ExpressionEvaluator/ExpressionEvaluator.xcodeproj; sourceTree = SOURCE_ROOT; };
+		121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LSApple.xcodeproj; path = Libraries/LSApple/LSApple.xcodeproj; sourceTree = SOURCE_ROOT; };
+		121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LSon.xcodeproj; path = Libraries/LSon/LSon.xcodeproj; sourceTree = SOURCE_ROOT; };
+		121D7E342BD290AA003F4B33 /* SBNDirectInput8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNDirectInput8.cpp; sourceTree = "<group>"; };
+		121D7E352BD290AA003F4B33 /* SBNDirectInput8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNDirectInput8.h; sourceTree = "<group>"; };
+		121D7E362BD290AA003F4B33 /* SBNDirectInput8Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNDirectInput8Device.cpp; sourceTree = "<group>"; };
+		121D7E372BD290AA003F4B33 /* SBNDirectInput8Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNDirectInput8Device.h; sourceTree = "<group>"; };
+		121D7E392BD290AA003F4B33 /* SBNControllerConfigurePage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNControllerConfigurePage.cpp; sourceTree = "<group>"; };
+		121D7E3A2BD290AA003F4B33 /* SBNControllerConfigurePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNControllerConfigurePage.h; sourceTree = "<group>"; };
+		121D7E3B2BD290AA003F4B33 /* SBNControllerSetupWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNControllerSetupWindow.cpp; sourceTree = "<group>"; };
+		121D7E3C2BD290AA003F4B33 /* SBNControllerSetupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNControllerSetupWindow.h; sourceTree = "<group>"; };
+		121D7E3D2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNControllerSetupWindowLayout.cpp; sourceTree = "<group>"; };
+		121D7E3E2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNControllerSetupWindowLayout.h; sourceTree = "<group>"; };
+		121D7E3F2BD290AA003F4B33 /* SBNInputConfigurePage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNInputConfigurePage.cpp; sourceTree = "<group>"; };
+		121D7E402BD290AA003F4B33 /* SBNInputConfigurePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNInputConfigurePage.h; sourceTree = "<group>"; };
+		121D7E412BD290AA003F4B33 /* SBNInputPage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNInputPage.cpp; sourceTree = "<group>"; };
+		121D7E422BD290AA003F4B33 /* SBNInputPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNInputPage.h; sourceTree = "<group>"; };
+		121D7E432BD290AA003F4B33 /* SBNInputWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNInputWindow.cpp; sourceTree = "<group>"; };
+		121D7E442BD290AA003F4B33 /* SBNInputWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNInputWindow.h; sourceTree = "<group>"; };
+		121D7E452BD290AA003F4B33 /* SBNInputWindowLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNInputWindowLayout.cpp; sourceTree = "<group>"; };
+		121D7E462BD290AA003F4B33 /* SBNInputWindowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNInputWindowLayout.h; sourceTree = "<group>"; };
+		121D7E472BD290AA003F4B33 /* SBNStdControllerPage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNStdControllerPage.cpp; sourceTree = "<group>"; };
+		121D7E482BD290AA003F4B33 /* SBNStdControllerPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNStdControllerPage.h; sourceTree = "<group>"; };
+		121D7E492BD290AA003F4B33 /* SBNStdControllerPageLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNStdControllerPageLayout.cpp; sourceTree = "<group>"; };
+		121D7E4A2BD290AA003F4B33 /* SBNStdControllerPageLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNStdControllerPageLayout.h; sourceTree = "<group>"; };
+		121D7E4C2BD290AA003F4B33 /* SBNLayoutMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNLayoutMacros.h; sourceTree = "<group>"; };
+		121D7E4D2BD290AA003F4B33 /* SBNLayoutManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNLayoutManager.cpp; sourceTree = "<group>"; };
+		121D7E4E2BD290AA003F4B33 /* SBNLayoutManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNLayoutManager.h; sourceTree = "<group>"; };
+		121D7E502BD290AA003F4B33 /* SBNMainWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNMainWindow.cpp; sourceTree = "<group>"; };
+		121D7E512BD290AA003F4B33 /* SBNMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNMainWindow.h; sourceTree = "<group>"; };
+		121D7E522BD290AA003F4B33 /* SBNMainWindowLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNMainWindowLayout.cpp; sourceTree = "<group>"; };
+		121D7E532BD290AA003F4B33 /* SBNMainWindowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNMainWindowLayout.h; sourceTree = "<group>"; };
+		121D7E552BD290AA003F4B33 /* SBNSelectRomDialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNSelectRomDialog.cpp; sourceTree = "<group>"; };
+		121D7E562BD290AA003F4B33 /* SBNSelectRomDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNSelectRomDialog.h; sourceTree = "<group>"; };
+		121D7E572BD290AA003F4B33 /* SBNSelectRomDialogLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNSelectRomDialogLayout.cpp; sourceTree = "<group>"; };
+		121D7E582BD290AA003F4B33 /* SBNSelectRomDialogLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNSelectRomDialogLayout.h; sourceTree = "<group>"; };
+		121D7E5A2BD290AA003F4B33 /* SBNTemplatePage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNTemplatePage.cpp; sourceTree = "<group>"; };
+		121D7E5B2BD290AA003F4B33 /* SBNTemplatePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNTemplatePage.h; sourceTree = "<group>"; };
+		121D7E5C2BD290AA003F4B33 /* SBNTemplatePageLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNTemplatePageLayout.cpp; sourceTree = "<group>"; };
+		121D7E5D2BD290AA003F4B33 /* SBNTemplatePageLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNTemplatePageLayout.h; sourceTree = "<group>"; };
+		121D7E5F2BD290AA003F4B33 /* SBNWinUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNWinUtilities.cpp; sourceTree = "<group>"; };
+		121D7E602BD290AA003F4B33 /* SBNWinUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNWinUtilities.h; sourceTree = "<group>"; };
+		121D7E632BD290AA003F4B33 /* SBNSuperBeesNES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBNSuperBeesNES.h; path = Src/SBNSuperBeesNES.h; sourceTree = SOURCE_ROOT; };
+		121D7E642BD290AA003F4B33 /* SBNDelayedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNDelayedValue.h; sourceTree = "<group>"; };
+		121D7E652BD290AA003F4B33 /* SBNPerformance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNPerformance.h; sourceTree = "<group>"; };
+		121D7E662BD290AA003F4B33 /* SBNStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNStream.h; sourceTree = "<group>"; };
+		121D7E672BD290AA003F4B33 /* SBNUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNUtilities.cpp; sourceTree = "<group>"; };
+		121D7E682BD290AA003F4B33 /* SBNUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNUtilities.h; sourceTree = "<group>"; };
+		121D7E6A2BD290AA003F4B33 /* SBNFileBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNFileBase.cpp; sourceTree = "<group>"; };
+		121D7E6B2BD290AA003F4B33 /* SBNFileBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNFileBase.h; sourceTree = "<group>"; };
+		121D7E6C2BD290AA003F4B33 /* SBNFileMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNFileMap.cpp; sourceTree = "<group>"; };
+		121D7E6D2BD290AA003F4B33 /* SBNFileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNFileMap.h; sourceTree = "<group>"; };
+		121D7E6E2BD290AA003F4B33 /* SBNStdFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNStdFile.cpp; sourceTree = "<group>"; };
+		121D7E6F2BD290AA003F4B33 /* SBNStdFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNStdFile.h; sourceTree = "<group>"; };
+		121D7E702BD290AA003F4B33 /* SBNZipFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNZipFile.cpp; sourceTree = "<group>"; };
+		121D7E712BD290AA003F4B33 /* SBNZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNZipFile.h; sourceTree = "<group>"; };
+		121D7E732BD290AA003F4B33 /* SBNBusA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNBusA.h; sourceTree = "<group>"; };
+		121D7E742BD290AA003F4B33 /* SBNBusPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNBusPage.h; sourceTree = "<group>"; };
+		121D7E752BD290AA003F4B33 /* SBNBusPageBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNBusPageBase.h; sourceTree = "<group>"; };
+		121D7E762BD290AA003F4B33 /* SBNBusPageFuncRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNBusPageFuncRef.h; sourceTree = "<group>"; };
+		121D7E772BD290AA003F4B33 /* SBNBusPageReadOnlyFuncRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNBusPageReadOnlyFuncRef.h; sourceTree = "<group>"; };
+		121D7E782BD290AA003F4B33 /* SBNBusPageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNBusPageRef.h; sourceTree = "<group>"; };
+		121D7E7C2BD290AB003F4B33 /* miniz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = miniz.c; sourceTree = "<group>"; };
+		121D7E7D2BD290AB003F4B33 /* miniz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miniz.h; sourceTree = "<group>"; };
+		121D7E802BD290AB003F4B33 /* SBNCrc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNCrc.cpp; sourceTree = "<group>"; };
+		121D7E812BD290AB003F4B33 /* SBNCrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNCrc.h; sourceTree = "<group>"; };
+		121D7E832BD290AB003F4B33 /* SBNCpu65816.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNCpu65816.cpp; sourceTree = "<group>"; };
+		121D7E842BD290AB003F4B33 /* SBNCpu65816.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNCpu65816.h; sourceTree = "<group>"; };
+		121D7E852BD290AB003F4B33 /* SBNCpuBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNCpuBase.h; sourceTree = "<group>"; };
+		121D7E862BD290AB003F4B33 /* SBNCycleFuncs.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SBNCycleFuncs.inl; sourceTree = "<group>"; };
+		121D7E882BD290AB003F4B33 /* Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resource.h; path = Src/Resource.h; sourceTree = SOURCE_ROOT; };
+		121D7E892BD290AB003F4B33 /* SBNSuperBeesNES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SBNSuperBeesNES.cpp; path = Src/SBNSuperBeesNES.cpp; sourceTree = SOURCE_ROOT; };
+		121D7E8A2BD290AB003F4B33 /* SBNClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SBNClock.cpp; sourceTree = "<group>"; };
+		121D7E8B2BD290AB003F4B33 /* SBNClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNClock.h; sourceTree = "<group>"; };
+		121D7E8D2BD290AB003F4B33 /* SBNApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNApple.h; sourceTree = "<group>"; };
+		121D7E902BD290AB003F4B33 /* SBNOs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNOs.h; sourceTree = "<group>"; };
+		121D7E922BD290AB003F4B33 /* SBNWindows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBNWindows.h; sourceTree = "<group>"; };
+		121D7EFD2BD293D5003F4B33 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		12E85B7E2BD28E1A002B5DEE /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		12E85B7F2BD28E1A002B5DEE /* Renderer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Renderer.m; sourceTree = "<group>"; };
+		12E85B802BD28E1A002B5DEE /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		12E85B812BD28E1A002B5DEE /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		12E85B822BD28E1C002B5DEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12E85B872BD28E1C002B5DEE /* Super BeesNES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super BeesNES.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12E85B8A2BD28E1C002B5DEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		12E85B8B2BD28E1C002B5DEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		12E85B8D2BD28E1C002B5DEE /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		12E85B8E2BD28E1C002B5DEE /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		12E85B912BD28E1C002B5DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		12E85B942BD28E1C002B5DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		12E85B962BD28E1C002B5DEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12E85B9C2BD28E1C002B5DEE /* Super BeesNES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super BeesNES.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12E85B9E2BD28E1C002B5DEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		12E85B9F2BD28E1C002B5DEE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		12E85BA12BD28E1C002B5DEE /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		12E85BA22BD28E1C002B5DEE /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		12E85BA52BD28E1C002B5DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		12E85BA82BD28E1C002B5DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		12E85BAA2BD28E1C002B5DEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12E85BB02BD28E1C002B5DEE /* Super BeesNES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super BeesNES.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12E85BB22BD28E1C002B5DEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		12E85BB52BD28E1C002B5DEE /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		12E85BB62BD28E1C002B5DEE /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		12E85BB92BD28E1C002B5DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		12E85BBB2BD28E1C002B5DEE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12E85BBD2BD28E1C002B5DEE /* Super_BeesNES_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Super_BeesNES_macOS.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12E85B842BD28E1C002B5DEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				121D7E332BD2906D003F4B33 /* LSon.framework in Frameworks */,
+				121D7E322BD2906B003F4B33 /* LSApple.framework in Frameworks */,
+				121D7E312BD29066003F4B33 /* ExpressionEvaluator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E85B992BD28E1C002B5DEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				121D7E2A2BD29058003F4B33 /* LSon.framework in Frameworks */,
+				121D7E292BD29055003F4B33 /* LSApple.framework in Frameworks */,
+				121D7E282BD29052003F4B33 /* ExpressionEvaluator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E85BAD2BD28E1C002B5DEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				121D7E212BD29042003F4B33 /* LSon.framework in Frameworks */,
+				121D7E202BD29040003F4B33 /* LSApple.framework in Frameworks */,
+				121D7E1F2BD2903D003F4B33 /* ExpressionEvaluator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		121D7DE52BD28EA4003F4B33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				121D7DE92BD28EA4003F4B33 /* ExpressionEvaluator.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		121D7E072BD28EFC003F4B33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E0B2BD28EFC003F4B33 /* LSApple.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		121D7E0D2BD28F09003F4B33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E112BD28F09003F4B33 /* LSon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		121D7E1E2BD2903D003F4B33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		121D7E382BD290AA003F4B33 /* DirectInput8 */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E342BD290AA003F4B33 /* SBNDirectInput8.cpp */,
+				121D7E352BD290AA003F4B33 /* SBNDirectInput8.h */,
+				121D7E362BD290AA003F4B33 /* SBNDirectInput8Device.cpp */,
+				121D7E372BD290AA003F4B33 /* SBNDirectInput8Device.h */,
+			);
+			path = DirectInput8;
+			sourceTree = "<group>";
+		};
+		121D7E4B2BD290AA003F4B33 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E392BD290AA003F4B33 /* SBNControllerConfigurePage.cpp */,
+				121D7E3A2BD290AA003F4B33 /* SBNControllerConfigurePage.h */,
+				121D7E3B2BD290AA003F4B33 /* SBNControllerSetupWindow.cpp */,
+				121D7E3C2BD290AA003F4B33 /* SBNControllerSetupWindow.h */,
+				121D7E3D2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.cpp */,
+				121D7E3E2BD290AA003F4B33 /* SBNControllerSetupWindowLayout.h */,
+				121D7E3F2BD290AA003F4B33 /* SBNInputConfigurePage.cpp */,
+				121D7E402BD290AA003F4B33 /* SBNInputConfigurePage.h */,
+				121D7E412BD290AA003F4B33 /* SBNInputPage.cpp */,
+				121D7E422BD290AA003F4B33 /* SBNInputPage.h */,
+				121D7E432BD290AA003F4B33 /* SBNInputWindow.cpp */,
+				121D7E442BD290AA003F4B33 /* SBNInputWindow.h */,
+				121D7E452BD290AA003F4B33 /* SBNInputWindowLayout.cpp */,
+				121D7E462BD290AA003F4B33 /* SBNInputWindowLayout.h */,
+				121D7E472BD290AA003F4B33 /* SBNStdControllerPage.cpp */,
+				121D7E482BD290AA003F4B33 /* SBNStdControllerPage.h */,
+				121D7E492BD290AA003F4B33 /* SBNStdControllerPageLayout.cpp */,
+				121D7E4A2BD290AA003F4B33 /* SBNStdControllerPageLayout.h */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		121D7E4F2BD290AA003F4B33 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E4C2BD290AA003F4B33 /* SBNLayoutMacros.h */,
+				121D7E4D2BD290AA003F4B33 /* SBNLayoutManager.cpp */,
+				121D7E4E2BD290AA003F4B33 /* SBNLayoutManager.h */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		121D7E542BD290AA003F4B33 /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E502BD290AA003F4B33 /* SBNMainWindow.cpp */,
+				121D7E512BD290AA003F4B33 /* SBNMainWindow.h */,
+				121D7E522BD290AA003F4B33 /* SBNMainWindowLayout.cpp */,
+				121D7E532BD290AA003F4B33 /* SBNMainWindowLayout.h */,
+			);
+			path = MainWindow;
+			sourceTree = "<group>";
+		};
+		121D7E592BD290AA003F4B33 /* SelectRom */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E552BD290AA003F4B33 /* SBNSelectRomDialog.cpp */,
+				121D7E562BD290AA003F4B33 /* SBNSelectRomDialog.h */,
+				121D7E572BD290AA003F4B33 /* SBNSelectRomDialogLayout.cpp */,
+				121D7E582BD290AA003F4B33 /* SBNSelectRomDialogLayout.h */,
+			);
+			path = SelectRom;
+			sourceTree = "<group>";
+		};
+		121D7E5E2BD290AA003F4B33 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E5A2BD290AA003F4B33 /* SBNTemplatePage.cpp */,
+				121D7E5B2BD290AA003F4B33 /* SBNTemplatePage.h */,
+				121D7E5C2BD290AA003F4B33 /* SBNTemplatePageLayout.cpp */,
+				121D7E5D2BD290AA003F4B33 /* SBNTemplatePageLayout.h */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		121D7E612BD290AA003F4B33 /* WinUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E5F2BD290AA003F4B33 /* SBNWinUtilities.cpp */,
+				121D7E602BD290AA003F4B33 /* SBNWinUtilities.h */,
+			);
+			path = WinUtilities;
+			sourceTree = "<group>";
+		};
+		121D7E622BD290AA003F4B33 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E382BD290AA003F4B33 /* DirectInput8 */,
+				121D7E4B2BD290AA003F4B33 /* Input */,
+				121D7E4F2BD290AA003F4B33 /* Layout */,
+				121D7E542BD290AA003F4B33 /* MainWindow */,
+				121D7E592BD290AA003F4B33 /* SelectRom */,
+				121D7E5E2BD290AA003F4B33 /* Templates */,
+				121D7E612BD290AA003F4B33 /* WinUtilities */,
+			);
+			name = Windows;
+			path = Src/Windows;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E692BD290AA003F4B33 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E642BD290AA003F4B33 /* SBNDelayedValue.h */,
+				121D7E652BD290AA003F4B33 /* SBNPerformance.h */,
+				121D7E662BD290AA003F4B33 /* SBNStream.h */,
+				121D7E672BD290AA003F4B33 /* SBNUtilities.cpp */,
+				121D7E682BD290AA003F4B33 /* SBNUtilities.h */,
+			);
+			name = Utilities;
+			path = Src/Utilities;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E722BD290AA003F4B33 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E6A2BD290AA003F4B33 /* SBNFileBase.cpp */,
+				121D7E6B2BD290AA003F4B33 /* SBNFileBase.h */,
+				121D7E6C2BD290AA003F4B33 /* SBNFileMap.cpp */,
+				121D7E6D2BD290AA003F4B33 /* SBNFileMap.h */,
+				121D7E6E2BD290AA003F4B33 /* SBNStdFile.cpp */,
+				121D7E6F2BD290AA003F4B33 /* SBNStdFile.h */,
+				121D7E702BD290AA003F4B33 /* SBNZipFile.cpp */,
+				121D7E712BD290AA003F4B33 /* SBNZipFile.h */,
+			);
+			name = File;
+			path = Src/File;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E792BD290AA003F4B33 /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E732BD290AA003F4B33 /* SBNBusA.h */,
+				121D7E742BD290AA003F4B33 /* SBNBusPage.h */,
+				121D7E752BD290AA003F4B33 /* SBNBusPageBase.h */,
+				121D7E762BD290AA003F4B33 /* SBNBusPageFuncRef.h */,
+				121D7E772BD290AA003F4B33 /* SBNBusPageReadOnlyFuncRef.h */,
+				121D7E782BD290AA003F4B33 /* SBNBusPageRef.h */,
+			);
+			name = Bus;
+			path = Src/Bus;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E7F2BD290AB003F4B33 /* MiniZ */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E7C2BD290AB003F4B33 /* miniz.c */,
+				121D7E7D2BD290AB003F4B33 /* miniz.h */,
+			);
+			name = MiniZ;
+			path = Src/MiniZ;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E822BD290AB003F4B33 /* Crc */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E802BD290AB003F4B33 /* SBNCrc.cpp */,
+				121D7E812BD290AB003F4B33 /* SBNCrc.h */,
+			);
+			name = Crc;
+			path = Src/Crc;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E872BD290AB003F4B33 /* Cpu */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E832BD290AB003F4B33 /* SBNCpu65816.cpp */,
+				121D7E842BD290AB003F4B33 /* SBNCpu65816.h */,
+				121D7E852BD290AB003F4B33 /* SBNCpuBase.h */,
+				121D7E862BD290AB003F4B33 /* SBNCycleFuncs.inl */,
+			);
+			name = Cpu;
+			path = Src/Cpu;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E8C2BD290AB003F4B33 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E8A2BD290AB003F4B33 /* SBNClock.cpp */,
+				121D7E8B2BD290AB003F4B33 /* SBNClock.h */,
+			);
+			name = Time;
+			path = Src/Time;
+			sourceTree = SOURCE_ROOT;
+		};
+		121D7E932BD290AB003F4B33 /* OS */ = {
+			isa = PBXGroup;
+			children = (
+				121D7E8D2BD290AB003F4B33 /* SBNApple.h */,
+				121D7E902BD290AB003F4B33 /* SBNOs.h */,
+				121D7E922BD290AB003F4B33 /* SBNWindows.h */,
+			);
+			name = OS;
+			path = Src/OS;
+			sourceTree = SOURCE_ROOT;
+		};
+		12E85B782BD28E1A002B5DEE = {
+			isa = PBXGroup;
+			children = (
+				12E85B7D2BD28E1A002B5DEE /* Super BeesNES Shared */,
+				12E85B892BD28E1C002B5DEE /* Super BeesNES iOS */,
+				12E85B9D2BD28E1C002B5DEE /* Super BeesNES tvOS */,
+				12E85BB12BD28E1C002B5DEE /* Super BeesNES macOS */,
+				12E85B882BD28E1C002B5DEE /* Products */,
+				121D7E1E2BD2903D003F4B33 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		12E85B7D2BD28E1A002B5DEE /* Super BeesNES Shared */ = {
+			isa = PBXGroup;
+			children = (
+				121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */,
+				121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */,
+				121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */,
+				121D7E792BD290AA003F4B33 /* Bus */,
+				121D7E872BD290AB003F4B33 /* Cpu */,
+				121D7E822BD290AB003F4B33 /* Crc */,
+				121D7E722BD290AA003F4B33 /* File */,
+				121D7E7F2BD290AB003F4B33 /* MiniZ */,
+				121D7E932BD290AB003F4B33 /* OS */,
+				121D7E882BD290AB003F4B33 /* Resource.h */,
+				121D7E892BD290AB003F4B33 /* SBNSuperBeesNES.cpp */,
+				121D7E632BD290AA003F4B33 /* SBNSuperBeesNES.h */,
+				121D7E8C2BD290AB003F4B33 /* Time */,
+				121D7E692BD290AA003F4B33 /* Utilities */,
+				121D7E622BD290AA003F4B33 /* Windows */,
+				12E85B7E2BD28E1A002B5DEE /* Renderer.h */,
+				12E85B7F2BD28E1A002B5DEE /* Renderer.m */,
+				12E85B802BD28E1A002B5DEE /* ShaderTypes.h */,
+				12E85B812BD28E1A002B5DEE /* Shaders.metal */,
+				12E85B822BD28E1C002B5DEE /* Assets.xcassets */,
+			);
+			path = "Super BeesNES Shared";
+			sourceTree = "<group>";
+		};
+		12E85B882BD28E1C002B5DEE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12E85B872BD28E1C002B5DEE /* Super BeesNES.app */,
+				12E85B9C2BD28E1C002B5DEE /* Super BeesNES.app */,
+				12E85BB02BD28E1C002B5DEE /* Super BeesNES.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12E85B892BD28E1C002B5DEE /* Super BeesNES iOS */ = {
+			isa = PBXGroup;
+			children = (
+				12E85B8A2BD28E1C002B5DEE /* AppDelegate.h */,
+				12E85B8B2BD28E1C002B5DEE /* AppDelegate.m */,
+				12E85B8D2BD28E1C002B5DEE /* GameViewController.h */,
+				12E85B8E2BD28E1C002B5DEE /* GameViewController.m */,
+				12E85B902BD28E1C002B5DEE /* Main.storyboard */,
+				12E85B932BD28E1C002B5DEE /* LaunchScreen.storyboard */,
+				12E85B962BD28E1C002B5DEE /* main.m */,
+			);
+			path = "Super BeesNES iOS";
+			sourceTree = "<group>";
+		};
+		12E85B9D2BD28E1C002B5DEE /* Super BeesNES tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				12E85B9E2BD28E1C002B5DEE /* AppDelegate.h */,
+				12E85B9F2BD28E1C002B5DEE /* AppDelegate.m */,
+				12E85BA12BD28E1C002B5DEE /* GameViewController.h */,
+				12E85BA22BD28E1C002B5DEE /* GameViewController.m */,
+				12E85BA42BD28E1C002B5DEE /* Main.storyboard */,
+				12E85BA72BD28E1C002B5DEE /* LaunchScreen.storyboard */,
+				12E85BAA2BD28E1C002B5DEE /* main.m */,
+			);
+			path = "Super BeesNES tvOS";
+			sourceTree = "<group>";
+		};
+		12E85BB12BD28E1C002B5DEE /* Super BeesNES macOS */ = {
+			isa = PBXGroup;
+			children = (
+				12E85BB22BD28E1C002B5DEE /* AppDelegate.h */,
+				121D7EFD2BD293D5003F4B33 /* AppDelegate.mm */,
+				12E85BB52BD28E1C002B5DEE /* GameViewController.h */,
+				12E85BB62BD28E1C002B5DEE /* GameViewController.m */,
+				12E85BB82BD28E1C002B5DEE /* Main.storyboard */,
+				12E85BBB2BD28E1C002B5DEE /* main.m */,
+				12E85BBD2BD28E1C002B5DEE /* Super_BeesNES_macOS.entitlements */,
+			);
+			path = "Super BeesNES macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12E85B862BD28E1C002B5DEE /* Super BeesNES iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12E85BC92BD28E1C002B5DEE /* Build configuration list for PBXNativeTarget "Super BeesNES iOS" */;
+			buildPhases = (
+				12E85B832BD28E1C002B5DEE /* Sources */,
+				12E85B842BD28E1C002B5DEE /* Frameworks */,
+				12E85B852BD28E1C002B5DEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				121D7E302BD29062003F4B33 /* PBXTargetDependency */,
+				121D7E2E2BD2905F003F4B33 /* PBXTargetDependency */,
+				121D7E2C2BD2905C003F4B33 /* PBXTargetDependency */,
+			);
+			name = "Super BeesNES iOS";
+			productName = "Super BeesNES iOS";
+			productReference = 12E85B872BD28E1C002B5DEE /* Super BeesNES.app */;
+			productType = "com.apple.product-type.application";
+		};
+		12E85B9B2BD28E1C002B5DEE /* Super BeesNES tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12E85BCC2BD28E1C002B5DEE /* Build configuration list for PBXNativeTarget "Super BeesNES tvOS" */;
+			buildPhases = (
+				12E85B982BD28E1C002B5DEE /* Sources */,
+				12E85B992BD28E1C002B5DEE /* Frameworks */,
+				12E85B9A2BD28E1C002B5DEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				121D7E272BD2904F003F4B33 /* PBXTargetDependency */,
+				121D7E252BD2904C003F4B33 /* PBXTargetDependency */,
+				121D7E232BD29049003F4B33 /* PBXTargetDependency */,
+			);
+			name = "Super BeesNES tvOS";
+			productName = "Super BeesNES tvOS";
+			productReference = 12E85B9C2BD28E1C002B5DEE /* Super BeesNES.app */;
+			productType = "com.apple.product-type.application";
+		};
+		12E85BAF2BD28E1C002B5DEE /* Super BeesNES macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12E85BCF2BD28E1C002B5DEE /* Build configuration list for PBXNativeTarget "Super BeesNES macOS" */;
+			buildPhases = (
+				12E85BAC2BD28E1C002B5DEE /* Sources */,
+				12E85BAD2BD28E1C002B5DEE /* Frameworks */,
+				12E85BAE2BD28E1C002B5DEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				121D7E1D2BD29032003F4B33 /* PBXTargetDependency */,
+				121D7E1B2BD2902F003F4B33 /* PBXTargetDependency */,
+				121D7E192BD2902C003F4B33 /* PBXTargetDependency */,
+			);
+			name = "Super BeesNES macOS";
+			productName = "Super BeesNES macOS";
+			productReference = 12E85BB02BD28E1C002B5DEE /* Super BeesNES.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12E85B792BD28E1A002B5DEE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					12E85B862BD28E1C002B5DEE = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					12E85B9B2BD28E1C002B5DEE = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					12E85BAF2BD28E1C002B5DEE = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 12E85B7C2BD28E1A002B5DEE /* Build configuration list for PBXProject "Super BeesNES" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 12E85B782BD28E1A002B5DEE;
+			productRefGroup = 12E85B882BD28E1C002B5DEE /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 121D7DE52BD28EA4003F4B33 /* Products */;
+					ProjectRef = 121D7DE42BD28EA4003F4B33 /* ExpressionEvaluator.xcodeproj */;
+				},
+				{
+					ProductGroup = 121D7E072BD28EFC003F4B33 /* Products */;
+					ProjectRef = 121D7E062BD28EFC003F4B33 /* LSApple.xcodeproj */;
+				},
+				{
+					ProductGroup = 121D7E0D2BD28F09003F4B33 /* Products */;
+					ProjectRef = 121D7E0C2BD28F09003F4B33 /* LSon.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				12E85B862BD28E1C002B5DEE /* Super BeesNES iOS */,
+				12E85B9B2BD28E1C002B5DEE /* Super BeesNES tvOS */,
+				12E85BAF2BD28E1C002B5DEE /* Super BeesNES macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		121D7DE92BD28EA4003F4B33 /* ExpressionEvaluator.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ExpressionEvaluator.framework;
+			remoteRef = 121D7DE82BD28EA4003F4B33 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		121D7E0B2BD28EFC003F4B33 /* LSApple.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LSApple.framework;
+			remoteRef = 121D7E0A2BD28EFC003F4B33 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		121D7E112BD28F09003F4B33 /* LSon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LSon.framework;
+			remoteRef = 121D7E102BD28F09003F4B33 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12E85B852BD28E1C002B5DEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12E85B922BD28E1C002B5DEE /* Base in Resources */,
+				12E85BC42BD28E1C002B5DEE /* Assets.xcassets in Resources */,
+				12E85B952BD28E1C002B5DEE /* Base in Resources */,
+				121D7EEE2BD290AB003F4B33 /* SBNCycleFuncs.inl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E85B9A2BD28E1C002B5DEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12E85BA62BD28E1C002B5DEE /* Base in Resources */,
+				12E85BC52BD28E1C002B5DEE /* Assets.xcassets in Resources */,
+				12E85BA92BD28E1C002B5DEE /* Base in Resources */,
+				121D7EEF2BD290AB003F4B33 /* SBNCycleFuncs.inl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E85BAE2BD28E1C002B5DEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				121D7EF02BD290AB003F4B33 /* SBNCycleFuncs.inl in Resources */,
+				12E85BC62BD28E1C002B5DEE /* Assets.xcassets in Resources */,
+				12E85BBA2BD28E1C002B5DEE /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12E85B832BD28E1C002B5DEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12E85BBE2BD28E1C002B5DEE /* Renderer.m in Sources */,
+				121D7ECA2BD290AB003F4B33 /* SBNWinUtilities.cpp in Sources */,
+				12E85B8F2BD28E1C002B5DEE /* GameViewController.m in Sources */,
+				121D7EFE2BD293D5003F4B33 /* AppDelegate.mm in Sources */,
+				121D7EB52BD290AB003F4B33 /* SBNLayoutManager.cpp in Sources */,
+				121D7EAC2BD290AB003F4B33 /* SBNInputWindowLayout.cpp in Sources */,
+				121D7EBE2BD290AB003F4B33 /* SBNSelectRomDialog.cpp in Sources */,
+				121D7EAF2BD290AB003F4B33 /* SBNStdControllerPage.cpp in Sources */,
+				121D7EBB2BD290AB003F4B33 /* SBNMainWindowLayout.cpp in Sources */,
+				121D7EC72BD290AB003F4B33 /* SBNTemplatePageLayout.cpp in Sources */,
+				12E85B972BD28E1C002B5DEE /* main.m in Sources */,
+				12E85B8C2BD28E1C002B5DEE /* AppDelegate.m in Sources */,
+				121D7EF12BD290AB003F4B33 /* SBNSuperBeesNES.cpp in Sources */,
+				121D7E942BD290AB003F4B33 /* SBNDirectInput8.cpp in Sources */,
+				121D7EA62BD290AB003F4B33 /* SBNInputPage.cpp in Sources */,
+				121D7E9A2BD290AB003F4B33 /* SBNControllerConfigurePage.cpp in Sources */,
+				121D7ED92BD290AB003F4B33 /* SBNZipFile.cpp in Sources */,
+				121D7EE22BD290AB003F4B33 /* miniz.c in Sources */,
+				121D7EC42BD290AB003F4B33 /* SBNTemplatePage.cpp in Sources */,
+				121D7EB82BD290AB003F4B33 /* SBNMainWindow.cpp in Sources */,
+				121D7ED02BD290AB003F4B33 /* SBNFileBase.cpp in Sources */,
+				121D7ED62BD290AB003F4B33 /* SBNStdFile.cpp in Sources */,
+				121D7ED32BD290AB003F4B33 /* SBNFileMap.cpp in Sources */,
+				121D7EEB2BD290AB003F4B33 /* SBNCpu65816.cpp in Sources */,
+				121D7EA32BD290AB003F4B33 /* SBNInputConfigurePage.cpp in Sources */,
+				121D7EE82BD290AB003F4B33 /* SBNCrc.cpp in Sources */,
+				12E85BC12BD28E1C002B5DEE /* Shaders.metal in Sources */,
+				121D7EA02BD290AB003F4B33 /* SBNControllerSetupWindowLayout.cpp in Sources */,
+				121D7EB22BD290AB003F4B33 /* SBNStdControllerPageLayout.cpp in Sources */,
+				121D7E972BD290AB003F4B33 /* SBNDirectInput8Device.cpp in Sources */,
+				121D7EC12BD290AB003F4B33 /* SBNSelectRomDialogLayout.cpp in Sources */,
+				121D7EF42BD290AB003F4B33 /* SBNClock.cpp in Sources */,
+				121D7ECD2BD290AB003F4B33 /* SBNUtilities.cpp in Sources */,
+				121D7EA92BD290AB003F4B33 /* SBNInputWindow.cpp in Sources */,
+				121D7E9D2BD290AB003F4B33 /* SBNControllerSetupWindow.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E85B982BD28E1C002B5DEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12E85BBF2BD28E1C002B5DEE /* Renderer.m in Sources */,
+				121D7ECB2BD290AB003F4B33 /* SBNWinUtilities.cpp in Sources */,
+				12E85BA32BD28E1C002B5DEE /* GameViewController.m in Sources */,
+				121D7EFF2BD293D5003F4B33 /* AppDelegate.mm in Sources */,
+				121D7EB62BD290AB003F4B33 /* SBNLayoutManager.cpp in Sources */,
+				121D7EAD2BD290AB003F4B33 /* SBNInputWindowLayout.cpp in Sources */,
+				121D7EBF2BD290AB003F4B33 /* SBNSelectRomDialog.cpp in Sources */,
+				121D7EB02BD290AB003F4B33 /* SBNStdControllerPage.cpp in Sources */,
+				121D7EBC2BD290AB003F4B33 /* SBNMainWindowLayout.cpp in Sources */,
+				121D7EC82BD290AB003F4B33 /* SBNTemplatePageLayout.cpp in Sources */,
+				12E85BAB2BD28E1C002B5DEE /* main.m in Sources */,
+				12E85BA02BD28E1C002B5DEE /* AppDelegate.m in Sources */,
+				121D7EF22BD290AB003F4B33 /* SBNSuperBeesNES.cpp in Sources */,
+				121D7E952BD290AB003F4B33 /* SBNDirectInput8.cpp in Sources */,
+				121D7EA72BD290AB003F4B33 /* SBNInputPage.cpp in Sources */,
+				121D7E9B2BD290AB003F4B33 /* SBNControllerConfigurePage.cpp in Sources */,
+				121D7EDA2BD290AB003F4B33 /* SBNZipFile.cpp in Sources */,
+				121D7EE32BD290AB003F4B33 /* miniz.c in Sources */,
+				121D7EC52BD290AB003F4B33 /* SBNTemplatePage.cpp in Sources */,
+				121D7EB92BD290AB003F4B33 /* SBNMainWindow.cpp in Sources */,
+				121D7ED12BD290AB003F4B33 /* SBNFileBase.cpp in Sources */,
+				121D7ED72BD290AB003F4B33 /* SBNStdFile.cpp in Sources */,
+				121D7ED42BD290AB003F4B33 /* SBNFileMap.cpp in Sources */,
+				121D7EEC2BD290AB003F4B33 /* SBNCpu65816.cpp in Sources */,
+				121D7EA42BD290AB003F4B33 /* SBNInputConfigurePage.cpp in Sources */,
+				121D7EE92BD290AB003F4B33 /* SBNCrc.cpp in Sources */,
+				12E85BC22BD28E1C002B5DEE /* Shaders.metal in Sources */,
+				121D7EA12BD290AB003F4B33 /* SBNControllerSetupWindowLayout.cpp in Sources */,
+				121D7EB32BD290AB003F4B33 /* SBNStdControllerPageLayout.cpp in Sources */,
+				121D7E982BD290AB003F4B33 /* SBNDirectInput8Device.cpp in Sources */,
+				121D7EC22BD290AB003F4B33 /* SBNSelectRomDialogLayout.cpp in Sources */,
+				121D7EF52BD290AB003F4B33 /* SBNClock.cpp in Sources */,
+				121D7ECE2BD290AB003F4B33 /* SBNUtilities.cpp in Sources */,
+				121D7EAA2BD290AB003F4B33 /* SBNInputWindow.cpp in Sources */,
+				121D7E9E2BD290AB003F4B33 /* SBNControllerSetupWindow.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12E85BAC2BD28E1C002B5DEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12E85BC02BD28E1C002B5DEE /* Renderer.m in Sources */,
+				121D7ECC2BD290AB003F4B33 /* SBNWinUtilities.cpp in Sources */,
+				12E85BB72BD28E1C002B5DEE /* GameViewController.m in Sources */,
+				121D7F002BD293D5003F4B33 /* AppDelegate.mm in Sources */,
+				121D7EB72BD290AB003F4B33 /* SBNLayoutManager.cpp in Sources */,
+				121D7EAE2BD290AB003F4B33 /* SBNInputWindowLayout.cpp in Sources */,
+				121D7EC02BD290AB003F4B33 /* SBNSelectRomDialog.cpp in Sources */,
+				121D7EB12BD290AB003F4B33 /* SBNStdControllerPage.cpp in Sources */,
+				121D7EBD2BD290AB003F4B33 /* SBNMainWindowLayout.cpp in Sources */,
+				121D7EC92BD290AB003F4B33 /* SBNTemplatePageLayout.cpp in Sources */,
+				12E85BBC2BD28E1C002B5DEE /* main.m in Sources */,
+				121D7EF32BD290AB003F4B33 /* SBNSuperBeesNES.cpp in Sources */,
+				121D7E962BD290AB003F4B33 /* SBNDirectInput8.cpp in Sources */,
+				121D7EA82BD290AB003F4B33 /* SBNInputPage.cpp in Sources */,
+				121D7E9C2BD290AB003F4B33 /* SBNControllerConfigurePage.cpp in Sources */,
+				121D7EDB2BD290AB003F4B33 /* SBNZipFile.cpp in Sources */,
+				121D7EE42BD290AB003F4B33 /* miniz.c in Sources */,
+				121D7EC62BD290AB003F4B33 /* SBNTemplatePage.cpp in Sources */,
+				121D7EBA2BD290AB003F4B33 /* SBNMainWindow.cpp in Sources */,
+				121D7ED22BD290AB003F4B33 /* SBNFileBase.cpp in Sources */,
+				121D7ED82BD290AB003F4B33 /* SBNStdFile.cpp in Sources */,
+				121D7ED52BD290AB003F4B33 /* SBNFileMap.cpp in Sources */,
+				121D7EED2BD290AB003F4B33 /* SBNCpu65816.cpp in Sources */,
+				121D7EA52BD290AB003F4B33 /* SBNInputConfigurePage.cpp in Sources */,
+				121D7EEA2BD290AB003F4B33 /* SBNCrc.cpp in Sources */,
+				12E85BC32BD28E1C002B5DEE /* Shaders.metal in Sources */,
+				121D7EA22BD290AB003F4B33 /* SBNControllerSetupWindowLayout.cpp in Sources */,
+				121D7EB42BD290AB003F4B33 /* SBNStdControllerPageLayout.cpp in Sources */,
+				121D7E992BD290AB003F4B33 /* SBNDirectInput8Device.cpp in Sources */,
+				121D7EC32BD290AB003F4B33 /* SBNSelectRomDialogLayout.cpp in Sources */,
+				121D7EF62BD290AB003F4B33 /* SBNClock.cpp in Sources */,
+				121D7ECF2BD290AB003F4B33 /* SBNUtilities.cpp in Sources */,
+				121D7EAB2BD290AB003F4B33 /* SBNInputWindow.cpp in Sources */,
+				121D7E9F2BD290AB003F4B33 /* SBNControllerSetupWindow.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		121D7E192BD2902C003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ExpressionEvaluator;
+			targetProxy = 121D7E182BD2902C003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E1B2BD2902F003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSApple;
+			targetProxy = 121D7E1A2BD2902F003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E1D2BD29032003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSon;
+			targetProxy = 121D7E1C2BD29032003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E232BD29049003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ExpressionEvaluator;
+			targetProxy = 121D7E222BD29049003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E252BD2904C003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSApple;
+			targetProxy = 121D7E242BD2904C003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E272BD2904F003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSon;
+			targetProxy = 121D7E262BD2904F003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E2C2BD2905C003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ExpressionEvaluator;
+			targetProxy = 121D7E2B2BD2905C003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E2E2BD2905F003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSApple;
+			targetProxy = 121D7E2D2BD2905F003F4B33 /* PBXContainerItemProxy */;
+		};
+		121D7E302BD29062003F4B33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LSon;
+			targetProxy = 121D7E2F2BD29062003F4B33 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		12E85B902BD28E1C002B5DEE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12E85B912BD28E1C002B5DEE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		12E85B932BD28E1C002B5DEE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12E85B942BD28E1C002B5DEE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		12E85BA42BD28E1C002B5DEE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12E85BA52BD28E1C002B5DEE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		12E85BA72BD28E1C002B5DEE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12E85BA82BD28E1C002B5DEE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		12E85BB82BD28E1C002B5DEE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12E85BB92BD28E1C002B5DEE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		12E85BC72BD28E1C002B5DEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libraries/ExpressionEvaluator/Src/",
+					"$(PROJECT_DIR)/Libraries/LSon/Src/",
+					"$(PROJECT_DIR)/Libraries/LSApple/Src/",
+				);
+			};
+			name = Debug;
+		};
+		12E85BC82BD28E1C002B5DEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libraries/ExpressionEvaluator/Src/",
+					"$(PROJECT_DIR)/Libraries/LSon/Src/",
+					"$(PROJECT_DIR)/Libraries/LSApple/Src/",
+				);
+			};
+			name = Release;
+		};
+		12E85BCA2BD28E1C002B5DEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "L.-Spiro.Super-BeesNES";
+				PRODUCT_NAME = "Super BeesNES";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12E85BCB2BD28E1C002B5DEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "L.-Spiro.Super-BeesNES";
+				PRODUCT_NAME = "Super BeesNES";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12E85BCD2BD28E1C002B5DEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "L.-Spiro.Super-BeesNES";
+				PRODUCT_NAME = "Super BeesNES";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 17.4;
+			};
+			name = Debug;
+		};
+		12E85BCE2BD28E1C002B5DEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "L.-Spiro.Super-BeesNES";
+				PRODUCT_NAME = "Super BeesNES";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 17.4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12E85BD02BD28E1C002B5DEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Super BeesNES macOS/Super_BeesNES_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "L.-Spiro.Super-BeesNES";
+				PRODUCT_NAME = "Super BeesNES";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		12E85BD12BD28E1C002B5DEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Super BeesNES macOS/Super_BeesNES_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "L.-Spiro.Super-BeesNES";
+				PRODUCT_NAME = "Super BeesNES";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12E85B7C2BD28E1A002B5DEE /* Build configuration list for PBXProject "Super BeesNES" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12E85BC72BD28E1C002B5DEE /* Debug */,
+				12E85BC82BD28E1C002B5DEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12E85BC92BD28E1C002B5DEE /* Build configuration list for PBXNativeTarget "Super BeesNES iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12E85BCA2BD28E1C002B5DEE /* Debug */,
+				12E85BCB2BD28E1C002B5DEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12E85BCC2BD28E1C002B5DEE /* Build configuration list for PBXNativeTarget "Super BeesNES tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12E85BCD2BD28E1C002B5DEE /* Debug */,
+				12E85BCE2BD28E1C002B5DEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12E85BCF2BD28E1C002B5DEE /* Build configuration list for PBXNativeTarget "Super BeesNES macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12E85BD02BD28E1C002B5DEE /* Debug */,
+				12E85BD12BD28E1C002B5DEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 12E85B792BD28E1A002B5DEE /* Project object */;
+}

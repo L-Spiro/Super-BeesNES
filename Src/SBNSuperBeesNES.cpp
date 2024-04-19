@@ -13,10 +13,6 @@
 #endif	// #ifdef SBN_CPU_VERIFY
 
 
-int main() {
-	return 0;
-}
-
 #if !defined( SBN_CPU_VERIFY )
 #ifdef SBN_USE_WINDOWS
 int WINAPI wWinMain( _In_ HINSTANCE _hInstance, _In_opt_ HINSTANCE /*_hPrevInstance*/, _In_ LPWSTR /*_lpCmdLine*/, _In_ int /*_nCmdShow*/ ) {
