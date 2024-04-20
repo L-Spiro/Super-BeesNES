@@ -197,6 +197,10 @@ namespace sbn {
 			uint8_t											m_ui8Address[2];																	/**< An address loaded into memory before transfer to a register such as PC. */
 			uint16_t										m_ui16Address;																		/**< An address loaded into memory before transfer to a register such as PC. */
 		};
+		union {
+			uint8_t											m_ui8Pointer[2];																	/**< An address loaded into memory for indirect access. */
+			uint16_t										m_ui16Pointer;																		/**< An address loaded into memory for indirect access. */
+		};
 		uint16_t											m_ui16OpCode = 0;																	/**< The current opcode. */
 		uint16_t											m_ui16PcModify = 0;																	/**< The amount by which to modify PC during the next Phi1. */
 		uint16_t											m_ui16SModify = 0;																	/**< The amount by which to modify S during the next Phi1. */
@@ -273,22 +277,25 @@ namespace sbn {
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		// CYCLES
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		/** Adds S to m_ui16Pointer, stores in m_ui16Address. */
+		inline void											AddStackOffset();
+
+		/** Adds X to m_ui16Pointer and D, stores to m_ui16Address. */
+		inline void											AddX_IzX();
+
 		/** Copies the vector address into PC. */
 		inline void											Brk();
 
-		/** Copies the vector address into PC. */
-		inline void											Brk_Phi2();
-
-		/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+		/** Fetches the low byte of the NMI/IRQ/BRK/reset vector into the low byte of PC. */
 		inline void											CopyVectorPcl();
 
-		/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+		/** Fetches the low byte of the NMI/IRQ/BRK/reset vector into the low byte of PC. */
 		inline void											CopyVectorPcl_Phi2();
 
-		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector into the high byte of PC and sets the I flag. */
 		inline void											CopyVectorPch();
 
-		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector into the high byte of PC and sets the I flag. */
 		inline void											CopyVectorPch_Phi2();
 
 		/** Fetches the next opcode and increments the program counter. */
@@ -296,6 +303,21 @@ namespace sbn {
 
 		/** Fetches the next opcode and increments the program counter. */
 		inline void											FetchOpcodeAndIncPc_Phi2();
+
+		/** Fetches a pointer and increments PC .*/
+		inline void											FetchPointerAndIncPc_Phi2();
+
+		/** Fixes the high bit of m_ui16Address. */
+		inline void											FixPointerHigh();
+
+		/** A no-op Phi2. */
+		inline void											Null_Phi2();
+
+		/** Performs ORA with m_ui8Operand[0]. */
+		inline void											Ora();
+
+		/** Copies the vector address into PC. */
+		inline void											PrefetchNextOp();
 
 		/** Pushes PB. */
 		inline void											PushPb();
@@ -321,10 +343,53 @@ namespace sbn {
 		/** Pushes the status byte with B conditionally set. */
 		inline void											PushStatus_Phi2();
 
+		/** Pushes the status byte without B. */
+		inline void											PushStatusCop();
+
+		/** Pushes the status byte without B. */
+		inline void											PushStatusCop_Phi2();
+
+		/** Reads from m_ui16Address and stores the result in m_ui8Operand[1]. */
+		inline void											ReadAddressToOperandHigh();
+
+		/** Reads from m_ui16Address and stores the result in m_ui8Operand[1]. */
+		inline void											ReadAddressToOperandHigh_Phi2();
+
+		/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
+		inline void											ReadAddressToOperandLow();
+
+		/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
+		inline void											ReadAddressToOperandLow_Phi2();
+
+		/** Reads from the pointer and stores the low byte in m_ui8Address[1]. */
+		inline void											ReadPointerToAddressHigh();
+
+		/** Reads from the pointer and stores the low byte in m_ui8Address[1]. */
+		inline void											ReadPointerToAddressHigh_Phi2();
+
+		/** Reads from the pointer and stores the low byte in m_ui8Address[0]. */
+		inline void											ReadPointerToAddressLow();
+
+		/** Reads from the pointer and stores the low byte in m_ui8Address[0]. */
+		inline void											ReadPointerToAddressLow_Phi2();
+
+		/** Reads from the stack offset address stored in m_ui16Address. */
+		inline void											ReadStackOffsetHigh();
+
+		/** Reads from the stack offset address stored in m_ui16Address. */
+		inline void											ReadStackOffsetHigh_Phi2();
+
+		/** Reads from the stack offset address stored in m_ui16Address. */
+		inline void											ReadStackOffsetLow();
+
+		/** Reads from the stack offset address stored in m_ui16Address. */
+		inline void											ReadStackOffsetLow_Phi2();
+
+		/** Skips the next instruction if the low byte of D is 0. */
+		inline void											SkipOnDL_Phi2();
+
 		/**
 		 * Prepares to enter a new instruction.
-		 *
-		 * \param _ui16Op The instruction to begin executing.
 		 */
 		inline void											BeginInst();
 	};
@@ -345,6 +410,43 @@ namespace sbn {
 		(this->*m_iInstructionSet[m_ui16OpCode].pfHandler[m_bEmulationMode][m_ui8FuncIndex])();
 	}
 
+	/** Adds S to m_ui16Pointer, stores in m_ui16Address. */
+	inline void CCpu65816::AddStackOffset() {
+		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
+
+		if ( m_bEmulationMode ) {
+			m_ui16Address = m_ui16Pointer + (m_rRegs.ui8S[0] | 0x100);
+		}
+		else {
+			m_ui16Address = m_ui16Pointer + m_rRegs.ui16S;
+		}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Adds X to m_ui16Pointer and D, stores to m_ui16Address. */
+	inline void CCpu65816::AddX_IzX() {
+		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
+
+		if ( m_bEmulationMode ) {
+			m_ui8Address[0] = uint8_t( m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D );
+			m_ui8Address[1] = uint8_t( m_rRegs.ui16D >> 8 );
+		}
+		else {
+			m_ui16Address = m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D;
+		}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
 	/** Copies the vector address into PC. */
 	inline void CCpu65816::Brk() {
 		SBN_INSTR_START_PHI1( true );
@@ -358,17 +460,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI1;
 	}
 
-	/** Copies the vector address into PC. */
-	inline void CCpu65816::Brk_Phi2() {
-		uint8_t ui8Speed;
-		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui16Operand, ui8Speed );
-
-		SBN_FINISH_INST( true );
-
-		SBN_INSTR_END_PHI2;
-	}
-
-	/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+	/** Fetches the low byte of the NMI/IRQ/BRK/reset vector into the low byte of PC. */
 	inline void CCpu65816::CopyVectorPcl() {
 		SBN_INSTR_START_PHI1( true );
 
@@ -379,7 +471,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI1;
 	}
 
-	/** Fetches the low byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the low byte of PC. */
+	/** Fetches the low byte of the NMI/IRQ/BRK/reset vector into the low byte of PC. */
 	inline void CCpu65816::CopyVectorPcl_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_READ0_BUSA( m_vBrkVector, m_ui8Address[0], ui8Speed );
@@ -389,7 +481,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
-	/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+	/** Fetches the high byte of the NMI/IRQ/BRK/reset vector into the high byte of PC and sets the I flag. */
 	inline void CCpu65816::CopyVectorPch() {
 		SBN_INSTR_START_PHI1( true );
 
@@ -401,7 +493,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI1;
 	}
 
-	/** Fetches the high byte of the NMI/IRQ/BRK/reset vector (stored in LSN_CPU_CONTEXT::a.ui16Address) into the high byte of PC and sets the I flag. */
+	/** Fetches the high byte of the NMI/IRQ/BRK/reset vector into the high byte of PC and sets the I flag. */
 	inline void CCpu65816::CopyVectorPch_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_READ0_BUSA( m_vBrkVector + 1, m_ui8Address[1], ui8Speed );
@@ -437,6 +529,68 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
+	/** Fetches a pointer and increments PC .*/
+	inline void CCpu65816::FetchPointerAndIncPc_Phi2() {
+		uint8_t ui8Speed;
+		uint8_t ui8Op;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, ui8Op, ui8Speed );
+		m_ui16Pointer = ui8Op;
+		m_ui16PcModify = 1;
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fixes the high bit of m_ui16Address. */
+	inline void CCpu65816::FixPointerHigh() {
+		SBN_INSTR_START_PHI1( false );
+
+		m_ui8Address[1] = uint8_t( (m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D) >> 8 );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** A no-op Phi2. */
+	inline void CCpu65816::Null_Phi2() {
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Performs ORA with m_ui8Operand[0]. */
+	inline void CCpu65816::Ora() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_rRegs.ui16A |= m_ui16Operand;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SetBit<N()>( m_rRegs.ui8Status, m_rRegs.ui8A[0] & 0x80 );
+			SetBit<Z()>( m_rRegs.ui8Status, !m_rRegs.ui8A[0] );
+		}
+		else {
+			SetBit<N()>( m_rRegs.ui8Status, m_rRegs.ui8A[1] & 0x80 );
+			SetBit<Z()>( m_rRegs.ui8Status, !m_rRegs.ui16A );
+		}
+		
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Copies the vector address into PC. */
+	inline void CCpu65816::PrefetchNextOp() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui16Operand, ui8Speed );
+
+		SBN_FINISH_INST( true );
+
+		SBN_INSTR_END_PHI2;
+	}
+
 	/** Pushes PB. */
 	inline void CCpu65816::PushPb() {
 		SBN_INSTR_START_PHI1( false );
@@ -460,7 +614,7 @@ namespace sbn {
 
 	/** Pushes PCH. */
 	inline void CCpu65816::PushPch() {
-		SBN_INSTR_START_PHI1( false );
+		SBN_INSTR_START_PHI1( true );
 
 		SBN_UPDATE_PC;
 		SBN_UPDATE_S;
@@ -482,7 +636,7 @@ namespace sbn {
 
 	/** Pushes PCL. */
 	inline void CCpu65816::PushPcl() {
-		SBN_INSTR_START_PHI1( false );
+		SBN_INSTR_START_PHI1( true );
 
 		SBN_UPDATE_S;
 
@@ -519,7 +673,7 @@ namespace sbn {
 
 		SBN_NEXT_FUNCTION;
 
-		SBN_INSTR_END_PHI1( true );
+		SBN_INSTR_END_PHI1;
 	}
 
 	/** Pushes the status byte with B conditionally set. */
@@ -533,6 +687,170 @@ namespace sbn {
 		}
 
 		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Pushes the status byte without B. */
+	inline void CCpu65816::PushStatusCop() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_UPDATE_S;
+
+		// Select vector to use.
+		if ( m_bEmulationMode ) {
+			m_vBrkVector = SBN_V_COP_E;
+		}
+		else {
+			m_vBrkVector = SBN_V_COP;
+		}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Pushes the status byte without B. */
+	inline void CCpu65816::PushStatusCop_Phi2() {
+		uint8_t ui8Speed;
+		SBN_PUSH( m_rRegs.ui8Status, ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from m_ui16Address and stores the result in m_ui8Operand[1]. */
+	inline void CCpu65816::ReadAddressToOperandHigh() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Reads from m_ui16Address and stores the result in m_ui8Operand[1]. */
+	inline void CCpu65816::ReadAddressToOperandHigh_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Address + 1, m_rRegs.ui8Db, m_ui8Operand[1], ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
+	inline void CCpu65816::ReadAddressToOperandLow() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
+	inline void CCpu65816::ReadAddressToOperandLow_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Address, m_rRegs.ui8Db, m_ui16Operand, ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from the pointer and stores the low byte in m_ui8Address[1]. */
+	inline void CCpu65816::ReadPointerToAddressHigh() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Reads from the pointer and stores the low byte in m_ui8Address[1]. */
+	inline void CCpu65816::ReadPointerToAddressHigh_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Pointer + 1, m_ui8Address[1], ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from the pointer and stores the low byte in m_ui8Address[0]. */
+	inline void CCpu65816::ReadPointerToAddressLow() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_ui16Pointer = m_ui16Address;
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Reads from the pointer and stores the low byte in m_ui8Address[0]. */
+	inline void CCpu65816::ReadPointerToAddressLow_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Pointer, m_ui8Address[0], ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from the stack offset address stored in m_ui16Address. */
+	inline void CCpu65816::ReadStackOffsetHigh() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Reads from the stack offset address stored in m_ui16Address. */
+	inline void CCpu65816::ReadStackOffsetHigh_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Address + 1, m_ui8Operand[1], ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from the stack offset address stored in m_ui16Address. */
+	inline void CCpu65816::ReadStackOffsetLow() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Reads from the stack offset address stored in m_ui16Address. */
+	inline void CCpu65816::ReadStackOffsetLow_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Address, m_ui16Operand, ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Skips the next instruction if the low byte of D is 0. */
+	inline void CCpu65816::SkipOnDL_Phi2() {
+		SBN_NEXT_FUNCTION;
+
+		if ( !(m_rRegs.ui16D & 0xFF) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
 
 		SBN_INSTR_END_PHI2;
 	}

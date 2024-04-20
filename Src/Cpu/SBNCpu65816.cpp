@@ -80,7 +80,7 @@ namespace sbn {
 			m_bBusA.ReadWriteLog().clear();
 		}
 
-		/*if ( "6b fa 28" == cvoVerifyMe.sName ) {
+		/*if ( "01 n 437" == cvoVerifyMe.sName ) {
 			volatile int ghg = 0;
 		}*/
 		// Tick once for each cycle.
@@ -126,19 +126,19 @@ namespace sbn {
 		else {
 			size_t J = 0;
 			for ( size_t I = 0; I < m_bBusA.ReadWriteLog().size(); ++I ) {
-				if ( m_bBusA.ReadWriteLog()[J].ui32Address != cvoVerifyMe.vCycles[I].ui32Addr ) {
-					::OutputDebugStringA( cvoVerifyMe.sName.c_str() );
-					::OutputDebugStringA( "\r\nCPU Failure: Cycle Address Wrong\r\n" );
-					::OutputDebugStringA( (std::string( "Expected: ") + std::to_string( cvoVerifyMe.vCycles[I].ui32Addr ) + std::string( " Got: " ) + std::to_string( m_bBusA.ReadWriteLog()[J].ui32Address ) ).c_str() );
-					::OutputDebugStringA( "\r\n\r\n" );
-				}
-				if ( m_bBusA.ReadWriteLog()[J].ui8Value != cvoVerifyMe.vCycles[I].ui8Value ) {
-					::OutputDebugStringA( cvoVerifyMe.sName.c_str() );
-					::OutputDebugStringA( "\r\nCPU Failure: Cycle Value Wrong\r\n" );
-					::OutputDebugStringA( (std::string( "Expected: ") + std::to_string( cvoVerifyMe.vCycles[I].ui8Value ) + std::string( " Got: " ) + std::to_string( m_bBusA.ReadWriteLog()[J].ui8Value ) ).c_str() );
-					::OutputDebugStringA( "\r\n\r\n" );
-				}
 				if ( cvoVerifyMe.vCycles[I].bNoReadOrWrite == false ) {
+					if ( m_bBusA.ReadWriteLog()[J].ui32Address != cvoVerifyMe.vCycles[I].ui32Addr ) {
+						::OutputDebugStringA( cvoVerifyMe.sName.c_str() );
+						::OutputDebugStringA( "\r\nCPU Failure: Cycle Address Wrong\r\n" );
+						::OutputDebugStringA( (std::string( "Expected: ") + std::to_string( cvoVerifyMe.vCycles[I].ui32Addr ) + std::string( " Got: " ) + std::to_string( m_bBusA.ReadWriteLog()[J].ui32Address ) ).c_str() );
+						::OutputDebugStringA( "\r\n\r\n" );
+					}
+					if ( m_bBusA.ReadWriteLog()[J].ui8Value != cvoVerifyMe.vCycles[I].ui8Value ) {
+						::OutputDebugStringA( cvoVerifyMe.sName.c_str() );
+						::OutputDebugStringA( "\r\nCPU Failure: Cycle Value Wrong\r\n" );
+						::OutputDebugStringA( (std::string( "Expected: ") + std::to_string( cvoVerifyMe.vCycles[I].ui8Value ) + std::string( " Got: " ) + std::to_string( m_bBusA.ReadWriteLog()[J].ui8Value ) ).c_str() );
+						::OutputDebugStringA( "\r\n\r\n" );
+					}
 					if ( m_bBusA.ReadWriteLog()[I].bRead != (cvoVerifyMe.vCycles[I].sStatus[3] == 'r') ) {
 						::OutputDebugStringA( cvoVerifyMe.sName.c_str() );
 						::OutputDebugStringA( "\r\nCPU Failure: Cycle Read/Write Wrong\r\n" );
