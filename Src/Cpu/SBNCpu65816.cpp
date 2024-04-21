@@ -139,7 +139,7 @@ namespace sbn {
 						::OutputDebugStringA( (std::string( "Expected: ") + std::to_string( cvoVerifyMe.vCycles[I].ui8Value ) + std::string( " Got: " ) + std::to_string( m_bBusA.ReadWriteLog()[J].ui8Value ) ).c_str() );
 						::OutputDebugStringA( "\r\n\r\n" );
 					}
-					if ( m_bBusA.ReadWriteLog()[I].bRead != (cvoVerifyMe.vCycles[I].sStatus[3] == 'r') ) {
+					if ( m_bBusA.ReadWriteLog()[J].bRead != (cvoVerifyMe.vCycles[I].sStatus[3] == 'r') ) {
 						::OutputDebugStringA( cvoVerifyMe.sName.c_str() );
 						::OutputDebugStringA( "\r\nCPU Failure: Cycle Read/Write Wrong\r\n" );
 						::OutputDebugStringA( (std::string( "Expected: ") + std::to_string( cvoVerifyMe.vCycles[I].sStatus[3] ) + std::string( " Got: " ) + std::to_string( m_bBusA.ReadWriteLog()[J].bRead ) ).c_str() );

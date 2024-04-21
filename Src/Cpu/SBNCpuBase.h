@@ -51,6 +51,7 @@ namespace sbn {
 			SBN_AM_ZERO_PAGE,																/**< Zero-page = 2 extra cycles. */
 			SBN_AM_ZERO_PAGE_X,																/**< Zero-page-X = 3 extra cycles. */
 			SBN_AM_ZERO_PAGE_Y,																/**< Zero-page-Y = 3 extra cycles. */
+			SBN_AM_DIRECT_PAGE,																/**< Direct page, up to 2 extra cycles. */
 			SBN_AM_RELATIVE,																/**< Relative jumping = 2 extra cycles. */
 			SBN_AM_STACK_RELATIVE,															/**< Relative jumping on stackr. */
 			SBN_AM_ABSOLUTE,																/**< Absolute addressing = 3 extra cycles. */
@@ -82,7 +83,7 @@ namespace sbn {
 			SBN_I_CLV,											/**< Clear overflow. */
 			SBN_I_CMP,											/**< Compare (with accumulator). */
 
-			SBN_I_COP,											/**< Compare (with accumulator). */
+			SBN_I_COP,											/**< Coprocessor routine. */
 
 			SBN_I_CPX,											/**< Compare with X. */
 			SBN_I_CPY,											/**< Compare with Y. */
@@ -118,6 +119,7 @@ namespace sbn {
 			SBN_I_STY,											/**< Store Y. */
 			SBN_I_TAX,											/**< Transfer accumulator to X. */
 			SBN_I_TAY,											/**< Transfer accumulator to Y. */
+			SBN_I_TSB,											/**< Test and set memory bits against accumulator. */
 			SBN_I_TSX,											/**< Transfer stack pointer to X. */
 			SBN_I_TXA,											/**< Transfer X to accumulator. */
 			SBN_I_TXS,											/**< Transfer X to stack pointer. */
