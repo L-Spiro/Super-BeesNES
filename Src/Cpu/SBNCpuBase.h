@@ -52,6 +52,7 @@ namespace sbn {
 			SBN_AM_ZERO_PAGE_X,																/**< Zero-page-X = 3 extra cycles. */
 			SBN_AM_ZERO_PAGE_Y,																/**< Zero-page-Y = 3 extra cycles. */
 			SBN_AM_DIRECT_PAGE,																/**< Direct page, up to 2 extra cycles. */
+			SBN_AM_DIRECT_PAGE_INDIRECT_LONG,												/**< Direct page, up to 2 extra cycles. */
 			SBN_AM_RELATIVE,																/**< Relative jumping = 2 extra cycles. */
 			SBN_AM_STACK_RELATIVE,															/**< Relative jumping on stackr. */
 			SBN_AM_ABSOLUTE,																/**< Absolute addressing = 3 extra cycles. */
@@ -66,7 +67,7 @@ namespace sbn {
 		enum SBN_INSTRUCTIONS : uint8_t {
 			SBN_I_ADC,											/**< Add with carry. */
 			SBN_I_AND,											/**< AND with accumulator. */
-			SBN_I_ASL,											/**< Arithmetic shift left. */
+		/**/	SBN_I_ASL,											/**< Arithmetic shift left. */
 			SBN_I_BCC,											/**< Branch on carry clear. */
 			SBN_I_BCS,											/**< Branch on carry set. */
 			SBN_I_BEQ,											/**< Branch on equal (zero set). */
@@ -83,7 +84,7 @@ namespace sbn {
 			SBN_I_CLV,											/**< Clear overflow. */
 			SBN_I_CMP,											/**< Compare (with accumulator). */
 
-			SBN_I_COP,											/**< Coprocessor routine. */
+		/**/	SBN_I_COP,											/**< Coprocessor routine. */
 
 			SBN_I_CPX,											/**< Compare with X. */
 			SBN_I_CPY,											/**< Compare with Y. */
@@ -103,6 +104,7 @@ namespace sbn {
 			SBN_I_NOP,											/**< No operation. */
 		/**/	SBN_I_ORA,											/**< OR with accumulator. */
 			SBN_I_PHA,											/**< Push accumulator. */
+		/**/	SBN_I_PHD,											/**< Push direct page register. */
 			SBN_I_PHP,											/**< Push processor status (SR). */
 			SBN_I_PLA,											/**< Pull accumulator. */
 			SBN_I_PLP,											/**< Pull processor status (SR). */

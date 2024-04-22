@@ -80,9 +80,9 @@ namespace sbn {
 			m_bBusA.ReadWriteLog().clear();
 		}
 
-		/*if ( "01 n 437" == cvoVerifyMe.sName ) {
+		if ( "07 e 377" == cvoVerifyMe.sName ) {
 			volatile int ghg = 0;
-		}*/
+		}
 		// Tick once for each cycle.
 		m_ui16Operand = m_bBusA.Read( m_rRegs.ui16Pc, m_rRegs.ui8Pb, ui8Speed );
 		m_ui16PcModify = 1;
