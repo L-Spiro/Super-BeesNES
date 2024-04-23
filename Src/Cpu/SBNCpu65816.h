@@ -315,6 +315,15 @@ namespace sbn {
 		/** Fetches the high byte of the NMI/IRQ/BRK/reset vector into the high byte of PC and sets the I flag. */
 		inline void											CopyVectorPch_Phi2();
 
+		/** Fetches the address and increments PC. */
+		inline void											FetchAddressAndIncPc_Phi2();
+
+		/** Fetches into m_ui8Address[1] and increments PC .*/
+		inline void											FetchAddressHighAndIncPc_Phi2();
+
+		/** Fetches to m_ui8Bank and increments PC .*/
+		inline void											FetchBankhAndIncPc_Phi2();
+
 		/** Fetches the next operand and increments the PC. */
 		inline void											FetchOpcodeAndIncPc();
 
@@ -333,8 +342,11 @@ namespace sbn {
 		/** Fetches the next operand and increments the PC, performs the D.l skip. */
 		inline void											FetchOperandAndIncPc_WithDlSkip_Phi2();
 
-		/** Fetches a pointer and increments PC .*/
-		inline void											FetchPointerAndIncPc_Phi2();
+		/** Fetches to m_ui16Pointer and increments PC .*/
+		inline void											FetchPointerHighAndIncPc_Phi2();
+
+		/** Fetches to m_ui16Pointer and increments PC .*/
+		inline void											FetchPointerLowAndIncPc_Phi2();
 
 		/** Fixes the high bit of m_ui16Address. */
 		inline void											FixPointerHigh();
@@ -359,6 +371,9 @@ namespace sbn {
 
 		/** Adjusts S after stack operation. */
 		inline void											NullAdjustS_Write();
+
+		/** Skips the next cycle if M() is set. */
+		inline void											Null_SkipIfM();
 
 		/** Performs ORA with m_ui8Operand[0]. */
 		inline void											Ora();
@@ -417,8 +432,8 @@ namespace sbn {
 		/** Reads from m_ui16Address and Bank and stores the result in m_ui8Operand[0]. */
 		inline void											ReadAddressAndBankToOperandLow_Phi2();
 
-		/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
-		inline void											ReadAddressToOperandLow_Phi2();
+		/** Reads from m_ui16Address and Bank and stores the result in m_ui8Operand[0]. */
+		inline void											ReadAddressAndBankToOperandLow_SkipIfM_Phi2();
 
 		/** Reads from m_ui16Address and stores the result in m_ui8Bank. */
 		inline void											ReadAddressToBankLow_Phi2();
@@ -427,7 +442,10 @@ namespace sbn {
 		inline void											ReadAddressToOperandHigh_Phi2();
 
 		/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
-		inline void											ReadAddressToOperandLow_WithBSkip_Phi2();
+		inline void											ReadAddressToOperandLow_Phi2();
+
+		/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
+		inline void											ReadAddressToOperandLow_SkipIfM_Phi2();
 
 		/** Reads from m_ui16Address and stores the result in m_ui8Pointer[1]. */
 		inline void											ReadAddressToPointerHigh_Phi2();
@@ -435,13 +453,13 @@ namespace sbn {
 		/** Reads from m_ui16Address and stores the result in m_ui8Pointer[0]. */
 		inline void											ReadAddressToPointerLow_Phi2();
 
-		/** Reads from m_ui16Pointer and the bank in m_ui8Operand[0], stores result in m_ui8Operand[1]. */
+		/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[1]. */
 		inline void											ReadPointerAndBankToOperandHigh_Phi2();
 
-		/** Reads from m_ui16Pointer and the bank in m_ui8Operand[0], stores result in m_ui8Operand[0]. */
+		/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[0]. */
 		inline void											ReadPointerAndBankToOperandLow_SkipIfM_Phi2();
 
-		/** Reads from m_ui16Pointer and the bank in m_ui8Operand[0], stores result in m_ui8Operand[0]. */
+		/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[0]. */
 		inline void											ReadPointerAndBankToOperandLow_Phi2();
 
 		/** Reads from m_ui16Pointer and stores the low byte in m_ui8Address[1]. */
@@ -474,8 +492,20 @@ namespace sbn {
 		/** Writes m_ui8Operand[1] to m_ui16Address. */
 		inline void											WriteOperandHighToAddress_Phi2();
 
+		/** Writes m_ui8Operand[1] to m_ui16Address with bank. */
+		inline void											WriteOperandHighToAddressAndBank_Phi2();
+
 		/** Writes m_ui8Operand[0] to m_ui16Address. */
 		inline void											WriteOperandLowToAddress_Phi2();
+
+		/** Writes m_ui8Operand[0] to m_ui16Address with bank. */
+		inline void											WriteOperandLowToAddressAndBank_Phi2();
+
+		/** Writes m_ui8Operand[0] to m_ui16Address. */
+		inline void											WriteOperandLowToAddress_SkipIfM_Phi2();
+
+		/** Writes m_ui8Operand[0] to m_ui16Address with bank. */
+		inline void											WriteOperandLowToAddressAndBank_SkipIfM_Phi2();
 
 		/**
 		 * Prepares to enter a new instruction.
@@ -693,6 +723,39 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
+	/** Fetches the address and increments PC. */
+	inline void CCpu65816::FetchAddressAndIncPc_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui16Address, ui8Speed );
+		m_ui16PcModify = 1;
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches into m_ui8Address[1] and increments PC .*/
+	inline void CCpu65816::FetchAddressHighAndIncPc_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui8Address[1], ui8Speed );
+		m_ui16PcModify = 1;
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches to m_ui8Bank and increments PC .*/
+	inline void CCpu65816::FetchBankhAndIncPc_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui8Bank, ui8Speed );
+		m_ui16PcModify = 1;
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
 	/** Fetches the next operand and increments the PC. */
 	inline void CCpu65816::FetchOpcodeAndIncPc() {
 		SBN_INSTR_START_PHI1( true );
@@ -776,8 +839,19 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
-	/** Fetches a pointer and increments PC .*/
-	inline void CCpu65816::FetchPointerAndIncPc_Phi2() {
+	/** Fetches to m_ui16Pointer and increments PC .*/
+	inline void CCpu65816::FetchPointerHighAndIncPc_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, m_ui8Pointer[1], ui8Speed );
+		m_ui16PcModify = 1;
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches to m_ui16Pointer and increments PC .*/
+	inline void CCpu65816::FetchPointerLowAndIncPc_Phi2() {
 		uint8_t ui8Speed;
 		uint8_t ui8Op;
 		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, ui8Op, ui8Speed );
@@ -865,6 +939,19 @@ namespace sbn {
 		SBN_UPDATE_S;
 
 		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Skips the next cycle if M() is set. */
+	inline void CCpu65816::Null_SkipIfM() {
+		SBN_INSTR_START_PHI1( false );
+
+		SBN_NEXT_FUNCTION;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
 
 		SBN_INSTR_END_PHI1;
 	}
@@ -1111,19 +1198,19 @@ namespace sbn {
 
 		SBN_NEXT_FUNCTION;
 
-		if ( (m_rRegs.ui8Status & M()) ) {
-			SBN_NEXT_FUNCTION_BY( 2 );
-		}
-
 		SBN_INSTR_END_PHI2;
 	}
 
-	/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
-	inline void CCpu65816::ReadAddressToOperandLow_Phi2() {
+	/** Reads from m_ui16Address and Bank and stores the result in m_ui8Operand[0]. */
+	inline void CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2() {
 		uint8_t ui8Speed;
-		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Address, m_ui16Operand, ui8Speed );
+		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Address, m_rRegs.ui8Db, m_ui16Operand, ui8Speed );
 
 		SBN_NEXT_FUNCTION;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
 
 		SBN_INSTR_END_PHI2;
 	}
@@ -1149,7 +1236,17 @@ namespace sbn {
 	}
 
 	/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
-	inline void CCpu65816::ReadAddressToOperandLow_WithBSkip_Phi2() {
+	inline void CCpu65816::ReadAddressToOperandLow_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Address, m_ui16Operand, ui8Speed );
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Reads from m_ui16Address and stores the result in m_ui8Operand[0]. */
+	inline void CCpu65816::ReadAddressToOperandLow_SkipIfM_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_READ0_BUSA( m_ui16Address, m_ui16Operand, ui8Speed );
 
@@ -1182,7 +1279,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
-	/** Reads from m_ui16Pointer and the bank in m_ui8Operand[0], stores result in m_ui8Operand[1]. */
+	/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[1]. */
 	inline void CCpu65816::ReadPointerAndBankToOperandHigh_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Pointer + 1, m_ui8Bank, m_ui8Operand[1], ui8Speed );
@@ -1192,7 +1289,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
-	/** Reads from m_ui16Pointer and the bank in m_ui8Operand[0], stores result in m_ui8Operand[0]. */
+	/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[0]. */
 	inline void CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Pointer, m_ui8Bank, m_ui16Operand, ui8Speed );
@@ -1206,7 +1303,7 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
-	/** Reads from m_ui16Pointer and the bank in m_ui8Operand[0], stores result in m_ui8Operand[0]. */
+	/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[0]. */
 	inline void CCpu65816::ReadPointerAndBankToOperandLow_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Pointer, m_ui8Bank, m_ui16Operand, ui8Speed );
@@ -1331,12 +1428,60 @@ namespace sbn {
 		SBN_INSTR_END_PHI2;
 	}
 
+	/** Writes m_ui8Operand[1] to m_ui16Address with bank. */
+	inline void CCpu65816::WriteOperandHighToAddressAndBank_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_WRITE_BUSA( m_ui16Address + 1, m_rRegs.ui8Db, m_ui8Operand[1], ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
 	/** Writes m_ui8Operand[0] to m_ui16Address. */
 	inline void CCpu65816::WriteOperandLowToAddress_Phi2() {
 		uint8_t ui8Speed;
 		SBN_INSTR_START_PHI2_WRITE0_BUSA( m_ui16Address, m_ui8Operand[0], ui8Speed );
 		
 		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Writes m_ui8Operand[0] to m_ui16Address with bank. */
+	inline void CCpu65816::WriteOperandLowToAddressAndBank_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_WRITE_BUSA( m_ui16Address, m_rRegs.ui8Db, m_ui8Operand[0], ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Writes m_ui8Operand[0] to m_ui16Address. */
+	inline void CCpu65816::WriteOperandLowToAddress_SkipIfM_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_WRITE0_BUSA( m_ui16Address, m_ui8Operand[0], ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Writes m_ui8Operand[0] to m_ui16Address with bank. */
+	inline void CCpu65816::WriteOperandLowToAddressAndBank_SkipIfM_Phi2() {
+		uint8_t ui8Speed;
+		SBN_INSTR_START_PHI2_WRITE_BUSA( m_ui16Address, m_rRegs.ui8Db, m_ui8Operand[0], ui8Speed );
+		
+		SBN_NEXT_FUNCTION;
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
 
 		SBN_INSTR_END_PHI2;
 	}

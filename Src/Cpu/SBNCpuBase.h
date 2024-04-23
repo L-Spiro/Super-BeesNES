@@ -56,6 +56,7 @@ namespace sbn {
 			SBN_AM_RELATIVE,																/**< Relative jumping = 2 extra cycles. */
 			SBN_AM_STACK_RELATIVE,															/**< Relative jumping on stackr. */
 			SBN_AM_ABSOLUTE,																/**< Absolute addressing = 3 extra cycles. */
+			SBN_AM_ABSOLUTE_LONG,															/**< Absolute long. */
 			SBN_AM_ABSOLUTE_X,																/**< Absolute X addressing = 3 extra cycles + optional cycle. */
 			SBN_AM_ABSOLUTE_Y,																/**< Absolute Y addressing = 3 extra cycles + optional cycle. */
 			SBN_AM_INDIRECT_X,																/**< Indirect X addressing = 5 extra cycles. */
