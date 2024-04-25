@@ -155,6 +155,7 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 		8, 7, SBN_AM_DIRECT_PAGE_INDIRECT_LONG, 2, 2, SBN_I_ORA,*/
 	},
 
+
 	/** 08-0F */
 	{	// 08
 		{
@@ -304,6 +305,27 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 		},
 		6, 5, SBN_AM_ABSOLUTE_LONG, 4, 4, SBN_I_ORA,*/
 	},
+
+
+	/** 10-18 */
+	{	// 10
+		{
+			{
+				&CCpu65816::FetchOperandAndIncPc_Phi2,
+				&CCpu65816::Branch_Cycle2<N(), 0>, &CCpu65816::Branch_Cycle2_Phi2,
+				&CCpu65816::Branch_Cycle3_Native, &CCpu65816::PrefetchNextOp
+			},
+			{
+				&CCpu65816::FetchOperandAndIncPc_Phi2,
+				&CCpu65816::Branch_Cycle2<N(), 0>, &CCpu65816::Branch_Cycle2_Phi2,
+				&CCpu65816::Branch_Cycle3, &CCpu65816::Branch_Cycle3_Phi2,
+				&CCpu65816::Branch_Cycle4, &CCpu65816::PrefetchNextOp
+			},
+		},
+		3, 4, SBN_AM_RELATIVE, 2, 2, SBN_I_BPL,
+	},
+
+
 
 };
 

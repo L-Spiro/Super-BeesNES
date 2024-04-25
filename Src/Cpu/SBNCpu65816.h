@@ -214,7 +214,7 @@ namespace sbn {
 		bool												m_bBoundaryCrossed = false;															/**< Did we cross a page boundary? */
 		bool												m_bPushB = false;																	/**< Push the B flag with the status byte? */
 		bool												m_bAllowWritingToPc = true;															/**< Allow writing to PC? */
-		//bool												m_bSkippingCycle;																	/**< Needed to properly
+		bool												m_bTakeJump;																		/**< Determines if a branch is taken. */
 		
 		bool												m_bEmulationMode = true;															/**< Emulation Mode flag. */
 		static SBN_INSTR									m_iInstructionSet[256];																/**< The instruction set. */
@@ -299,6 +299,25 @@ namespace sbn {
 
 		/** Performs A <<= 1.  Sets C, N, and V. */
 		inline void											AslOnA();
+
+		/** 2nd cycle of branch instructions. Fetches opcode of next instruction and performs the check to decide which cycle comes next (or to end the instruction). */
+		template <unsigned _uBit, unsigned _uVal>
+		inline void											Branch_Cycle2();
+
+		/** 2nd cycle of branch instructions. Fetches opcode of next instruction and performs the check to decide which cycle comes next (or to end the instruction). */
+		inline void											Branch_Cycle2_Phi2();
+
+		/** 3rd cycle of branch instructions. Branch was taken and might have crossed a page boundary. */
+		inline void											Branch_Cycle3();
+
+		/** 3rd cycle of branch instructions. Branch was taken and might have crossed a page boundary. */
+		inline void											Branch_Cycle3_Phi2();
+
+		/** 3rd cycle of branch instructions. Branch was taken and might have crossed a page boundary. */
+		inline void											Branch_Cycle3_Native();
+
+		/** 4th cycle of branch instructions. Page boundary was crossed. */
+		inline void											Branch_Cycle4();
 
 		/** Copies the vector address into PC. */
 		inline void											Brk();
@@ -661,6 +680,83 @@ namespace sbn {
 			SetBit<Z()>( m_rRegs.ui8Status, !m_rRegs.ui16A );
 		}
 		
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** 2nd cycle of branch instructions. Fetches opcode of next instruction and performs the check to decide which cycle comes next (or to end the instruction). */
+	template <unsigned _uBit, unsigned _uVal>
+	inline void CCpu65816::Branch_Cycle2() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_bTakeJump = (m_rRegs.ui8Status & _uBit) == (_uVal * _uBit);
+		SBN_UPDATE_PC;
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** 2nd cycle of branch instructions. Fetches opcode of next instruction and performs the check to decide which cycle comes next (or to end the instruction). */
+	inline void CCpu65816::Branch_Cycle2_Phi2() {
+		if ( !m_bTakeJump ) {
+			SBN_FINISH_INST( true );
+		}
+		else {
+			SBN_NEXT_FUNCTION;
+
+			m_ui16Address = static_cast<int16_t>(static_cast<int8_t>(m_ui8Operand[0])) + m_rRegs.ui16Pc;
+
+			m_bBoundaryCrossed = m_ui8Address[1] != m_rRegs.ui8Pc[1];
+			if ( !m_bBoundaryCrossed ) {
+				//SBN_CHECK_INTERRUPTS;
+			}
+		}
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** 3rd cycle of branch instructions. Branch was taken and might have crossed a page boundary. */
+	inline void CCpu65816::Branch_Cycle3() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_rRegs.ui8Pc[0] = m_ui8Address[0];
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** 3rd cycle of branch instructions. Branch was taken and might have crossed a page boundary. */
+	inline void CCpu65816::Branch_Cycle3_Phi2() {
+		if ( m_bBoundaryCrossed ) {
+			SBN_NEXT_FUNCTION;
+		}
+		else {
+			SBN_FINISH_INST( false );
+		}
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** 3rd cycle of branch instructions. Branch was taken and might have crossed a page boundary. */
+	inline void CCpu65816::Branch_Cycle3_Native() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_rRegs.ui16Pc = m_ui16Address;
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** 4th cycle of branch instructions. Page boundary was crossed. */
+	inline void CCpu65816::Branch_Cycle4() {
+		SBN_INSTR_START_PHI1( true );
+
+		m_rRegs.ui8Pc[1] = m_ui8Address[1];
 
 		SBN_NEXT_FUNCTION;
 
