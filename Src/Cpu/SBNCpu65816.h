@@ -283,13 +283,22 @@ namespace sbn {
 		// CYCLES
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		/** Adds D and m_ui8Operand[0], stores in m_ui16Address. */
-		inline void											AddD_Operand();
+		inline void											AddDAndOperandToAddressAndIncPc();
+
+		/** Adds D and m_ui8Operand[0], stores in m_ui16Pointer. */
+		inline void											AddDAndOperandToPointerAndIncPc();
 
 		/** Adds S to m_ui16Pointer, stores in m_ui16Address. */
 		inline void											AddStackOffset();
 
 		/** Adds X to m_ui16Pointer and D, stores to m_ui16Address. */
-		inline void											AddX_D_Pointer();
+		inline void											AddXAndDAndPointerToAddressAndIncPc();
+
+		/** Adds Y to m_ui16Address. */
+		inline void											AddYToAddress();
+
+		/** Adds Y to m_ui16Pointer, sets m_ui8Bank. */
+		inline void											AddYToPointerWithBankOverflowAndPageSkip();
 
 		/** Performs M <<= 1.  Sets C, N, and V. */
 		inline void											Asl();
@@ -549,7 +558,7 @@ namespace sbn {
 	}
 
 	/** Adds D and m_ui8Operand[0], stores in m_ui16Address. */
-	inline void CCpu65816::AddD_Operand() {
+	inline void CCpu65816::AddDAndOperandToAddressAndIncPc() {
 		SBN_INSTR_START_PHI1( true );
 
 		SBN_UPDATE_PC;
@@ -559,6 +568,24 @@ namespace sbn {
 		}
 		else {*/
 			m_ui16Address = m_ui16Operand + m_rRegs.ui16D;
+		//}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Adds D and m_ui8Operand[0], stores in m_ui16Pointer. */
+	inline void CCpu65816::AddDAndOperandToPointerAndIncPc() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_UPDATE_PC;
+
+		/*if ( m_bEmulationMode ) {
+			m_ui16Address = m_ui16Pointer + m_rRegs.ui16D;
+		}
+		else {*/
+			m_ui16Pointer = m_ui16Operand + m_rRegs.ui16D;
 		//}
 
 		SBN_NEXT_FUNCTION;
@@ -585,7 +612,7 @@ namespace sbn {
 	}
 
 	/** Adds X to m_ui16Pointer and D, stores to m_ui16Address. */
-	inline void CCpu65816::AddX_D_Pointer() {
+	inline void CCpu65816::AddXAndDAndPointerToAddressAndIncPc() {
 		SBN_INSTR_START_PHI1( false );
 
 		SBN_UPDATE_PC;
@@ -597,6 +624,54 @@ namespace sbn {
 		else {
 			m_ui16Address = m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D;
 		}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Adds Y to m_ui16Address. */
+	inline void CCpu65816::AddYToAddress() {
+		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
+
+		m_ui16Address += m_rRegs.ui16Y;
+
+		/*if ( m_bEmulationMode ) {
+			m_ui8Address[0] = uint8_t( m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D );
+			m_ui8Address[1] = uint8_t( m_rRegs.ui16D >> 8 );
+		}
+		else {
+			m_ui16Address = m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D;
+		}*/
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Adds Y to m_ui16Pointer, sets m_ui8Bank. */
+	inline void CCpu65816::AddYToPointerWithBankOverflowAndPageSkip() {
+		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
+
+		uint32_t ui32Orig = m_ui16Pointer;
+		uint32_t ui32Tmp = m_ui16Pointer + m_rRegs.ui16Y;
+		m_ui16Pointer = uint16_t( ui32Tmp );
+		m_ui8Bank = m_rRegs.ui8Db + (ui32Tmp >> 16);
+
+		if ( uint8_t( ui32Orig >> 8 ) == m_ui8Pointer[1] ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
+		/*if ( m_bEmulationMode ) {
+			m_ui8Address[0] = uint8_t( m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D );
+			m_ui8Address[1] = uint8_t( m_rRegs.ui16D >> 8 );
+		}
+		else {
+			m_ui16Address = m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D;
+		}*/
 
 		SBN_NEXT_FUNCTION;
 

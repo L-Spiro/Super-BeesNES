@@ -53,6 +53,7 @@ namespace sbn {
 			SBN_AM_ZERO_PAGE_Y,																/**< Zero-page-Y = 3 extra cycles. */
 			SBN_AM_DIRECT_PAGE,																/**< Direct page, up to 2 extra cycles. */
 			SBN_AM_DIRECT_PAGE_INDIRECT_LONG,												/**< Direct page, up to 2 extra cycles. */
+			SBN_AM_DIRECT_PAGE_INDIRECT_INDEXED_Y,											/**< DP Indirect Indexed, Y. */
 			SBN_AM_RELATIVE,																/**< Relative jumping = 2 extra cycles. */
 			SBN_AM_STACK_RELATIVE,															/**< Relative jumping on stackr. */
 			SBN_AM_ABSOLUTE,																/**< Absolute addressing = 3 extra cycles. */

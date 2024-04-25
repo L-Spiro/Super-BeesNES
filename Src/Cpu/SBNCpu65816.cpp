@@ -80,7 +80,7 @@ namespace sbn {
 			m_bBusA.ReadWriteLog().clear();
 		}
 
-		if ( "07 e 377" == cvoVerifyMe.sName ) {
+		if ( "11 n 11" == cvoVerifyMe.sName ) {
 			volatile int ghg = 0;
 		}
 		// Tick once for each cycle.
