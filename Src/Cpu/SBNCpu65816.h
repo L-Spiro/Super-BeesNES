@@ -282,6 +282,9 @@ namespace sbn {
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		// CYCLES
 		// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+		/** Adds D and m_ui8Operand[0] and X, stores in m_ui16Address. */
+		inline void											AddDAndOperandAndXToAddressAndIncPc();
+
 		/** Adds D and m_ui8Operand[0], stores in m_ui16Address. */
 		inline void											AddDAndOperandToAddressAndIncPc();
 
@@ -564,6 +567,25 @@ namespace sbn {
 	/** Performs a cycle inside an instruction. */
 	inline void CCpu65816::Tick_InstructionCycleStd() {
 		(this->*m_iInstructionSet[m_ui16OpCode].pfHandler[m_bEmulationMode][m_ui8FuncIndex])();
+	}
+
+	/** Adds D and m_ui8Operand[0] and X, stores in m_ui16Address. */
+	inline void CCpu65816::AddDAndOperandAndXToAddressAndIncPc() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_UPDATE_PC;
+
+		if ( m_bEmulationMode && m_rRegs.ui8D[0] == 0x00 ) {
+			m_ui8Address[0] = uint8_t( m_ui16Operand + m_rRegs.ui16X + m_rRegs.ui16D );
+			m_ui8Address[1] = m_rRegs.ui8D[1];
+		}
+		else {
+			m_ui16Address = m_ui16Operand + m_rRegs.ui16X + m_rRegs.ui16D;
+		}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
 	}
 
 	/** Adds D and m_ui8Operand[0], stores in m_ui16Address. */

@@ -52,6 +52,7 @@ namespace sbn {
 			SBN_AM_ZERO_PAGE_X,																/**< Zero-page-X = 3 extra cycles. */
 			SBN_AM_ZERO_PAGE_Y,																/**< Zero-page-Y = 3 extra cycles. */
 			SBN_AM_DIRECT_PAGE,																/**< Direct page, up to 2 extra cycles. */
+			SBN_AM_DIRECT_PAGE_INDEXED_X,													/**< Direct page indexed X. */
 			SBN_AM_DIRECT_PAGE_INDIRECT,													/**< Direct page indirect. */
 			SBN_AM_DIRECT_PAGE_INDIRECT_LONG,												/**< Direct page, up to 2 extra cycles. */
 			SBN_AM_DIRECT_PAGE_INDIRECT_INDEXED_Y,											/**< DP Indirect Indexed, Y. */
@@ -168,7 +169,7 @@ namespace sbn {
 
 		/** Other parameters. */
 		enum SBN_MISC {
-			SBN_M_MAX_INSTR_CYCLE_COUNT		= 8,
+			SBN_M_MAX_INSTR_CYCLE_COUNT		= 9,
 		};
 
 
