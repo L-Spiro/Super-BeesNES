@@ -289,13 +289,16 @@ namespace sbn {
 		inline void											AddDAndOperandToPointerAndIncPc();
 
 		/** Adds S to m_ui16Pointer, stores in m_ui16Address. */
-		inline void											AddStackOffset();
+		inline void											AddStackOffsetAndIncPc();
 
 		/** Adds X to m_ui16Pointer and D, stores to m_ui16Address. */
 		inline void											AddXAndDAndPointerToAddressAndIncPc();
 
 		/** Adds Y to m_ui16Address. */
 		inline void											AddYToAddress();
+
+		/** Adds Y to m_ui16Pointer, copies m_rRegs.ui8Db to m_ui8Bank. */
+		inline void											AddYToPointerAndSetBank();
 
 		/** Adds Y to m_ui16Pointer, sets m_ui8Bank. */
 		inline void											AddYToPointerWithBankOverflowAndPageSkip();
@@ -357,6 +360,9 @@ namespace sbn {
 
 		/** Fetches the next opcode and does not the program counter. */
 		inline void											FetchOperand_Phi2();
+
+		/** Fetches the operand. */
+		inline void											FetchOperandAndDiscard_Phi2();
 
 		/** Fetches the next operand and increments the PC. */
 		inline void											FetchOperandAndIncPc_Phi2();
@@ -514,6 +520,9 @@ namespace sbn {
 		/** Skips the next instruction if the low byte of D is 0. */
 		inline void											SkipOnDL_Phi2();
 
+		/** Performs m_ui16Operand &= ~A.  Sets Z. */
+		inline void											Trb();
+
 		/** Performs m_ui16Operand |= A.  Sets Z. */
 		inline void											Tsb();
 
@@ -594,7 +603,7 @@ namespace sbn {
 	}
 
 	/** Adds S to m_ui16Pointer, stores in m_ui16Address. */
-	inline void CCpu65816::AddStackOffset() {
+	inline void CCpu65816::AddStackOffsetAndIncPc() {
 		SBN_INSTR_START_PHI1( false );
 
 		SBN_UPDATE_PC;
@@ -637,6 +646,28 @@ namespace sbn {
 		SBN_UPDATE_PC;
 
 		m_ui16Address += m_rRegs.ui16Y;
+
+		/*if ( m_bEmulationMode ) {
+			m_ui8Address[0] = uint8_t( m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D );
+			m_ui8Address[1] = uint8_t( m_rRegs.ui16D >> 8 );
+		}
+		else {
+			m_ui16Address = m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D;
+		}*/
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
+	/** Adds Y to m_ui16Pointer, copies m_rRegs.ui8Db to m_ui8Bank. */
+	inline void CCpu65816::AddYToPointerAndSetBank() {
+		SBN_INSTR_START_PHI1( false );
+
+		SBN_UPDATE_PC;
+
+		m_ui16Pointer += m_rRegs.ui16Y;
+		m_ui8Bank = m_rRegs.ui8Db;
 
 		/*if ( m_bEmulationMode ) {
 			m_ui8Address[0] = uint8_t( m_ui16Pointer + m_rRegs.ui16X + m_rRegs.ui16D );
@@ -946,6 +977,17 @@ namespace sbn {
 		uint8_t ui8Op;
 		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, ui8Op, ui8Speed );
 		m_ui16Operand = ui8Op;
+		
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI2;
+	}
+
+	/** Fetches the operand. */
+	inline void CCpu65816::FetchOperandAndDiscard_Phi2() {
+		uint8_t ui8Speed;
+		uint8_t ui8Op;
+		SBN_INSTR_START_PHI2_READ_BUSA( m_rRegs.ui16Pc, m_rRegs.ui8Pb, ui8Op, ui8Speed );
 		
 		SBN_NEXT_FUNCTION;
 
@@ -1568,6 +1610,25 @@ namespace sbn {
 		}
 
 		SBN_INSTR_END_PHI2;
+	}
+
+	/** Performs m_ui16Operand &= ~A.  Sets Z. */
+	inline void CCpu65816::Trb() {
+		SBN_INSTR_START_PHI1( false );
+
+		if ( (m_rRegs.ui8Status & M()) ) {
+			SetBit<Z()>( m_rRegs.ui8Status, (m_rRegs.ui8A[0] & m_ui8Operand[0]) == 0 );
+		}
+		else {
+			SetBit<Z()>( m_rRegs.ui8Status, (m_rRegs.ui16A & m_ui16Operand) == 0 );
+		}
+		
+		m_ui16Operand &= ~m_rRegs.ui16A;
+
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
 	}
 
 	/** Performs m_ui16Operand |= A.  Sets Z. */

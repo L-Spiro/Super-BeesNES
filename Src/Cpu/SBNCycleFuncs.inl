@@ -1,15 +1,19 @@
 #define SBN_INDIRECT_X_R( NAME, FUNC )												{ {	&CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddXAndDAndPointerToAddressAndIncPc, &CCpu65816::SkipOnDL_Phi2, &CCpu65816::FixPointerHigh, &CCpu65816::Null_Phi2, &CCpu65816::ReadPointerToAddressLow, &CCpu65816::ReadPointerToAddressLow_Phi2, &CCpu65816::ReadPointerToAddressHigh, &CCpu65816::ReadPointerToAddressHigh_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, {	&CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddXAndDAndPointerToAddressAndIncPc, &CCpu65816::SkipOnDL_Phi2, &CCpu65816::FixPointerHigh, &CCpu65816::Null_Phi2, &CCpu65816::ReadPointerToAddressLow, &CCpu65816::ReadPointerToAddressLow_Phi2, &CCpu65816::ReadPointerToAddressHigh, &CCpu65816::ReadPointerToAddressHigh_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 8, 7, SBN_AM_INDIRECT_X, 2, 2, SBN_I_ ## NAME
 
-#define SBN_STACK_RELATIVE_R( NAME, FUNC )											{ { &CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddStackOffset, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddStackOffset, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 5, 5, SBN_AM_STACK_RELATIVE, 2, 2, SBN_I_ ## NAME
+#define SBN_STACK_RELATIVE_R( NAME, FUNC )											{ { &CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddStackOffsetAndIncPc, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddStackOffsetAndIncPc, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 5, 5, SBN_AM_STACK_RELATIVE, 2, 2, SBN_I_ ## NAME
+
+#define SBN_STACK_RELATIVE_INDIRECT_INDEXED_Y( NAME, FUNC )							{ { &CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddStackOffsetAndIncPc, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2, &CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchPointerLowAndIncPc_Phi2, &CCpu65816::AddStackOffsetAndIncPc, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2, &CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 8, 7, SBN_AM_STACK_RELATIVE_INDIRECT_INDEXED_Y, 2, 2, SBN_I_ ## NAME
 
 #define SBN_DIRECT_PAGE_R( NAME, FUNC )												{ { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Write, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Write, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, }, 5, 4, SBN_AM_DIRECT_PAGE, 2, 2, SBN_I_ ## NAME
 #define SBN_DIRECT_PAGE_RMW( NAME, FUNC )											{ { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Write, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::SkipIfM_Phi2, &CCpu65816::Null_Write, &CCpu65816::WriteOperandHighToAddress_Phi2, &CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddress_Phi2, &CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp, }, { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Write, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_Phi2, &CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddress_Phi2, &CCpu65816::FUNC, &CCpu65816::WriteOperandLowToAddress_Phi2, &CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp, }, }, 8, 6, SBN_AM_DIRECT_PAGE, 2, 2, SBN_I_## NAME
+
+#define SBN_DIRECT_PAGE_INDIRECT_R( NAME, FUNC )									{ { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Read, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToPointerAndIncPc, &CCpu65816::ReadPointerToAddressLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerToAddressHigh_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Read, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToPointerAndIncPc, &CCpu65816::ReadPointerToAddressLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerToAddressHigh_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 7, 6, SBN_AM_DIRECT_PAGE_INDIRECT, 2, 2, SBN_I_ ## NAME
 
 #define SBN_DIRECT_PAGE_INDIRECT_LONG_R( NAME, FUNC )								{ { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Write, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToPointerLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToBankLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Write, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToPointerLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToBankLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, }, 8, 7, SBN_AM_DIRECT_PAGE_INDIRECT_LONG, 2, 2, SBN_I_ ## NAME
 
 #define SBN_DIRECT_PAGE_INDIRECT_INDEXED_Y_R( NAME, FUNC )							{ { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Read, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToPointerLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2, &CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2, &CCpu65816::Null_Read, &CCpu65816::Null_Phi2, &CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToPointerLow_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2, &CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 8, 7, SBN_AM_DIRECT_PAGE_INDIRECT_INDEXED_Y, 2, 2, SBN_I_ ## NAME
 
-#define SBN_IMMEDIATE( NAME, FUNC )													{ { &CCpu65816::FetchOperandLowAndIncPc_SkipIfM_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchOperandHighAndIncPc_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchOperandAndIncPc_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 3, 2, SBN_AM_IMMEDIATE, 3, 2, SBN_I_ ## NAME
+#define LSN_IMMEDIATE( NAME, FUNC )													{ { &CCpu65816::FetchOperandLowAndIncPc_SkipIfM_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchOperandHighAndIncPc_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchOperandAndIncPc_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 3, 2, SBN_AM_IMMEDIATE, 3, 2, SBN_I_ ## NAME
 
 #define SBN_ABSOLUTE_R( NAME, FUNC )												{ { &CCpu65816::FetchAddressAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchAddressHighAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadAddressAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchAddressAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchAddressHighAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadAddressAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 5, 4, SBN_AM_ABSOLUTE, 3, 3, SBN_I_ ## NAME
 #define SBN_ABSOLUTE_RMW( NAME, FUNC )												{ { &CCpu65816::FetchAddressAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchAddressHighAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadAddressAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::Null_SkipIfM, &CCpu65816::Null_Write, &CCpu65816::WriteOperandHighToAddressAndBank_Phi2, &CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddressAndBank_Phi2, &CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchAddressAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchAddressHighAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadAddressAndBankToOperandLow_Phi2, &CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddressAndBank_Phi2, &CCpu65816::FUNC, &CCpu65816::WriteOperandLowToAddressAndBank_Phi2, &CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp }, }, 8, 6, SBN_AM_ABSOLUTE, 3, 3, SBN_I_ ## NAME
@@ -67,66 +71,12 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 	},
 	{	// 03
 		SBN_STACK_RELATIVE_R( ORA, Ora )
-		/*{
-			{
-				&CCpu65816::FetchPointerLowAndIncPc_Phi2,
-				&CCpu65816::AddStackOffset, &CCpu65816::Null_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetLow_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetHigh_Phi2,
-				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp
-			},
-			{
-				&CCpu65816::FetchPointerLowAndIncPc_Phi2,
-				&CCpu65816::AddStackOffset, &CCpu65816::Null_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetLow_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::ReadStackOffsetHigh_Phi2,
-				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp
-			},
-		},
-		5, 5, SBN_AM_STACK_RELATIVE, 2, 2, SBN_I_ORA,*/
 	},
 	{	// 04
 		SBN_DIRECT_PAGE_RMW( TSB, Tsb )
-		/*{
-			{
-				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::Null_Phi2,
-				&CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_SkipIfM_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToOperandHigh_Phi2,
-				&CCpu65816::Tsb, &CCpu65816::SkipIfM_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::WriteOperandHighToAddress_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddress_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp,
-			},
-			{
-				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::Null_Phi2,
-				&CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddress_Phi2,
-				&CCpu65816::Tsb, &CCpu65816::WriteOperandLowToAddress_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp,
-			},
-		},
-		8, 6, SBN_AM_DIRECT_PAGE, 2, 2, SBN_I_TSB,*/
 	},
 	{	// 05
 		SBN_DIRECT_PAGE_R( ORA, Ora )
-		/*{
-			{
-				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::Null_Phi2,
-				&CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_SkipIfM_Phi2,
-				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToOperandHigh_Phi2,
-				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp,
-			},
-			{
-				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
-				&CCpu65816::Null_Write, &CCpu65816::Null_Phi2,
-				&CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_Phi2,
-				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp,
-			},
-		},
-		5, 4, SBN_AM_DIRECT_PAGE, 2, 2, SBN_I_ORA,*/
 	},
 	{	// 06
 		SBN_DIRECT_PAGE_RMW( ASL, Asl )
@@ -175,7 +125,7 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 		3, 3, SBN_AM_IMPLIED, 1, 1, SBN_I_PHP,
 	},
 	{	// 09
-		SBN_IMMEDIATE( ORA, OraAndIncPc )
+		LSN_IMMEDIATE( ORA, OraAndIncPc )
 		/*{
 			{
 				&CCpu65816::FetchOperandLowAndIncPc_SkipIfM_Phi2,
@@ -192,11 +142,11 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 	{	// 0A
 		{
 			{
-				&CCpu65816::FetchOperandAndIncPc_Phi2,
+				&CCpu65816::FetchOperandAndDiscard_Phi2,
 				&CCpu65816::AslOnA, &CCpu65816::PrefetchNextOp
 			},
 			{
-				&CCpu65816::FetchOperandAndIncPc_Phi2,
+				&CCpu65816::FetchOperandAndDiscard_Phi2,
 				&CCpu65816::AslOnA, &CCpu65816::PrefetchNextOp
 			},
 		},
@@ -309,7 +259,7 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 	},
 
 
-	/** 10-18 */
+	/** 10-17 */
 	{	// 10
 		{
 			{
@@ -351,6 +301,78 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 			},
 		},
 		8, 7, SBN_AM_DIRECT_PAGE_INDIRECT_INDEXED_Y, 2, 2, SBN_I_ORA,*/
+	},
+	{	// 12
+		SBN_DIRECT_PAGE_INDIRECT_R( ORA, Ora )
+		/*{
+			{
+				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::Null_Phi2,
+				&CCpu65816::AddDAndOperandToPointerAndIncPc, &CCpu65816::ReadPointerToAddressLow_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerToAddressHigh_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandLow_SkipIfM_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandHigh_Phi2,
+				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp
+			},
+			{
+				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::Null_Phi2,
+				&CCpu65816::AddDAndOperandToPointerAndIncPc, &CCpu65816::ReadPointerToAddressLow_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerToAddressHigh_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressAndBankToOperandLow_Phi2,
+				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp
+			},
+		},
+		7, 6, SBN_AM_DIRECT_PAGE_INDIRECT, 2, 2, SBN_I_ORA*/
+	},
+	{	// 13
+		SBN_STACK_RELATIVE_INDIRECT_INDEXED_Y( ORA, Ora )
+		/*{
+			{
+				&CCpu65816::FetchPointerLowAndIncPc_Phi2,
+				&CCpu65816::AddStackOffsetAndIncPc, &CCpu65816::Null_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerLow_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2,
+				&CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2,
+				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp
+			},
+			{
+				&CCpu65816::FetchPointerLowAndIncPc_Phi2,
+				&CCpu65816::AddStackOffsetAndIncPc, &CCpu65816::Null_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerLow_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToPointerHigh_Phi2,
+				&CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2,
+				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp
+			},
+		},
+		8, 7, SBN_AM_STACK_RELATIVE_INDIRECT_INDEXED_Y, 2, 2, SBN_I_ORA*/
+	},
+	{	// 14
+		SBN_DIRECT_PAGE_RMW( TRB, Trb )
+		/*{
+			{
+				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
+				&CCpu65816::Null_Write, &CCpu65816::Null_Phi2,
+				&CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_SkipIfM_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadAddressToOperandHigh_Phi2,
+				&CCpu65816::Tsb, &CCpu65816::SkipIfM_Phi2,
+				&CCpu65816::Null_Write, &CCpu65816::WriteOperandHighToAddress_Phi2,
+				&CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddress_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp,
+			},
+			{
+				&CCpu65816::FetchOperandAndIncPc_WithDlSkip_Phi2,
+				&CCpu65816::Null_Write, &CCpu65816::Null_Phi2,
+				&CCpu65816::AddDAndOperandToAddressAndIncPc, &CCpu65816::ReadAddressToOperandLow_Phi2,
+				&CCpu65816::Null_Write, &CCpu65816::WriteOperandLowToAddress_Phi2,
+				&CCpu65816::Tsb, &CCpu65816::WriteOperandLowToAddress_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::PrefetchNextOp,
+			},
+		},
+		8, 6, SBN_AM_DIRECT_PAGE, 2, 2, SBN_I_TSB,*/
 	},
 
 };
