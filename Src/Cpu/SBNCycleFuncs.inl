@@ -424,4 +424,3 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 	},
 
 };
-
