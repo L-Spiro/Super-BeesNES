@@ -56,6 +56,7 @@ namespace sbn {
 			SBN_AM_DIRECT_PAGE_INDIRECT,													/**< Direct page indirect. */
 			SBN_AM_DIRECT_PAGE_INDIRECT_LONG,												/**< Direct page, up to 2 extra cycles. */
 			SBN_AM_DIRECT_PAGE_INDIRECT_INDEXED_Y,											/**< DP Indirect Indexed, Y. */
+			SBN_AM_DIRECT_PAGE_INDIRECT_LONG_INDEXED_Y,										/**< DP Indirect Long Indexed, Y. */
 			SBN_AM_RELATIVE,																/**< Relative jumping = 2 extra cycles. */
 			SBN_AM_STACK_RELATIVE,															/**< Relative jumping on stackr. */
 			SBN_AM_STACK_RELATIVE_INDIRECT_INDEXED_Y,										/**< Stack relative indirect indexed Y. */
@@ -63,6 +64,7 @@ namespace sbn {
 			SBN_AM_ABSOLUTE_LONG,															/**< Absolute long. */
 			SBN_AM_ABSOLUTE_X,																/**< Absolute X addressing = 3 extra cycles + optional cycle. */
 			SBN_AM_ABSOLUTE_Y,																/**< Absolute Y addressing = 3 extra cycles + optional cycle. */
+			SBN_AM_ABSOLUTE_INDEXED_Y,														/**< Absolute Indexed, Y. */
 			SBN_AM_INDIRECT_X,																/**< Indirect X addressing = 5 extra cycles. */
 			SBN_AM_INDIRECT_Y,																/**< Indirect Y addressing = 4 extra cycles + optional cycle. */
 			SBN_AM_INDIRECT,																/**< Absolute indirect addressing (JMP) = 4 extra cycles. */
@@ -126,6 +128,7 @@ namespace sbn {
 			SBN_I_STY,											/**< Store Y. */
 			SBN_I_TAX,											/**< Transfer accumulator to X. */
 			SBN_I_TAY,											/**< Transfer accumulator to Y. */
+		/**/	SBN_I_TCS,											/**< Transfer 16 bit A to S. */
 		/**/	SBN_I_TRB,											/**< Test and reset memory bits against accumulator. */
 		/**/	SBN_I_TSB,											/**< Test and set memory bits against accumulator. */
 			SBN_I_TSX,											/**< Transfer stack pointer to X. */
