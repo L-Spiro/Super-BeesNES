@@ -297,6 +297,9 @@ namespace sbn {
 		/** Adds X to m_ui16Pointer and D, stores to m_ui16Address. */
 		inline void											AddXAndDAndPointerToAddressAndIncPc();
 
+		/** Adds X to m_ui16Pointer, copies m_rRegs.ui8Db to m_ui8Bank. */
+		inline void											AddXToPointerWithBankOverflowAndPageSkipAndIncPc();
+
 		/** Adds Y to m_ui16Address. */
 		inline void											AddYToAddress();
 
@@ -685,6 +688,26 @@ namespace sbn {
 		SBN_INSTR_END_PHI1;
 	}
 
+	/** Adds X to m_ui16Pointer, copies m_rRegs.ui8Db to m_ui8Bank. */
+	inline void CCpu65816::AddXToPointerWithBankOverflowAndPageSkipAndIncPc() {
+		SBN_INSTR_START_PHI1( true );
+
+		SBN_UPDATE_PC;
+
+		uint32_t ui32Orig = m_ui16Pointer;
+		uint32_t ui32Tmp = m_ui16Pointer + m_rRegs.ui16X;
+		m_ui16Pointer = uint16_t( ui32Tmp );
+		m_ui8Bank = m_rRegs.ui8Db + (ui32Tmp >> 16);
+
+		if ( uint8_t( ui32Orig >> 8 ) == m_ui8Pointer[1] ) {
+			SBN_NEXT_FUNCTION_BY( 2 );
+		}
+
+		SBN_NEXT_FUNCTION;
+
+		SBN_INSTR_END_PHI1;
+	}
+
 	/** Adds Y to m_ui16Address. */
 	inline void CCpu65816::AddYToAddress() {
 		SBN_INSTR_START_PHI1( false );
@@ -786,7 +809,7 @@ namespace sbn {
 
 	/** Adds Y to m_ui16Pointer, sets m_ui8Bank. */
 	inline void CCpu65816::AddYToPointerWithBankOverflowAndPageSkip() {
-		SBN_INSTR_START_PHI1( false );
+		SBN_INSTR_START_PHI1( true );
 
 		SBN_UPDATE_PC;
 
@@ -1669,7 +1692,8 @@ namespace sbn {
 	/** Reads from m_ui16Pointer and the bank in m_ui8Bank, stores result in m_ui8Operand[1]. */
 	inline void CCpu65816::ReadPointerAndBankToOperandHigh_Phi2() {
 		uint8_t ui8Speed;
-		SBN_INSTR_START_PHI2_READ_BUSA( m_ui16Pointer + 1, m_ui8Bank, m_ui8Operand[1], ui8Speed );
+		uint32_t ui32Offset = m_ui16Pointer + 1;
+		SBN_INSTR_START_PHI2_READ_BUSA( ui32Offset, m_ui8Bank + (ui32Offset >> 16), m_ui8Operand[1], ui8Speed );
 
 		SBN_NEXT_FUNCTION;
 

@@ -25,6 +25,8 @@
 
 #define SBN_ABSOLUTE_LONG_R( NAME, FUNC )											{ { &CCpu65816::FetchPointerAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchBankhAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, { &CCpu65816::FetchPointerAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchBankhAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp }, }, 6, 5, SBN_AM_ABSOLUTE_LONG, 4, 4, SBN_I_ ## NAME
 
+#define SBN_ABSOLUTE_INDEXED_X_R( NAME, FUNC )										{ { &CCpu65816::FetchPointerAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2, &CCpu65816::AddXToPointerWithBankOverflowAndPageSkipAndIncPc, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, { &CCpu65816::FetchPointerAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2, &CCpu65816::AddXToPointerWithBankOverflowAndPageSkipAndIncPc, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, }, 6, 5, SBN_AM_IMPLIED, 3, 3, SBN_I_ ## NAME
+
 #define SBN_ABSOLUTE_INDEXED_Y_R( NAME, FUNC )										{ { &CCpu65816::FetchPointerAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2, &CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, { &CCpu65816::FetchPointerAndIncPc_Phi2, &CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2, &CCpu65816::AddYToPointerWithBankOverflowAndPageSkip, &CCpu65816::Null_Phi2, &CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2, &CCpu65816::FUNC, &CCpu65816::PrefetchNextOp, }, }, 6, 5, SBN_AM_ABSOLUTE_INDEXED_Y, 3, 3, SBN_I_ ## NAME
 
 CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instruction set. */
@@ -516,6 +518,30 @@ CCpu65816::SBN_INSTR CCpu65816::m_iInstructionSet[256] = {							/**< The instru
 	},
 	{	// 1C
 		SBN_ABSOLUTE_RMW( TRB, Trb )
+	},
+	{	// 1D
+		SBN_ABSOLUTE_INDEXED_X_R( ORA, Ora )
+		/*{
+			{
+				&CCpu65816::FetchPointerAndIncPc_Phi2,
+				&CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2,
+				&CCpu65816::AddXToPointerWithBankOverflowAndPageSkipAndIncPc, &CCpu65816::Null_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_SkipIfM_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandHigh_Phi2,
+				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp,
+			},
+			{
+				&CCpu65816::FetchPointerAndIncPc_Phi2,
+				&CCpu65816::NullIncPc_Read, &CCpu65816::FetchPointerHighAndIncPc_Phi2,
+				&CCpu65816::AddXToPointerWithBankOverflowAndPageSkipAndIncPc, &CCpu65816::Null_Phi2,
+				&CCpu65816::Null_Read, &CCpu65816::ReadPointerAndBankToOperandLow_Phi2,
+				&CCpu65816::Ora, &CCpu65816::PrefetchNextOp,
+			},
+		},
+		6, 5, SBN_AM_IMPLIED, 3, 3, SBN_I_ORA*/
+	},
+	{	// 1D
+		//SBN_ABSOLUTE_INDEXED_X_RMW( ASL, Asl )
 	},
 
 };
